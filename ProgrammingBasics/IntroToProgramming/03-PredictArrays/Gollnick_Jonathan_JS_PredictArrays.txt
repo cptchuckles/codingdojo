@@ -1,0 +1,27 @@
+Snippet 1
+var            |value
+---------------+-----------------------------------------------------------------------
+contactInfo    | ["Paula", "Smith", "1234 Main Street", "St. Louis", "MO", 12345]
+               |
+terminal:
+    ["Paula", "Smith", "1234 Main Street", "St. Louis", "MO", 12345]
+
+
+Snippet 2
+var            |value
+---------------+-----------------------------------------------------------------------
+produce        | ["apples", "oranges"]
+frozen         | ["broccoli", "ice cream"] -> ["broccoli", "ice cream", "hashbrowns"]
+               |
+terminal:
+    ["broccoli", "ice cream", "hashbrowns"]
+
+
+Snippet 3
+var            |value
+---------------+-----------------------------------------------------------------------
+movieLibrary   | ["Bambi", "E.T.", "Toy Story"]
+               |    -> ["Bambi", "E.T.", "Toy Story", "Zorro"]
+               |    -> ["Bambi", "Beetlejuice", "Toy Story", "Zorro"]
+terminal:
+    ["Bambi", "Beetlejuice", "Toy Story", "Zorro"]

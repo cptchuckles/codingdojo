@@ -1,0 +1,150 @@
+Snippet 1
+var                  | value
+---------------------+-----------------------------------------------------------------------
+                     |
+terminal:
+    hello
+    Dojo
+
+
+Snippet 2
+var                  | value
+---------------------+-----------------------------------------------------------------------
+result               | 15
+                     |
+terminal:
+    hello
+    result is 15
+
+
+Snippet 3
+var                  | value
+---------------------+-----------------------------------------------------------------------
+num (parameter)      | 3
+result               | 18
+                     |
+terminal:
+    num is 3
+    result is 18
+
+
+Snipppet 4
+var                  | value
+---------------------+-----------------------------------------------------------------------
+num                  | 15
+num (parameter)      | 10
+result               | 10
+                     |
+terminal:
+    15
+    10
+    10
+    15
+
+
+Snipppet 5
+var                  | value
+---------------------+-----------------------------------------------------------------------
+num                  | 15
+num (parameter)      | 10
+result               | 20
+                     |
+terminal:
+    15
+    10
+    20
+    15
+
+
+Snipppet 6
+var                  | value
+---------------------+-----------------------------------------------------------------------
+num (parameter)      | 3
+y   (local)          | 6
+num (parameter)      | 5
+y   (local)          | 10
+result               | 16
+                     |
+terminal:
+    num is 3
+    num is 5
+    result is 16
+
+
+Snipppet 7
+var                  | value
+---------------------+-----------------------------------------------------------------------
+num1 (parameter)     | 2
+num2 (parameter)     | 3
+num1 (parameter)     | 3
+num2 (parameter)     | 5
+                     |
+terminal:
+    5
+    8
+
+
+Snipppet 8
+var                  | value
+---------------------+-----------------------------------------------------------------------
+num1 (parameter)     | 2
+num2 (parameter)     | 3
+num1 (parameter)     | 3
+num2 (parameter)     | 5
+                     |
+terminal:
+    2
+    5
+    3
+    8
+
+
+Snipppet 9
+var                  | value
+---------------------+-----------------------------------------------------------------------
+num1 (parameter)     | 2
+num2 (parameter)     | 3
+sum  (local)         | 5
+num1 (parameter)     | 3
+num2 (parameter)     | 5
+sum  (local)         | 8
+result               | 13
+                     |
+terminal:
+    sum is 5
+    sum is 8
+    result is 13
+
+
+Snipppet 10
+var                  | value
+---------------------+-----------------------------------------------------------------------
+num1 (parameter)     | 2
+num2 (parameter)     | 3
+sum  (local)         | 5
+num1 (parameter)     | 2
+num2 (parameter)     | 1
+sum  (local)         | 3
+num1 (parameter)     | 3
+num2 (parameter)     | 3
+sum  (local)         | 8
+num1 (parameter)     | 2
+num2 (parameter)     | 1
+sum  (local)         | 3
+num1 (parameter)     | 2
+num2 (parameter)     | 3
+sum  (local)         | 5
+num1 (parameter)     | 3
+num2 (parameter)     | 5
+sum  (local)         | 8
+result               | 19
+                     |
+terminal:
+    sum is 5
+    sum is 3
+    sum is 8
+    sum is 3
+    sum is 3
+    sum is 5
+    sum is 8
+    result is 19
