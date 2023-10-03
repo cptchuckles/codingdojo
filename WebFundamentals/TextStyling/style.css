@@ -1,0 +1,41 @@
+* {
+	margin: 10px 5px;
+	padding: 5px;
+	box-sizing: border-box;
+	font-family: sans-serif;
+}
+
+html, body {
+	padding: 0;
+}
+
+header {
+	padding: 0 10px;
+	font-size: 5rem;
+	font-weight: bold;
+	background-color: black;
+	color: white;
+	.blue {
+		color: #38f;
+		margin: 0;
+		padding: 0;
+	}
+}
+
+main {
+	> * {
+		margin: 5px -5px;
+	}
+	> h1 {
+		padding: 5px 0;
+		text-align: center;
+		font-style: italic;
+		background-color: rebeccapurple;
+		color: white;
+	}
+}
+
+footer {
+	text-align: right;
+	background-color: lightblue;
+}
