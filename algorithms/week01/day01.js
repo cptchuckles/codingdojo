@@ -14,7 +14,7 @@ var expected = 'sunnyside up eggsbiscuits and gravy'
  * @returns {string} The combined strings.
  */
 function combineSmallerStringFirst(s1, s2) {
-	if (s1.length < s2.length) {
+	if (s1.length <= s2.length) {
 		return s1 + s2;
 	}
 	else {
@@ -44,7 +44,7 @@ var repeatedExpected = 'margherita pizzamargherita pizza'
 */
 function stringRepeat(str, num) {
 	let result = "";
-	for (let i=0; i <= num; i++) {
+	for (let i=0; i < num; i++) {
 		result += str;
 	}
 	return result;
