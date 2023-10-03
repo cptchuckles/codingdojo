@@ -14,7 +14,12 @@ var expected = 'sunnyside up eggsbiscuits and gravy'
  * @returns {string} The combined strings.
  */
 function combineSmallerStringFirst(s1, s2) {
-
+	if (s1.length < s2.length) {
+		return s1 + s2;
+	}
+	else {
+		return s2 + s1;
+	}
 }
 
 
@@ -37,7 +42,13 @@ var repeatedExpected = 'margherita pizzamargherita pizza'
  * many times.
  * @returns {string} The given string repeated the specified amount of times.
 */
-function stringRepeat(str, num) {}
+function stringRepeat(str, num) {
+	let result = "";
+	for (let i=0; i <= num; i++) {
+		result += str;
+	}
+	return result;
+}
 
 console.log(stringRepeat(stringToRepeat1, numberToRepeat1))
 console.log(stringRepeat(stringToRepeat2, numberToRepeat2))
@@ -50,7 +61,13 @@ var wordArray = ['shawn', 'jim', 'tyler', 'heidi', 'john', 'alfredo', 'michael']
  * Determines the average length of the words in the given array.
  * @returns {number} The average length of the given words.
  */
-function avgWordLength(arr) {}
+function avgWordLength(arr) {
+	let sum = 0;
+	for (let i=0; i < arr.length; i++) {
+		sum += arr[i].length;
+	}
+	return sum / arr.length;
+}
 
 console.log(avgWordLength(wordArray))
 
@@ -59,7 +76,15 @@ console.log(avgWordLength(wordArray))
  * @returns {string} The longest word. If there are multiple words with the same
  *    length, this should be the last word in the array with that length.
  */
-function findLongestWord(arr) {}
+function findLongestWord(arr) {
+	let longestWord = "";
+	for (let i=0; i < arr.length; i++) {
+		if (arr[i].length >= longestWord.length) {
+			longestWord = arr[i];
+		}
+	}
+	return longestWord;
+}
 
 console.log(findLongestWord(wordArray))
 
@@ -73,6 +98,12 @@ var rangeExpected = 75
  * number through the last number, inclusive.
  * @returns {number} The sum of the given range, inclusive.
  */
-function inclusiveRangeSum(start, stop) {}
+function inclusiveRangeSum(start, stop) {
+	let sum = 0;
+	for (let i=start; i <= stop; i++) {
+		sum += i;
+	}
+	return sum;
+}
 
 console.log(inclusiveRangeSum(rangeA1, rangeB1))
