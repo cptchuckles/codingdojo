@@ -86,16 +86,16 @@ function nthLast(items, nthToLast) {
 
 // Tests
 const result1b = nthLast(arr1b, idx1);
-console.log(result1, "should be", expected1);
+console.log(result1b, "should be", expected1b);
 
 const result2b = nthLast(arr2b, idx2);
-console.log(result2, "should be", expected2);
+console.log(result2b, "should be", expected2b);
 
 const result3b = nthLast(arr3b, idx3);
-console.log(result3, "should be", expected3);
+console.log(result3b, "should be", expected3b);
 
 const result4b = nthLast(arr4b, idx4);
-console.log(result4, "should be", expected4);
+console.log(result4b, "should be", expected4b);
 
-const result5 = nthLast(arr5, idx5);
-console.log(result5, "should be", expected5);
+const result5b = nthLast(arr5, idx5);
+console.log(result5b, "should be", expected5);
