@@ -28,7 +28,13 @@ const expected4 = -1;
  * @returns {number} The index of found item, or -1 if not found.
  */
 function indexOf(items, searchItem) {
-    // code here
+	// check if one of the items elements is searchItem
+	for (let i=0; i<items.length; i++) {
+		if (searchItem == items[i]) {
+			return i;
+		}
+	}
+	return -1;
 }
 
 // Tests
@@ -81,7 +87,12 @@ const expected5 = null;
  * @returns {any} The item at the nthToLast index or null.
  */
 function nthLast(items, nthToLast) {
-    // code here
+	if (nthToLast > 0 && nthToLast < items.length) {
+		//use it
+		let idx = items.length - nthToLast;
+		return items[idx];
+	}
+	return null;
 }
 
 // Tests
