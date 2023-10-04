@@ -1,0 +1,36 @@
+* {
+	box-sizing: border-box;
+	font-family: sans-serif;
+	text-align: center;
+}
+
+body {
+	max-width: 800px;
+	margin: auto;
+}
+
+.row {
+	width: 100%;
+	margin: 1em 0;
+	padding: 1em 0;
+
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.purple {
+	background-color: #808;
+}
+.green {
+	background-color: #080;
+}
+.gold {
+	background-color: #fb0;
+}
+
+img {
+	height: 200px;
+	&.glow {
+		filter: drop-shadow(0 0 5px white);
+	}
+}
