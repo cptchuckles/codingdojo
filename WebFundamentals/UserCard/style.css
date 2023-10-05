@@ -1,0 +1,76 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	margin: 1em 0;
+}
+
+.user-card {
+	max-width: 600px;
+
+	margin: auto;
+	padding: 2em;
+	padding-top: 0;
+
+	border: 3px solid #ddd;
+	border-top: 80px solid #0ac;
+	border-radius: 5px;
+
+	font-family: sans-serif;
+
+	.bust {
+		max-height: 100px;
+		max-width: 100px;
+		border: 3px solid #ddd;
+		border-radius: 50%;
+		background-color: white;
+		padding: 3px;
+		margin-top: -50px;
+	}
+
+	& address{
+		font-style: normal;
+		padding: 0.5em;
+		padding-left: 20px;
+		&::before {
+			content: ' ';
+			display: block;
+			position: absolute;
+			margin-left: -20px;
+			min-height: 32px;
+			min-width: 32px;
+			background: no-repeat 0px -2px/40% url("public/location.png");
+		}
+	}
+
+	.skills {
+		display: flex;
+		& li {
+			list-style: none;
+			margin-right: .5em;
+			& + & {
+				list-style: '|';
+				padding-left: .25em;
+			}
+		}
+	}
+
+	.edit-profile {
+		display: flex;
+		margin-top: 1em;
+		align-items: baseline;
+		padding-left: 20px;
+		&::before {
+			content: ' ';
+			display: block;
+			position: absolute;
+			margin-left: -20px;
+			width: 1em;
+			height: 1em;
+			background: no-repeat left/97% url("public/settings.png");
+		}
+	}
+}
