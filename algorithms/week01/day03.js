@@ -17,7 +17,22 @@ const expected3 = 3;
  * @param {number} nums
  * @returns {number} The count.
  */
-function countEvenNegatives(nums) {}
+function countEvenNegatives(nums) {
+	let count = 0;
+	for (let i=0; i<nums.length; i++) {
+		if (nums[i] < 0 && nums[i] % 2 === 0) {
+			count += 1;
+		}
+	}
+	return count;
+}
+
+const result1a = countEvenNegatives(nums1);
+console.log(result1a + " should be " + expected1);
+const result1b = countEvenNegatives(nums2);
+console.log(result1b + " should be " + expected2);
+const result1c = countEvenNegatives(nums3);
+console.log(result1c + " should be " + expected3);
 
 /*****************************************************************/
 
@@ -38,7 +53,7 @@ of it.
 
 /* Tests for capitalize function */
 const string1 = "hello";
-const expected1b = "Hello";
+const expected2a = "Hello";
 
 const string2 = "";
 const expected2b = "";
@@ -49,7 +64,24 @@ const expected2b = "";
  * @returns {string} The given string with the first letter capitalized or an
  *    empty string.
  */
-function capitalize(string) {}
+function capitalize(string) {
+	let result = "";
+	for (let i=0; i<string.length; i++) {
+		if (i===0) {
+			result += string[i].toUpperCase();
+		}
+		else {
+			result += string[i];
+		}
+	}
+	return result;
+}
+
+
+const result2a = capitalize(string1);
+console.log(result2a + " should be " + expected2a);
+const result3a = capitalize(string2);
+console.log(result3a + " should be " + expected2b);
 
 /* Tests for capitalization function */
 const strings1 = ["hello", "world"];
@@ -60,4 +92,12 @@ const expectedStrings1 = ["Hello", "World"];
  * @param {Array<string>} strings
  * @returns {Array<string>} The same given array with updated items.
  */
-function capitalization(strings) {}
+function capitalization(strings) {
+	for (let i=0; i<strings.length; i++) {
+		strings[i] = capitalize(strings[i]);
+	}
+	return strings;
+}
+
+const result2b = capitalization(strings1);
+console.log(result2b + " should be " + expectedStrings1);
