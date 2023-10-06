@@ -47,7 +47,17 @@ const expected6 = [];
  *    to endIdx.
  */
 function slice(items, startIdx, endIdx) {
-  // code here
+	let result = [];
+	if (startIdx < 0) {
+		startIdx = 0;
+	}
+	if (endIdx > items.length) {
+		endIdx = items.length;
+	}
+	for (let i=startIdx; i<endIdx; i++) {
+		result.push(items[i]);
+	}
+	return result;
 }
 
 // Tests
@@ -96,12 +106,19 @@ const expected2b = [1, 2, 3, "a", "b"];
  * @returns {Array<any>} The new arr that is a concatenation of the given arrays.
  */
 function concat(items1, items2) {
-  // code here
+	let result = []
+	for (let i=0; i<items1.length; i++) {
+		result.push(items1[i]);
+	}
+	for (let i=0; i<items2.length; i++) {
+		result.push(items2[i]);
+	}
+	return result;
 }
 
 // Tests
 const result1b = concat(arrA1, arrB1);
-console.log(result1, "should be", expected1b);
+console.log(result1b, "should be", expected1b);
 
 const result2b = concat(arrA2, arrB2);
-console.log(result2, "should be", expected2b);
+console.log(result2b, "should be", expected2b);
