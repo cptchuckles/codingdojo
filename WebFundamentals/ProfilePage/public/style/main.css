@@ -5,6 +5,10 @@
 	font-family: sans-serif;
 }
 
+html {
+	min-width: 540px;
+}
+
 header {
 	padding: 1em .5em;
 	background-color: black;
@@ -99,9 +103,10 @@ aside {
 			min-width: 1.5em;
 			margin: 0;
 			padding: .25em;
-			background-color: #777;
+			background-color: #aaa;
 			border-radius: 50%;
 			text-align: center;
+			color: black;
 		}
 	}
 
@@ -114,5 +119,32 @@ aside {
 	
 	& time {
 		color: #777;
+	}
+
+	& hr {
+		margin: .5em -.5em;
+		padding: 0;
+		height: 3px;
+		background-color: lightgray;
+		border: none;
+	}
+}
+
+.contact {
+	display: flex;
+	align-items: center;
+	gap: .5em;
+	& img {
+		height: 40px;
+		width: 40px;
+		padding: 0;
+		&.avi {
+			border-radius: 50%;
+			border: 2px solid #aaa;
+			cursor: pointer;
+		}
+	}
+	& p {
+		width: 100%;
 	}
 }
