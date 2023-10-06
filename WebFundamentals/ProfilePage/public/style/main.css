@@ -63,7 +63,15 @@ main {
 aside {
 	flex: 1;
 	margin: 1em 0;
-	background-color: gray;
+
+	.card {
+		& > * {
+			padding: .4em !important;
+		}
+		& > .card-title {
+			padding: .5em .4em !important;
+		}
+	}
 }
 
 .column {
@@ -77,13 +85,24 @@ aside {
 		padding: .5em 0;
 	}
 
-	& > .title {
+	& > .card-title {
 		padding: .5em 2rem;
 		font-size: 1.2em;
 		color: white;
 		background-color: #2a2a2a;
 		border: none;
 		border-radius: 5px 5px 0 0;
+
+		& .count {
+			display: inline-block;
+			height: 1.5em;
+			min-width: 1.5em;
+			margin: 0;
+			padding: .25em;
+			background-color: #777;
+			border-radius: 50%;
+			text-align: center;
+		}
 	}
 
 	& .card-content {
