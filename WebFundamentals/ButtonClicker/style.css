@@ -13,6 +13,7 @@ body {
 button {
     border: 2px solid black;
     box-shadow: 2px 2px black;
+    cursor: pointer;
 
     &#login {
         background-color: #05d;
@@ -46,6 +47,8 @@ header {
     & #search {
         padding: 4px;
         width: 50%;
+        border: 2px solid black;
+        border-radius: 2px;
     }
 
 }
