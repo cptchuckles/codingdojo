@@ -16,6 +16,8 @@ function addDefinition(btn) {
 
 function like(btn) {
 	const word = btn.getAttribute("data-word");
+	const number = btn.getElementsByClassName("number")[0]
+	number.textContent = String(Number(number.textContent) + 1);
 	alert(`${word} was liked`);
 }
 
