@@ -9,3 +9,7 @@ function login(btn) {
 	}
 	loggedIn = !loggedIn;
 }
+
+function addDefinition(btn) {
+	btn.remove();
+}
