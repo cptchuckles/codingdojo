@@ -33,8 +33,10 @@ var lifesAnswers = [
  * @returns {string} the randomly chosen oracle response 
  */
 function consultTheOracle(arr) {
-  // code here
+	let idx = Math.floor(Math.random() * arr.length);
+	return arr[idx];
 }
+console.log(consultTheOracle(lifesAnswers));
 
 /* 
   From zoom interview with student in year 2020
@@ -61,5 +63,28 @@ const expected3 = [];
  *    itself.
  */
 function concatArrWithSelf(items) {
-  // code here
+	// return items.concat(items);
+	let result = Array.from(items);
+	for (let i=0; i<items.length; i++) {
+		result.push(items[i])
+	}
+	return result;
 }
+
+console.log(concatArrWithSelf(arr1) , "should be" , expected1);
+console.log(concatArrWithSelf(arr2) , "should be" , expected2);
+console.log(concatArrWithSelf(arr3) , "should be" , expected3);
+
+
+/**
+ * Bonus round
+ * Write an array backwards!!
+ */
+function writeArrayBackwards(arr) {
+	let result = [];
+	for (let i=arr.length-1; i>=0; i--) {
+		result.push(arr[i]);
+	}
+	return result;
+}
+console.log(writeArrayBackwards([1,2,3]) , "should be [3,2,1]");
