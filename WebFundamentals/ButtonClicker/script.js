@@ -13,3 +13,12 @@ function login(btn) {
 function addDefinition(btn) {
 	btn.remove();
 }
+
+function like(btn) {
+	const word = btn.getAttribute("data-word");
+	alert(`${word} was liked`);
+}
+
+document.querySelectorAll("button.like").forEach(btn => {
+	btn.addEventListener("click", e => like(e.target));
+});
