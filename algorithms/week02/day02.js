@@ -32,35 +32,94 @@ var pokemon = [
 
 /**
  * console.log the pokemon objects whose id is evenly divisible by 3 
- * @param {Array<any>} pokemon
+ * @param {Array<any>} pokemans
  * @returns {null} no return
  */
-function dividibleByThree(pokemon) {}
+function listPokemansWithIdDivisibleBy3(pokemans) {
+    function isMultipleOfThree(p) {
+        return p.id % 3 === 0;
+    }
+    /*
+     * for (let p of pokemans) {
+     *    if (p.id % 3 === 0) {
+     *      console.log(p);
+     *    }
+     * }
+     */
+    for (let p of pokemans.filter(isMultipleOfThree)) {
+        console.log(p);
+    }
+}
+listPokemansWithIdDivisibleBy3(pokemon);
+
+console.log('=============')
 
 /**
  * console.log the pokemon objects that have more than one type
  * @param {Array<any>} pokemon
  * @returns {null} no return
  */
-function moreThanOneType(pokemon) {}
+function listMultiTypePokemans(pokemon) {
+    function hasMultipleTypes(p) {
+        return p.types.length > 1;
+    }
+    /*
+     * for (let p of pokemon) {
+     *    if (p.types.length > 1) {
+     *      console.log(p);
+     *    }
+     * }
+     */
+    for (let p of pokemon.filter(hasMultipleTypes)) {
+        console.log(p);
+    }
+}
+listMultiTypePokemans(pokemon)
+
+console.log('=============')
 
 /**
  * console.log the names of the pokemon whose only type is 'poison'
  * @param {Array<any>} pokemon
  * @returns {null} no return
  */
-function poisonType(pokemon) {}
+function isOnlyPoison(p) {
+    return p.types.length === 1 && p.types[0] === 'poison';
+}
+function listOnlyPoisonPokemans(pokemon) {
+    for (let p of pokemon.filter(isOnlyPoison)) {
+        console.log(p);
+    }
+}
+listOnlyPoisonPokemans(pokemon);
+
+console.log('=============')
 
 /**
  * console.log the first type of all the pokemon whose second type is flying
  * @param {Array<any>} pokemon
  * @returns {null} no return
  */
-function flyingSecondType(pokemon) {}
+function listPokemonWithSecondTypeFlying(pokemon) {
+    function isFlyingSecond(p) {
+        return p.types.length > 1 && p.types[1] === 'flying';
+    }
+    for (let p of pokemon.filter(isFlyingSecond)) {
+        console.log(p)
+    }
+}
+listPokemonWithSecondTypeFlying(pokemon)
+
+console.log('=============')
 
 /**
  * console.log the reverse of the names of the pokemon whose only type is 'poison'
  * @param {Array<any>} pokemon
  * @returns {null} no return
  */
-function reversedNamesOfPoisonPokemon(pokemon) {}
+function reversedNamesOfPoisonPokemon(pokemon) {
+    for (let name of pokemon.filter(isOnlyPoison).map(p => p.name)) {
+        console.log(name.split('').toReversed().join(''));
+    }
+}
+reversedNamesOfPoisonPokemon(pokemon);
