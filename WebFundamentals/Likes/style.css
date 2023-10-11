@@ -1,0 +1,88 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	font-family: sans-serif;
+}
+
+body {
+	max-width: 600px;
+	margin: auto;
+
+	& h1 {
+		text-align: center;
+		padding: .5rem 1rem;
+	}
+}
+
+.titlebar {
+	background-color: black;
+	color: white;
+	& h1 {
+		text-align: left;
+	}
+}
+
+.content {
+	display: flex;
+	flex-direction: row-reverse;
+	gap: 1em;
+
+	& main {
+		flex: 3;
+	}
+
+	& aside {
+		flex: 1;
+	}
+}
+
+section {
+	border: 3px solid black;
+	box-shadow: 1px 1px gray;
+	border-radius: 2px;
+	padding: 1em;
+	margin-bottom: 1em;
+}
+
+.post {
+
+	& :where(header, div) {
+		display: flex;
+		justify-content: space-between;
+		margin-bottom: .5em;
+		align-items: baseline;
+	}
+	
+	& .likes {
+		& p {
+			margin-right: 2em;
+		}
+		& button {
+			cursor: pointer;
+			font-weight: bold;
+			background-color: gold;
+			border: 2px solid black;
+			box-shadow: 2px 2px black;
+			padding: .5em;
+		}
+	}
+}
+
+.active-user {
+	display: flex;
+	flex-direction: column-reverse;
+	gap: 1.5em;
+	& h1 {
+		padding: 0;
+		margin: 0;
+	}
+	& img {
+		display: block;
+		width: 64px;
+		height: 64px;
+		border-radius: 32px;
+		background-color: black;
+		margin: auto;
+	}
+}
