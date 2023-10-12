@@ -87,10 +87,8 @@ function secondLargest(nums) {
     let a = -Infinity
     let b = -Infinity
     for (let i = 0;i<nums.length;i++){
-        if (nums[i] >= a){
-            if (nums[i] > a) {
-                b = a;
-            }
+        if (nums[i] > a){
+            b = a;
             a = nums[i];
         } else if (nums[i] > b && nums[i] < a){
             b = nums[i]
