@@ -49,6 +49,10 @@ div {
     margin-bottom: 1em;
 }
 
+button {
+    cursor: pointer;
+}
+
 .content {
     max-width: var(--page-width);
     margin: auto;
