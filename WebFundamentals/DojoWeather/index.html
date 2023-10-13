@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Dojo Weather</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="public/style.css" rel="stylesheet">
+    </head>
+    <body>
+        <header>
+            <div class="content">
+                <h1>DojoWeather</h1>
+                <nav>
+                    <p>Burbank</p>
+                    <p>Chicago</p>
+                    <p>Dallas</p>
+                </nav>
+            </div>
+        </header>
+        <div class="content">
+            <div class="city-title">
+                <h2>San Jose</h2>
+                <div class="temperature">
+                    <label>
+                        show temperature in
+                        <select id="temp-unit">
+                            <option value="celsius">°C</option>
+                            <option value="fahrenheit">°F</option>
+                        </select>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="day-overview">
+                <h3>Today</h3>
+                <img src="public/images/some_rain.png" alt="some rain" />
+                <p>some rain</p>
+                <div class="daily-temps">
+                    <p class="high">24</p>
+                    <p class="low">18</p>
+                </div>
+            </div>
+            <div class="day-overview">
+                <h3>Tomorrow</h3>
+                <img src="public/images/some_sun.png" alt="some sun" />
+                <p>some sun</p>
+                <div class="daily-temps">
+                    <p class="high">27</p>
+                    <p class="low">19</p>
+                </div>
+            </div>
+            <div class="day-overview">
+                <h3>Friday</h3>
+                <img src="public/images/some_clouds.png" alt="some clouds" />
+                <p>some clouds</p>
+                <div class="daily-temps">
+                    <p class="high">21</p>
+                    <p class="low">16</p>
+                </div>
+            </div>
+            <div class="day-overview">
+                <h3>Saturday</h3>
+                <img src="public/images/some_sun.png" alt="some sun" />
+                <p>some sun</p>
+                <div class="daily-temps">
+                    <p class="high">26</p>
+                    <p class="low">21</p>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="cookie-notice">
+                <img src="public/images/cookie.png" alt="cookie" />
+                <div class="notice-text">
+                    <h2>Stop! Cookie time</h2>
+                    <p>We use cookies (sadly not the edible ones) to personalize content and ads, to provide social media features and to analyse our traffic. <a href="#">Read more...</a></p>
+                </div>
+                <button id="accept-cookies">I Accept</button>
+            </div>
+        </div>
+    </body>
+</html>
