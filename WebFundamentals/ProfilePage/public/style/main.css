@@ -147,4 +147,8 @@ aside {
 	& p {
 		width: 100%;
 	}
+
+	&:where(.request) img {
+		cursor: pointer;
+	}
 }

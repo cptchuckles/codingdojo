@@ -25,7 +25,7 @@
 			<main class="column">
 				<div class="user-card">
 					<img src="public/images/doge.png" alt="doge" class="bust" />
-					<h1>Jane Doge</h1>
+					<h1 id="username">Jane Doge</h1>
 					<address>Dogeattle</address>
 					<ul class="skills">
 						<li>Developer</li>
@@ -33,7 +33,7 @@
 						<li>Problem Solver</li>
 					</ul>
 					wow
-					<a href="#" class="edit-profile">edit profile</a>
+					<a href="#" onclick="editProfile()" class="edit-profile">edit profile</a>
 				</div>
 				<div class="card">
 					<div class="card-title">Education</div>
@@ -50,27 +50,27 @@
 			<aside class="column">
 				<div class="card">
 					<div class="card-title">
-						<span class="count">2</span>
+						<span id="total-requests" class="count">2</span>
 						Connection Requests
 					</div>
 					<div class="card-content">
-						<div class="contact">
+						<div class="contact request">
 							<img src="public/images/todd-s.jpg" alt="contact avatar" class="avi" />
 							<p>Todd E</p>
-							<img src="public/icons/accept-circle.png" alt="Accept incoming connection" />
-							<img src="public/icons/close-circle.png" alt="Reject incoming connection" />
+							<img onclick="connectionAccept(this)" src="public/icons/accept-circle.png" alt="Accept incoming connection" />
+							<img onclick="connectionRefuse(this)" src="public/icons/close-circle.png" alt="Reject incoming connection" />
 						</div>
-						<div class="contact">
+						<div class="contact request">
 							<img src="public/images/phil-s.jpg" alt="contact avatar" class="avi" />
 							<p>Phil K</p>
-							<img src="public/icons/accept-circle.png" alt="Accept incoming connection" />
-							<img src="public/icons/close-circle.png" alt="Reject incoming connection" />
+							<img onclick="connectionAccept(this)" src="public/icons/accept-circle.png" alt="Accept incoming connection" />
+							<img onclick="connectionRefuse(this)" src="public/icons/close-circle.png" alt="Reject incoming connection" />
 						</div>
 					</div>
 				</div>
 				<div class="card">
 					<div class="card-title">
-						<span class="count">500+</span>
+						<span id="total-connections" class="count">500</span>
 						Your Connections
 					</div>
 					<div class="card-content">
@@ -96,5 +96,6 @@
 				</div>
 			</aside>
 		</div>
+		<script src="public/script.js"></script>
 	</body>
 </html>
