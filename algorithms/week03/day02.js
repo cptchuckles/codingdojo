@@ -28,8 +28,15 @@ const arr2Expected = ["a"];
  * @returns {number} The new length of items.
  */
 function unshift(items, newItem) {
-    // code here
+	for (let i=items.length; i>0; i--) {
+		items[i] = items[i-1];
+	}
+	items[0] = newItem;
+	return items.length;
 }
+
+console.log(unshift(arr1a, newItem1), "should be", expected1a, "where", arr1a, "==", arr1Expected);
+console.log(unshift(arr2a, newItem2), "should be", expected2a, "where", arr2a, "==", arr2Expected);
 
 /* 
   Given an array, remove and
@@ -61,8 +68,16 @@ const expectedArr3 = [];
  * @returns {any} The removed value previously at idx 0.
  */
 function shift(items) {
-    // code here
+	let firstElement = items[0];
+	for (let i=0; i<items.length; i++) {
+		items[i] = items[i+1];
+	}
+	if (items.length > 0) {
+		items.length--;
+	}
+	return firstElement;
 }
 
-console.log(shift(arr2) + "should be equal to 'a'");
-console.log(arr2 + "should be ['b', 'c', 'd']")
+console.log(arr1, "shifted yields", shift(arr1), "==", expected1, "leaving", arr1, "==", expectedArr1);
+console.log(arr2, "shifted yields", shift(arr2), "==", expected2, "leaving", arr2, "==", expectedArr2);
+console.log(arr3, "shifted yields", shift(arr3), "==", expected3, "leaving", arr3, "==", expectedArr3);
