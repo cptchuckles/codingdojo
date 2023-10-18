@@ -80,7 +80,7 @@ function minToFront(nums) {
     }
   }
   for (let j=mindex; j>0; j--) {
-    let temp = nums[j];
+    const temp = nums[j];
     nums[j] = nums[j-1];
     nums[j-1] = temp;
   }
