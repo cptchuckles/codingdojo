@@ -33,8 +33,20 @@ const arr3Expecteda = ["a", "b", "c"];
  * @returns {any} The removed item.
  */
 function removeAt(items, idx) {
-  // code here
+  if (idx < 0 || items.length <= idx) {
+    return null;
+  }
+  const returnVal = items[idx];
+  for (let i=idx; i < items.length; i++) {
+    items[i] = items[i+1];
+  }
+  items.length--;
+  return returnVal;
 }
+
+console.log(`Given ${arr1a} removing ${removeIdx1a} we get ${removeAt(arr1a,removeIdx1a)} which should be ${expected1a} and ${arr1a} should be ${arr1Expecteda}`);
+console.log(`Given ${arr2a} removing ${removeIdx2a} we get ${removeAt(arr2a,removeIdx2a)} which should be ${expected2a} and ${arr2a} should be ${arr2Expecteda}`);
+console.log(`Given ${arr3a} removing ${removeIdx3a} we get ${removeAt(arr3a,removeIdx3a)} which should be ${expected3a} and ${arr3a} should be ${arr3Expecteda}`);
 
 /* 
   Given an array, move the minimum value to the front in-place
@@ -61,5 +73,20 @@ const expected3 = [0, 5, 1, 2, 3, 0];
  * @returns {Array<number>} The given arr after the min has been moved to front.
  */
 function minToFront(nums) {
-  // code here
+  let mindex = 0;
+  for (let i=0; i<nums.length; i++) {
+    if (nums[i] < nums[mindex]) {
+      mindex = i;
+    }
+  }
+  for (let j=mindex; j>0; j--) {
+    let temp = nums[j];
+    nums[j] = nums[j-1];
+    nums[j-1] = temp;
+  }
+  return nums;
 }
+
+console.log(minToFront(nums1),"should be",expected1);
+console.log(minToFront(nums2),"should be",expected2);
+console.log(minToFront(nums3),"should be",expected3);
