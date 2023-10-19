@@ -85,8 +85,20 @@ function rotate(nums, k) {
 	}
 	return result;
 }
-
 console.log(rotate(nums1,k1), "should be", expected1);
 console.log(rotate(nums2,k2), "should be", expected2);
 console.log(rotate(nums3,k3), "should be", expected3);
 console.log(rotate(nums4,k4), "should be", expected4);
+
+function rotateInPlace(nums, k) {
+	const rotation = k % nums.length;
+	for (i=rotation-1; i>=0; i--) {
+		nums.unshift(nums[nums.length - rotation + i]);
+	}
+	nums.length -= rotation;
+	return nums;
+}
+console.log(rotateInPlace(nums1,k1), "should be", expected1);
+console.log(rotateInPlace(nums2,k2), "should be", expected2);
+console.log(rotateInPlace(nums3,k3), "should be", expected3);
+console.log(rotateInPlace(nums4,k4), "should be", expected4);
