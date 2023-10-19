@@ -16,8 +16,14 @@ var expected1 = [30, 40, 50];
  * @returns {Array<number>} The column sums.
  */
 function sumArrColumns(nums1, nums2) {
-    // code here
+	const result = []
+	for (let i in nums1) {
+		result.push(nums1[i] + nums2[i]);
+	}
+	return result;
 }
+
+console.log(sumArrColumns(numbersA1, numbersB1), "should be", expected1);
 
 /*****************************************************************************/
 
@@ -70,4 +76,17 @@ After 4 rotations it is back to it's original order again.
  * @param {number} k The amount of times to rotate the last item to the front.
  * @returns {Array<number>} The given array after being rotated.
  */
-function rotate(nums, k) { }
+function rotate(nums, k) {
+	const result = [];
+	const start = (nums.length - (k % nums.length));
+	for (let i=start; result.length < nums.length; i++) {
+		i %= nums.length;
+		result.push(nums[i]);
+	}
+	return result;
+}
+
+console.log(rotate(nums1,k1), "should be", expected1);
+console.log(rotate(nums2,k2), "should be", expected2);
+console.log(rotate(nums3,k3), "should be", expected3);
+console.log(rotate(nums4,k4), "should be", expected4);
