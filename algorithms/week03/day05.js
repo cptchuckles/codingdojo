@@ -20,7 +20,21 @@ var expected2 = 0
  * @param {number[]} array of prices
  * @return {number} max profit
  */
-function maxProfit(prices) {}
+function maxProfit(prices) {
+  let profit = 0;
+  for (let i=0; i<prices.length-1; i++) {
+    for (let j=i+1; j<prices.length; j++) {
+      const difference = prices[j] - prices[i];
+      if (difference > profit) {
+        profit = difference;
+      }
+    }
+  }
+  return profit;
+}
+
+console.log(maxProfit(prices1), "should be", expected1);
+console.log(maxProfit(prices2), "should be", expected2);
 
 
 // =======================================================================================================
@@ -41,4 +55,17 @@ var expected = [2, 1, 0]
  * @param {string[]} string to search for
  * @return {number[]} number of instances of each query string
  */
-function matchingStrings(stringList, queries) {}
+function matchingStrings(stringList, queries) {
+  const occurrences = {}
+  for (let e of stringList) {
+    if (e in occurrences) {
+      occurrences[e] += 1;
+    }
+    else {
+      occurrences[e] = 1;
+    }
+  }
+  return queries.map(q => occurrences[q] || 0);
+}
+
+console.log(matchingStrings(stringList1, queries1), "should be", expected);
