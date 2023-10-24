@@ -36,6 +36,21 @@ const expected5 = "";
  * @param {string} separator To separate each item of the given arr.
  * @returns {string} The given array items as a string separated by the given separator.
  */
-function join(arr, separator) {}
+function join(arr, separator) {
+    let result = "";
+    for (let i in arr) {
+        result += String(arr[i]);
+        if (i < arr.length-1) {
+            result += separator;
+        }
+    }
+    return result;
+}
+
+console.log(join(arr1,separator1), "should be", expected1);
+console.log(join(arr2,separator2), "should be", expected2);
+console.log(join(arr3,separator3), "should be", expected3);
+console.log(join(arr4,separator4), "should be", expected4);
+console.log(join(arr5,separator5), "should be", expected5);
 
 /*****************************************************************************/
