@@ -15,7 +15,7 @@ class BankAccount:
         """
         In lieu of display_account_info()
         """
-        return f"Balance: {self.balance}\tInterest rate: {self.interest_rate}"
+        return "{Balance:%d, Interest:%.3f}" % (self.balance, self.interest_rate)
 
     def deposit(self, amount):
         self.balance += amount
@@ -23,6 +23,7 @@ class BankAccount:
 
     def withdraw(self, amount):
         if self.balance < amount:
+            # TODO: raise exception
             print(f"Insufficient funds to withdraw {amount}")
             return self
         self.balance -= amount

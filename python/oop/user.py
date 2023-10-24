@@ -15,7 +15,22 @@ class User:
         self.age = age
         self.is_rewards_member = is_rewards_member
         self.gold_card_points = gold_card_points
-        self.account = BankAccount(0.02)
+        self.accounts = [BankAccount(0.02)]
+
+    def add_account(self, starting_balance=0, interest_rate=0.02):
+        self.accounts.append(BankAccount(interest_rate, starting_balance))
+        return self
+
+    def deposit(self, account, amount):
+        self.accounts[account].deposit(amount)
+        return self
+
+    def withdraw(self, account, amount):
+        self.accounts[account].withdraw(amount)
+        return self
+
+    def display_balance(self, account):
+        print(f"{self.last_name}, {self.first_name}'s account balance #{account}: {self.accounts[account].balance}")
 
     def display_info(self):
         print("first_name:", self.first_name)
@@ -24,7 +39,7 @@ class User:
         print("age:", self.age)
         print("is_rewards_member:", self.is_rewards_member)
         print("gold_card_points:", self.gold_card_points)
-        print("bank account:", self.account)
+        print("bank accounts:", self.accounts)
 
     def enroll(self):
         if self.is_rewards_member:
@@ -43,6 +58,10 @@ class User:
 
         return self
 
+    def transfer_funds(self, amount, other_user, from_account=0, other_account=0):
+        self.accounts[from_account].withdraw(amount)
+        other_user.accounts[other_account].deposit(amount)
+
 
 johnny5 = User("johnny", "five", "johnny@five.com", 69)
 johnny5.enroll().spend_points(50).display_info()
@@ -54,3 +73,8 @@ user1.enroll()
 user2 = User("other", "user", "other@user.com", 1337)
 user2.display_info()
 user2.spend_points(40)
+
+johnny5.display_balance(0)
+johnny5.add_account(5000000, 0.5).transfer_funds(5000, user2, from_account=1)
+
+user2.display_balance(0)
