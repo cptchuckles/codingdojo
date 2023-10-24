@@ -3,3 +3,4 @@
 exam/
 projects/
 .ropeproject/
+**/__pycache__/

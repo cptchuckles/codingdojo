@@ -1,3 +1,6 @@
+from bank_account import BankAccount
+
+
 class User:
     def __init__(self,
                  first_name,
@@ -12,6 +15,7 @@ class User:
         self.age = age
         self.is_rewards_member = is_rewards_member
         self.gold_card_points = gold_card_points
+        self.account = BankAccount(0.02)
 
     def display_info(self):
         print("first_name:", self.first_name)
@@ -20,6 +24,7 @@ class User:
         print("age:", self.age)
         print("is_rewards_member:", self.is_rewards_member)
         print("gold_card_points:", self.gold_card_points)
+        print("bank account:", self.account)
 
     def enroll(self):
         if self.is_rewards_member:
