@@ -97,12 +97,13 @@
   function decodeStr(str) {
     let result = "";
     for (const match of str.matchAll(/([a-z])(\d*)/g)) {
-      if (match[2] === "") {
-        result += match[1];
-        continue;
+      const letter = match[1];
+      const number = match[2];
+      if (number === "") {
+        result += letter;
       }
-      for (let i=0; i<Number(match[2]); i++) {
-        result += match[1];
+      else {
+        result += letter.repeat(Number(number));
       }
     }
     return result;
