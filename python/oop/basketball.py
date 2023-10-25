@@ -1,4 +1,8 @@
 class Player:
+    @classmethod
+    def get_team(cls, team_list):
+        return [cls(player) for player in team_list]
+
     def __init__(self, data):
         self.name = data["name"]
         self.age = data["age"]
@@ -44,3 +48,6 @@ players = [
         "team": "Chicago Bulls"
     }
 ]
+
+
+player_instances = Player.get_team(players)
