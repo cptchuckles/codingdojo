@@ -99,12 +99,7 @@
     for (const match of str.matchAll(/([a-z])(\d*)/g)) {
       const letter = match[1];
       const number = match[2];
-      if (number === "") {
-        result += letter;
-      }
-      else {
-        result += letter.repeat(Number(number));
-      }
+      result += letter.repeat(Number(number) || 1);
     }
     return result;
   }
