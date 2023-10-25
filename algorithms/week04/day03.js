@@ -26,8 +26,8 @@
   const expected4 = "bbcc";
 
   const str5 = "aaaabbcdddaaaa";
-  const expected5 = "a8b2c1d3";
-  const expected5_bonus = "a4b2c1d3a4";
+  // const expected5 = "a8b2c1d3";
+  const expected5 = "a4b2c1d3a4";
 
   /**
    * Encodes the given string such that duplicate characters appear once followed
@@ -38,7 +38,38 @@
    * @param {string} str The string to encode.
    * @returns {string} The given string encoded.
    */
-  function encodeStr(str) {}
+  function encodeStr(str) {
+    var current = ""
+    var count = 0
+    var result = ""
+    for (var i = 0; i < str.length;i++){
+      if(current != str[i]){
+        if (count > 0){
+          result += String(count)
+        }
+        result += str[i]
+        current = str[i]
+        count = 1
+      }
+      else{
+        count += 1
+      }
+    }
+    if (count > 0){
+      result += String(count)
+    }
+    if (result.length < str.length){
+      return result
+    }
+    else{
+      return str
+    }
+  }
+  console.log(encodeStr(str1), "should be", expected1);
+  console.log(encodeStr(str2), "should be", expected2);
+  console.log(encodeStr(str3), "should be", expected3);
+  console.log(encodeStr(str4), "should be", expected4);
+  console.log(encodeStr(str5), "should be", expected5);
 
   /*****************************************************************************/
 }
@@ -63,7 +94,22 @@
  *    after indicating how many times the character occurs.
  * @returns {string} The given str decoded / expanded.
  */
-  function decodeStr(str) {}
+  function decodeStr(str) {
+    let result = "";
+    for (const match of str.matchAll(/([a-z])(\d*)/g)) {
+      if (match[2] === "") {
+        result += match[1];
+        continue;
+      }
+      for (let i=0; i<Number(match[2]); i++) {
+        result += match[1];
+      }
+    }
+    return result;
+  }
+
+  console.log(decodeStr(str1), "should be", expected1);
+  console.log(decodeStr(str2), "should be", expected2);
 
   /*****************************************************************************/
 }
