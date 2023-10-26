@@ -27,7 +27,22 @@
    * @param {string} str
    * @returns {boolean} Whether the given str is a palindrome or not.
    */
-  function isPalindrome(str) {}
+  function isPalindrome(str) {
+    for (let i=0, j=str.length-1; i < j; i++, j--) {
+      if (str[i] !== str[j]) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  console.log(isPalindrome(str1), "should be", expected1);
+  console.log(isPalindrome(str2), "should be", expected2);
+  console.log(isPalindrome(str3), "should be", expected3);
+  console.log(isPalindrome(str4), "should be", expected4);
+
+  /*****************************************************************************/
+}
 
   /*****************************************************************************/
 }
