@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Checkerboard</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+		<style>
+			:root {
+				--fg: {{foreground}};
+				--bg: {{background}};
+			}
+		</style>
+	</head>
+	<body>
+		<h1>*** Checkerboard ***</h1>
+		<div class="board">
+		{% for row in range(rows) %}
+			<div class="row">
+			{% for col in range(cols) %}
+				<div class="cell"></div>
+			{% endfor %}
+			</div>
+		{% endfor %}
+		</div>
+	</body>
+</html>

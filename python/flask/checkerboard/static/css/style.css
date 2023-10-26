@@ -1,0 +1,52 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  padding: 1rem;
+}
+
+h1 {
+  background-color: var(--bg);
+  color: var(--fg);
+}
+
+.board {
+  display: flex;
+  flex-direction: column;
+
+  min-width: fit-content;
+  margin: auto;
+
+  & .row {
+    display: flex;
+
+    &:nth-child(odd) {
+      --light: var(--bg);
+      --dark: var(--fg);
+    }
+    &:nth-child(even) {
+      --light: var(--fg);
+      --dark: var(--bg);
+    }
+
+    & .cell {
+      width: 50px;
+      height: 50px;
+
+      &:nth-child(odd) {
+        background-color: var(--light);
+      }
+      &:nth-child(even) {
+        background-color: var(--dark);
+      }
+    }
+  }
+}
