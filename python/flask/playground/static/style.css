@@ -13,6 +13,8 @@ body {
   display: flex;
   gap: .5em;
   flex-wrap: wrap;
+  max-width: fit-content;
+  margin: auto;
 }
 
 .box {
