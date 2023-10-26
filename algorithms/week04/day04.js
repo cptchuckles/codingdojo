@@ -82,6 +82,29 @@
  * @returns {string} The longest palindromic substring from the given string.
  */
   function longestPalindromicSubstring(str) {
+    let longest = ""
+
+    // this is a function that steps start & end iterators out evenly
+    // it will be used twice, once to find odd-length palindromes, again to find even-length ones
+    const palindrome = (start, end) => {
+      while (str[start] === str[end]) {
+        start--;
+        end++;
+      }
+      return str.slice(start+1,end);
+    };
+
+    for(let i=0; i<str.length-1; i++) {
+      const odd  = palindrome(i, i);
+      const even = palindrome(i, i+1);
+
+      const longer = odd.length > even.length ? odd : even;
+
+      if (longer.length > longest.length) {
+        longest = longer;
+      }
+    }
+    return longest
   }
 
   console.log(longestPalindromicSubstring(str1), "should be", expected1);
