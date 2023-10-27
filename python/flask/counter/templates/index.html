@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Counter</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+    </head>
+    <body>
+        <h1>Counter</h1>
+        <h3>{{count}}</h3>
+        <div class="buttons">
+            <a class="button" href="#" id="increment">NUMBER GO UP</a>
+            <a class="button" href="#" id="reset">reset (lame)</a>
+        </div>
+    </body>
+</html>
