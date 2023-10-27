@@ -28,7 +28,16 @@
    * @param {Array<any>} values
    * @returns {Object} The object with the given keys and values.
    */
-  function zipArraysIntoMap(keys, values) {}
+  function zipArraysIntoMap(keys, values) {
+    const result = {};
+    for (let i=0; i<keys.length; i++) {
+      result[keys[i]] = values[i];
+    }
+    return result;
+  }
+
+  console.log(zipArraysIntoMap(keys1, vals1), "should be", expected1);
+  console.log(zipArraysIntoMap(keys2, vals2), "should be", expected2);
 }
 
 {
@@ -52,7 +61,15 @@
  * @param {Object<string, any>} obj
  * @return The given object with key value pairs inverted.
  */
-  function invertObj(obj) {}
+  function invertObj(obj) {
+    const result = {};
+    for (const [key, value] of Object.entries(obj)) {
+      result[value] = key;
+    }
+    return result;
+  }
+
+  console.log(invertObj(obj1), "should be", expected1)
 
   /*****************************************************************************/
 }
