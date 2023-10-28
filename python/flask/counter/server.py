@@ -7,8 +7,11 @@ app.secret_key = "mastication is the key to great health"
 def index():
     if "count" not in session:
         session["count"] = 0
+    if "visits" not in session:
+        session["visits"] = 0
     session["count"] += 1
-    return render_template("index.html", count=session["count"])
+    session["visits"] += 1
+    return render_template("index.html", count=session["count"], visits=session["visits"])
 
 
 @app.route("/destroy_session")
@@ -23,6 +26,14 @@ def add_two():
         session["count"] = 2
     else:
         session["count"] += 1
+    return redirect("/")
+
+
+@app.route("/increment", methods=["POST"])
+def increment():
+    if "count" not in session:
+        session["count"] = 1
+    session["count"] += int(request.form["amount"]) - 1
     return redirect("/")
 
 

@@ -8,10 +8,17 @@
     </head>
     <body>
         <h1>Counter</h1>
-        <h3>{{count}}</h3>
+        <h3>{{count}} ({{visits}} actual)</h3>
         <div class="buttons">
             <a class="button" href="/add_two" id="increment">NUMBER GO UP +2</a>
             <a class="button" href="/destroy_session" id="reset">reset (lame)</a>
         </div>
+        <form action="/increment" method="POST">
+            <label>
+                Number to add:
+                <input type="number" name="amount" value="1" min="1" max="99" required />
+            </label>
+            <input type="submit" id="submit" value="++" />
+        </form>
     </body>
 </html>

@@ -21,9 +21,17 @@ body {
   color: #222;
 }
 
-a.button {
+input[type="number"] {
+  color: inherit;
+  width: 8ch;
+  text-align: right;
+  box-shadow: 1px 1px #555;
+}
+
+a.button, input {
   display: inline-block;
   text-decoration: none !important;
+  cursor: pointer;
 
   font-size: 1em;
   font-weight: bold;
@@ -32,13 +40,13 @@ a.button {
   border: none;
   border-radius: .25em;
 
-  &#increment {
+  color: white;
+
+  &#increment, &#submit {
     background-color: #38c;
-    color: white;
   }
 
   &#reset {
     background-color: #833;
-    color: #ddd;
   }
 }
