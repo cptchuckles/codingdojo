@@ -30,6 +30,25 @@
                 <span>{{ formdata["paradigm"] }}</span>
             </p>
 
+            <p><small>Devices:</small></p>
+            <ul>
+                {% if formdata["Desktop"] == "on" %}
+                <li>Desktop</li>
+                {% endif %}
+
+                {% if formdata["Laptop"] == "on" %}
+                <li>Laptop</li>
+                {% endif %}
+
+                {% if formdata["Tablet"] == "on" %}
+                <li>Tablet</li>
+                {% endif %}
+
+                {% if formdata["Phone"] == "on" %}
+                <li>Phone</li>
+                {% endif %}
+            </ul>
+
             <p><small>Comments:</small></p>
             <p>{{ formdata["comments"] }}</p>
             <div class="shrink">

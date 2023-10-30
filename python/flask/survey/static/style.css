@@ -90,6 +90,16 @@ input, select, textarea {
       color: red;
     }
   }
+
+  &[type="radio"], &[type="checkbox"] {
+    width: .8em;
+    height: .8em;
+    box-shadow: none;
+  }
+}
+
+ul {
+  list-style: inside;
 }
 
 .shrink {
