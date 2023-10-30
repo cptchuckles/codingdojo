@@ -9,20 +9,13 @@
     <body>
         <h1>Welcome to the Great Number Game!!1</h1>
         <h2>I am thinking of a number between 1 and 100.</h2>
-        {% if guess > 0 and guess != number %}
+        {% if guess > 0 %}
         <div class="wrong">
             <h1>WRONG!!!!!!</h1>
             <h3>YOU HAVE FAILED</h3>
             <h3>YOUR GUESS IS TOO {{"HIGH" if guess > number else "LOW"}}</h3>
         </div>
-        {% elif guess == number %}
-        <div class="right">
-            <h1>YOU GUESSED IT</h1>
-            <h3>it took you {{tries}} guesses</h3>
-            <a href="/reset" class="button">yeet</a>
-        </div>
         {% endif %}
-        {% if guess != number %}
         <form action="/guess" method="POST">
             <label>
                 Take a guess:
@@ -35,6 +28,5 @@
             </label>
             <input type="submit" value="Guess" />
         </form>
-        {% endif %}
     </body>
 </html>

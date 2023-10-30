@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Great Number Game</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+    </head>
+    <body>
+        <div class="wrong">
+            <h1>Game over!</h1>
+            <h3>YOU LOSE</h3>
+            <p>It was {{number}} all along</p>
+            <p>Do not collect $200.</p>
+            <a href="/reset" class="button">okay</a>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Great Number Game</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+    </head>
+    <body>
+        <div class="right">
+            <h1>YOU GUESSED IT</h1>
+            <h3>it took you {{tries}} guesses</h3>
+            <a href="/reset" class="button">yeet</a>
+        </div>
+    </body>
+</html>

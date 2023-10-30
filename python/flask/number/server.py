@@ -13,10 +13,14 @@ def index():
     if "guess" not in session:
         session["guess"] = -1
     if "tries" not in session:
-        session["tries"] = 1
+        session["tries"] = 0
+    if session["guess"] == session["number"]:
+        return render_template("win.html", tries=session["tries"])
+    elif session["tries"] >= 5:
+        return render_template("game_over.html", number=session["number"])
     else:
         session["tries"] += 1
-    return render_template("index.html", tries=session["tries"], guess=session["guess"], number=session["number"])
+        return render_template("index.html", tries=session["tries"], guess=session["guess"], number=session["number"])
 
 
 @app.route("/reset")
