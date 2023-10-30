@@ -67,7 +67,28 @@ return the only int that has no matching pair.
   const nums4 = [5, 2, 6, 2, 3, 1, 6, 3, 2, 5, 2];
   const expected4 = 1;
 
-  function oddOccurrencesInArray(nums) {}
+  function oddOccurrencesInArray(nums) {
+    const freqs = {};
+
+    for (let i=nums.length-1; i>=0; i--) {
+      const n = nums[i];
+      if (n in freqs) {
+        freqs[n].freq += 1;
+        freqs[n].idx = i;
+      }
+      else {
+        freqs[n] = {
+          num: n,
+          freq: 1,
+          idx: i,
+        };
+      }
+    }
+
+    return Object.values(freqs)
+                 .filter(v => v.freq % 2 === 1)
+                 .reduce((a, e) => e.idx < a.idx ? e : a).num;
+  }
 
   console.log(oddOccurrencesInArray(nums1), "should equal", expected1);
   console.log(oddOccurrencesInArray(nums2), "should equal", expected2);
