@@ -6,6 +6,22 @@ app = Flask(__name__)
 app.secret_key = "no peeking"
 
 
+class Score:
+    def __init__(self, name: str, tries: int):
+        self.name = name
+        self.tries = tries
+
+    def __repr__(self):
+        return "{%s: %d}" % (self.name, self.tries)
+
+
+hiscores = [
+    Score("joe", 4),
+    Score("yingus", 27),
+    Score("binky", 3),
+]
+
+
 @app.route("/")
 def index():
     if "number" not in session:
@@ -33,6 +49,18 @@ def reset():
 def guess():
     session["guess"] = int(request.form["guess"])
     return redirect("/")
+
+
+@app.route("/highscore", methods=["POST"])
+def highscore():
+    hiscores.append(Score(request.form["name"], session["tries"]))
+    return redirect("/leaderboard")
+
+
+@app.route("/leaderboard")
+def leaderboard():
+    hiscores.sort(key=lambda score: score.tries)
+    return render_template("leaderboard.html", scores=hiscores)
 
 
 if __name__ == "__main__":

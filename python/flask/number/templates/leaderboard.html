@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Great Number Game</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+    </head>
+    <body>
+        <h1>Top Guessers:</h1>
+        <ol>
+            {% for score in scores %}
+            <li>
+                <div class="score">
+                    <span>{{score.name}}</span>
+                    <span>{{score.tries}}</span>
+                </div>
+            </li>
+            {% endfor %}
+        </ol>
+        <a href="/reset" class="button">return</a>
+    </body>
+</html>

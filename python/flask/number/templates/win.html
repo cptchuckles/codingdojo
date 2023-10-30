@@ -12,5 +12,10 @@
             <h3>it took you {{tries}} guesses</h3>
             <a href="/reset" class="button">yeet</a>
         </div>
+        <form action="/highscore" method="POST">
+            <h3><label for="name">Enter your name to claim a high score!</label></h3>
+            <input type="text" name="name" id="name" />
+            <input type="submit" class="button" value="SCORE!!!!!" />
+        </form>
     </body>
 </html>

@@ -64,6 +64,12 @@ form {
   font-weight: 700;
 }
 
+.button {
+  background-color: #46e;
+  color: white;
+  cursor: pointer;
+}
+
 input, .button {
   font-size: 1em;
   font-weight: 777;
@@ -72,14 +78,39 @@ input, .button {
   border: none;
   border-radius: .25em;
   box-shadow: 1px 1px 2px black;
-  background-color: #46e;
-  color: white;
-  cursor: pointer;
 
   &[type="number"] {
     text-align: right;
-    background-color: white;
-    color: black;
-    cursor: auto;
+  }
+}
+
+ol {
+  list-style: none;
+
+  width: 400px;
+  border-radius: .5em;
+  overflow: clip;
+
+  background-color: #aaa;
+
+  & li {
+    display: flex;
+    gap: 1em;
+    padding: 1em;
+    counter-increment: item;
+
+    &:nth-child(even) {
+      background-color: #999;
+    }
+
+    &:before {
+      content: counter(item);
+    }
+  }
+
+  & .score {
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
   }
 }
