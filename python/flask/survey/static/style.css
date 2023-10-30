@@ -1,0 +1,107 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  max-width: 650px;
+  min-height: 100vh;
+  margin: auto;
+
+  font-size: 1.5rem;
+
+  background-color: #eee;
+}
+
+.panel {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  padding: 2em;
+
+  border: 1px solid black;
+  border-radius: 1rem;
+  background-color: #333;
+  color: #ddd;
+
+  box-shadow: 0px 2px 4px #333;
+
+  & h1 {
+    color: goldenrod;
+  }
+}
+
+small {
+  font-style: italic;
+}
+
+label, .entry {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  justify-content: space-between;
+  align-items: baseline;
+
+  &.comments {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  & > * {
+    flex: 1;
+  }
+
+  &:has(:required) {
+    &:before {
+      content: "*";
+      color: red;
+    }
+  }
+}
+
+textarea {
+  width: 100%;
+}
+
+input, select, textarea {
+  font-size: inherit;
+  padding: .25em;
+
+  border: none;
+  border-radius: .25em;
+  box-shadow: inset 1px 1px 4px black;
+
+  resize: none;
+
+  &:required {
+    &::before {
+      content: "*";
+      color: red;
+    }
+  }
+}
+
+.shrink {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.button {
+  color: black;
+  background-color: goldenrod;
+  border: none;
+  border-radius: .3em;
+  padding: .5em;
+  cursor: pointer;
+  text-decoration: none !important;
+  font-weight: bold;
+  box-shadow: 2px 2px black;
+}

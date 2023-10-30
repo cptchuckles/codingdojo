@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Dojo Survey-</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="../static/style.css" rel="stylesheet">
+    </head>
+    <body>
+        <form class="panel" action="#">
+            <h1>Dojo Survey</h1>
+            <label>
+                Your Name
+                <input type="text" name="name" id="name" required />
+            </label>
+            <label>
+                Dojo Location
+                <select name="location" id="location" required>
+                    <option value="San Jose">San Jose</option>
+                    <option value="Hell, Hungary">Hell, Hungary</option>
+                    <option value="Burthorpe">Burthorpe</option>
+                </select>
+            </label>
+            <label>
+                Favorite Language
+                <select name="language" id="language" required>
+                    <option value="Bash">Bash</option>
+                    <option value="Python">Python</option>
+                    <option value="Javascript">Javascript</option>
+                    <option value="C++">C++</option>
+                    <option value="C#">C#</option>
+                    <option value="Ruby">Ruby</option>
+                    <option value="Rust">Rust</option>
+                    <option value="Julia">Julia</option>
+                    <option value="Lua">Lua</option>
+                </select>
+            </label>
+            <label class="comments">
+                Comments (optional):
+                <textarea name="comments" id="comments" rows="5" autocorrect="on" resizable="false"></textarea>
+            </label>
+            <div class="shrink">
+                <input type="submit" class="button" value="BUTTON" />
+            </div>
+            <small><span style="color: red;">*</span> Denotes a required field</small>        </form>
+    </body>
+</html>
