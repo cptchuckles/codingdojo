@@ -74,6 +74,17 @@ textarea {
   width: 100%;
 }
 
+fieldset {
+  padding: .5em;
+  border: 1px solid #ddd;
+  border-radius: .25em;
+
+  & > label {
+    display: inline-block !important;
+    margin-right: 1em;
+  }
+}
+
 input, select, textarea {
   font-size: inherit;
   padding: .25em;
