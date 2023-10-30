@@ -1,28 +1,22 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, session
 app = Flask(__name__)
 app.secret_key = "bingus"
 
 
-global submission
-submission = {}
-
-
 @app.route("/")
 def index():
-    global submission
-    submission = {}
+    session.clear()
     return render_template("index.html")
 
 
 @app.route("/results")
 def results():
-    return render_template("results.html", formdata=submission)
+    return render_template("results.html", formdata=session["formdata"])
 
 
 @app.route("/submit", methods=["POST"])
 def post():
-    global submission
-    submission = request.form
+    session["formdata"] = request.form
     return redirect("/results")
 
 
