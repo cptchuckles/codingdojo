@@ -80,5 +80,6 @@ input, .button {
     text-align: right;
     background-color: white;
     color: black;
+    cursor: auto;
   }
 }
