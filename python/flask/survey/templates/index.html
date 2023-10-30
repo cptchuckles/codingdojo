@@ -9,10 +9,12 @@
     <body>
         <form class="panel" action="/submit" method="POST">
             <h1>Dojo Survey</h1>
+
             <label>
                 Your Name
                 <input type="text" name="name" id="name" required />
             </label>
+
             <label>
                 Dojo Location
                 <select name="location" id="location" required>
@@ -21,6 +23,7 @@
                     <option value="Burthorpe">Burthorpe</option>
                 </select>
             </label>
+
             <label>
                 Favorite Language
                 <select name="language" id="language" required>
@@ -35,13 +38,28 @@
                     <option value="Lua">Lua</option>
                 </select>
             </label>
+
+            <p>Preferred Paradigm:</p>
+            <p class="entry">
+                <label class="inline clickable" for="oop">
+                    <input type="radio" name="paradigm" value="OOP" id="oop" checked />
+                    OOP
+                </label>
+                <label class="inline clickable" for="functional">
+                    <input type="radio" name="paradigm" value="Functional" id="functional" />
+                    Functional
+                </label>
+            </p>
+
             <label class="comments">
                 Comments (optional):
                 <textarea name="comments" id="comments" rows="5" autocorrect="on" resizable="false"></textarea>
             </label>
+
             <div class="shrink">
                 <input type="submit" class="button" value="BUTTON" />
             </div>
+
             <small><span style="color: red;">*</span> Denotes a required field</small>        </form>
     </body>
 </html>
