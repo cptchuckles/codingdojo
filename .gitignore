@@ -3,6 +3,7 @@ projects/
 .ropeproject/
 **/__pycache__/
 **/_raw/
+**/_ignore/
 *.bak
 *.mp4
 *.webm
