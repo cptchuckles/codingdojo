@@ -1,6 +1,8 @@
+*.bak
 *.mp4
 *.webm
 exam/
 projects/
 .ropeproject/
 **/__pycache__/
+**/_raw/
