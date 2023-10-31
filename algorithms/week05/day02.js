@@ -93,8 +93,11 @@
     // return it
     return words.join(' ');
 
-
+    // two one-line solutions:
+    //
     // return str.split(' ').map(w => w.split('').reverse().join('')).join(' ');
+    //
+    // return str.split(' ').reverse().join(' ').split('').reverse().join('');
   }
 
   console.log(reverseWords(str1), "should be", expected1);
