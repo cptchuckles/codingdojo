@@ -1,6 +1,7 @@
 *.bak
 *.mp4
 *.webm
+*.zip
 exam/
 projects/
 .ropeproject/
