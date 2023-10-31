@@ -62,11 +62,7 @@
  * @return The given object with key value pairs inverted.
  */
   function invertObj(obj) {
-    const result = {};
-    for (const [key, value] of Object.entries(obj)) {
-      result[value] = key;
-    }
-    return result;
+    return Object.entries(obj).reduce((o, [k, v]) => { o[v] = k; return o }, {});
   }
 
   console.log(invertObj(obj1), "should be", expected1)

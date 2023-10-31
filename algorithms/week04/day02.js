@@ -90,13 +90,7 @@
  * @returns {string} The acronym.
  */
     function acronymize(str) {
-        let result = "";
-        // see: regex101.com
-        const regex = /\b\w+\b/g;
-        for (let word of str.match(regex)) {
-            result += word[0].toUpperCase();
-        }
-        return result;
+        return str.match(/\b\w/g).reduce((a, c) => a + c.toUpperCase(), "");
     }
 
     console.log(acronymize(str1), "should be", expected1);

@@ -87,7 +87,8 @@ return the only int that has no matching pair.
 
     return Object.values(freqs)
                  .filter(v => v.freq % 2 === 1)
-                 .reduce((a, e) => e.idx < a.idx ? e : a).num;
+                 .reduce((a, e) => e.idx < a.idx ? e : a)
+                 .num;
   }
 
   console.log(oddOccurrencesInArray(nums1), "should equal", expected1);
