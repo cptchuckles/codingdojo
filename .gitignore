@@ -1,9 +1,10 @@
-*.bak
-*.mp4
-*.webm
-*.zip
 exam/
 projects/
 .ropeproject/
 **/__pycache__/
 **/_raw/
+*.bak
+*.mp4
+*.webm
+*.zip
+*.docx
