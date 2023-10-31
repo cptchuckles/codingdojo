@@ -62,11 +62,9 @@ label:not(.inline), .entry {
     flex: 1;
   }
 
-  &:has(:required) {
-    &:before {
-      content: "*";
-      color: red;
-    }
+  &:has(:required):before {
+    content: "*";
+    color: red;
   }
 }
 
@@ -94,13 +92,6 @@ input, select, textarea {
   box-shadow: inset 1px 1px 4px black;
 
   resize: none;
-
-  &:required {
-    &::before {
-      content: "*";
-      color: red;
-    }
-  }
 
   &[type="radio"], &[type="checkbox"] {
     width: .8em;
