@@ -8,18 +8,18 @@ INSERT INTO dojos (name) VALUES ("Zanzibarland"), ("McDojo"), ("Bullshido Jutsu"
 
 INSERT INTO ninjas (first_name, last_name, age, dojo_id) VALUES
 	("Giordano", "Bruno", 47, 4),
-    ("Michael", "Angelo", 29, 4),
-    ("Scape", "Rune", 11, 4);
+	("Michael", "Angelo", 29, 4),
+	("Scape", "Rune", 11, 4);
 
 INSERT INTO ninjas (first_name, last_name, age, dojo_id) VALUES
 	("Pop", "Eye", 89, 5),
-    ("Amon", "Amarth", 31, 5),
-    ("John", "Sekiro", 49, 5);
+	("Amon", "Amarth", 31, 5),
+	("John", "Sekiro", 49, 5);
 
 INSERT INTO ninjas (first_name, last_name, age, dojo_id) VALUES
 	("Jay", "Son", 24, 6),
-    ("Reggie", "Ex", 97, 6),
-    ("X", "Emil", 104, 6);
+	("Reggie", "Ex", 97, 6),
+	("X", "Emil", 104, 6);
 
 -- Ninjas from first dojo
 SELECT * FROM ninjas
@@ -38,10 +38,10 @@ SELECT * FROM dojos
 -- Ninja #6 and his dojo
 SELECT * FROM ninjas
 	JOIN dojos
-    ON ninjas.dojo_id = dojos.id
-    WHERE ninjas.id = 6;
+	ON ninjas.dojo_id = dojos.id
+	WHERE ninjas.id = 6;
 
 -- All ninjas and their dojos
 SELECT * FROM ninjas
 	JOIN dojos
-    ON ninjas.dojo_id = dojos.id;
+	ON ninjas.dojo_id = dojos.id;
