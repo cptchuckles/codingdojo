@@ -22,10 +22,16 @@ class Friend:
         return [cls(result) for result in results]
 
     @classmethod
-    def save(cls, data):
+    def create(cls, first_name: str, last_name: str, occupation: str):
         query = """
             INSERT INTO friends (first_name, last_name, occupation)
             VALUES (%(first_name)s, %(last_name)s, %(occupation)s)
         """
+
+        data = {
+            "first_name": first_name,
+            "last_name": last_name,
+            "occupation": occupation,
+        }
 
         return connectToMySQL('first_flask').query_db(query, data)
