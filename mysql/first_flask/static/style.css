@@ -1,0 +1,32 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+
+  max-width: 800px;
+  margin: 1em auto;
+
+  background-color: #333;
+  color: #ddd;
+}
+
+thead > tr {
+  background-color: black !important;
+}
+
+tr:nth-child(odd) {
+  background-color: #555;
+}
+
+tr {
+  & :where(th, td) {
+    padding: .5em;
+  }
+}
