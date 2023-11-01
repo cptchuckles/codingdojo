@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>New Fren</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+    </head>
+    <body>
+        <h1>Add a New Fren</h1>
+        <form action="/create" method="POST">
+            <label for="first_name">First name:</label>
+            <input type="text" name="first_name" id="first_name" required />
+            <label for="last_name">Last name:</label>
+            <input type="text" name="last_name" id="last_name" required />
+            <label for="occupation">Occupation:</label>
+            <input type="text" name="occupation" id="occupation" />
+            <div>
+                <input type="submit" value="+ Create this new Fren" class="button plus" />
+                <a href="/" class="button danger">Abort</a>
+            </div>
+        </form>
+    </body>
+</html>

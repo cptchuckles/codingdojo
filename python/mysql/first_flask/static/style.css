@@ -4,7 +4,8 @@
   --bg: #333;
   --light-bg: #555;
   --button: #48c;
-  --danger-button: firebrick;
+  --button-danger: firebrick;
+  --button-plus: #286;
 }
 
 * {
@@ -46,16 +47,39 @@ tr {
 
   cursor: pointer;
 
-  color: var(--fg);
-  background-color: var(--button);
   font-weight: bold;
   text-decoration: none !important;
 
+  color: var(--fg);
+  background-color: var(--button);
+
+  border: none;
   border-radius: .25em;
   box-shadow: 1px 1px black;
 
   &:is(.danger) {
     color: var(--dark-fg);
-    background-color: var(--danger-button);
+    background-color: var(--button-danger);
   }
+
+  &:is(.plus) {
+    background-color: var(--button-plus);
+  }
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+
+  & label {
+    font-size: 1.2em;
+  }
+}
+
+input {
+  font-size: 1em;
+  padding: .5em;
+  border: none;
+  border-radius: .25em;
 }

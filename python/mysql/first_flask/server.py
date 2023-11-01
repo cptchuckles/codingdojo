@@ -6,10 +6,13 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    # call the get all classmethod to get all friends
     friends = Friend.get_all()
-    print(friends)
     return render_template("index.html", friends=friends)
+
+
+@app.route("/new")
+def new_fren():
+    return render_template("new.html")
 
 
 if __name__ == "__main__":
