@@ -9,7 +9,7 @@ def index():
     # call the get all classmethod to get all friends
     friends = Friend.get_all()
     print(friends)
-    return render_template("index.html")
+    return render_template("index.html", friends=friends)
 
 
 if __name__ == "__main__":

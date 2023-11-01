@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>First Flask CRUD Project</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+    </head>
+    <body>
+        <h1>Frens</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>first_name</th>
+                    <th>last_name </th>
+                    <th>occupation</th>
+                    <th>created_at</th>
+                    <th>updated_at</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for friend in friends %}
+                <tr>
+                    <td>{{ friend.id }}</td>
+                    <td>{{ friend.first_name }}</td>
+                    <td>{{ friend.last_name }} </td>
+                    <td>{{ friend.occupation }}</td>
+                    <td>{{ friend.created_at }}</td>
+                    <td>{{ friend.updated_at }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </body>
+</html>
