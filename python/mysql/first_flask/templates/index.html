@@ -27,14 +27,14 @@
                     <td>{{ friend.occupation }}</td>
                     <td>
                         <a href="/edit/{{ friend.id }}" class="button">Edit</a>
-                        <a href="/delete/{{ friend.id }}" class="button danger">Delete</a>
+                        <a href="/delete/{{ friend.id }}" class="danger button">Delete</a>
                     </td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
         <div>
-            <a href="/new" class="button plus">+ Create new fren</a>
+            <a href="/new" class="plus button">+ Create new fren</a>
         </div>
     </body>
 </html>
