@@ -11,12 +11,11 @@
         <table>
             <thead>
                 <tr>
-                    <th>id</th>
-                    <th>first_name</th>
-                    <th>last_name </th>
-                    <th>occupation</th>
-                    <th>created_at</th>
-                    <th>updated_at</th>
+                    <th></th>
+                    <th>First name</th>
+                    <th>Last name </th>
+                    <th>Occupation</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -26,8 +25,10 @@
                     <td>{{ friend.first_name }}</td>
                     <td>{{ friend.last_name }} </td>
                     <td>{{ friend.occupation }}</td>
-                    <td>{{ friend.created_at }}</td>
-                    <td>{{ friend.updated_at }}</td>
+                    <td>
+                        <a href="/edit/{{ friend.id }}" class="button">Edit</a>
+                        <a href="/delete/{{ friend.id }}" class="button danger">Delete</a>
+                    </td>
                 </tr>
                 {% endfor %}
             </tbody>
