@@ -1,0 +1,17 @@
+{% extends "layout/main.html" %}
+{%- block title -%}
+{{ user.first_name }} {{ user.last_name }}
+{%- endblock title -%}
+{%- block content %}
+<h1>{{ user.first_name }} {{ user.last_name }}</h1>
+<ul>
+	<li>Email: {{ user.email }}</li>
+	<li>Created at: {{ user.created_at }}</li>
+	<li>Updated at: {{ user.updated_at }}</li>
+</ul>
+<div>
+	<h3>Actions:</h3>
+	<a href="/user/edit/{{ user.id }}" class="button">Edit {{ user.first_name }}</a>
+	<a href="/user/delete/{{ user.id }}" class="danger button">Delet {{ user.first_name }}</a>
+</div>
+{% endblock content -%}

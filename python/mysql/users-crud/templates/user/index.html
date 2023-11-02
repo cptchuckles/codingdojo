@@ -16,7 +16,7 @@ Users
     </thead>
     {%- for user in users %}
     <tr>
-        <td>{{ user.last_name }}, {{ user.first_name }}</td>
+        <td><a href="/user/{{ user.id }}">{{ user.last_name }}, {{ user.first_name }}</a></td>
         <td>{{ user.email }}</td>
         <td>{{ user.created_at }}</td>
         <td>{{ user.updated_at }}</td>

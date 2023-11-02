@@ -33,6 +33,10 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--fg-heading);
 }
 
+a:not(.button) {
+  color: var(--fg) !important;
+}
+
 form {
   display: flex;
   flex-direction: column;
@@ -88,5 +92,12 @@ table {
 
   & tr:nth-child(even) {
     background-color: var(--bg-light);
+  }
+}
+
+ol, ul {
+  list-style-position: inside;
+  & li {
+    margin: 1em;
   }
 }

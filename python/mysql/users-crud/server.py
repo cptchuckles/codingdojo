@@ -9,6 +9,16 @@ def home():
     return render_template("user/index.html", users=User.get_all())
 
 
+@app.route("/user/<int:id>")
+def get_user(id: int):
+    user = User.get(id)
+
+    if user is None:
+        return abort(404)
+    else:
+        return render_template("user/view.html", user=user)
+
+
 @app.route("/user/new")
 def new_user():
     return render_template("user/new.html")
