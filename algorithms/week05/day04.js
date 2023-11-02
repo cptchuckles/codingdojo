@@ -39,7 +39,7 @@ function rotateStr(str, amnt) {
     }
 
     for (let i=0; i<str.length; i++) {
-        const from = mod(i-amnt, str.length);
+        const from = mod(i - amnt, str.length);
         result += str[from];
     }
 
@@ -86,17 +86,14 @@ function isRotation(s1, s2) {
     if (s1.length !== s2.length) {
         return false;
     }
-    let offset = -1;
     for (let i=0; i<s2.length; i++) {
         if (s2[i] === s1[0]) {
-            offset = i;
-            break;
+            if (s2 === rotateStr(s1, i)) {
+                return true;
+            }
         }
     }
-    if (offset < 0) {
-        return false;
-    }
-    return s2 === rotateStr(s1, offset);
+    return false;
 }
 
 console.log(isRotation(strA1, strB1), "should be", expected1a);
