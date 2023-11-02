@@ -1,4 +1,20 @@
 {% extends "layout/main.html" %}
+{%- block title -%}
+Users
+{%- endblock title -%}
 {% block content -%}
-<p>This is where all the users appear</p>
+<h1>All Users</h1>
+<ul>
+    {%- for user in users %}
+    <li>
+        {{ user.last_name }}, {{ user.first_name }}
+        <ul>
+            <li>Email: {{ user.email }}</li>
+            <li>Created at: {{ user.created_at }}</li>
+            <li>Updated at: {{ user.updated_at }}</li>
+        </ul>
+    </li>
+    {% endfor -%}
+</ul>
+<a href="/users/new" class="plus button">Create User</a>
 {%- endblock content %}
