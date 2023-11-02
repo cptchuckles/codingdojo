@@ -18,3 +18,21 @@ class User:
         query = f"SELECT * FROM {cls.table}"
         view = connectToMySQL(cls.db).query_db(query)
         return [cls(row) for row in view]
+
+    @classmethod
+    def create(cls, data):
+        query = f"""
+            INSERT INTO {cls.table}
+            (first_name, last_name, email)
+            VALUES
+            (%(first_name)s, %(last_name)s, %(email)s)
+        """
+
+        connectToMySQL(cls.db).query_db(query, data)
+
+        new_row = connectToMySQL(cls.db).query_db(f"SELECT * FROM {cls.table} ORDER BY id DESC LIMIT 1")
+
+        if new_row:
+            return cls(new_row[0])
+        else:
+            return None
