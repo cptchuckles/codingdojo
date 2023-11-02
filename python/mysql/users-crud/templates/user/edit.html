@@ -1,0 +1,20 @@
+{% extends "layout/main.html" %}
+{%- block title -%}
+Edit User
+{%- endblock title -%}
+{% block content -%}
+<h1>Edit {{ user.first_name }}:</h1>
+<form action="/user/update" method="POST">
+    <input type="hidden" name="id" value="{{ user.id }}" />
+    <label for="first_name">First name:</label>
+    <input type="text" name="first_name" id="first_name" value="{{ user.first_name }}" required />
+    <label for="last_name">Last name:</label>
+    <input type="text" name="last_name" id="last_name" value="{{ user.last_name }}" required />
+    <label for="email">Email address:</label>
+    <input type="email" name="email" id="email" value="{{ user.email }}" required />
+    <div>
+        <input type="submit" value="Update this user" class="button" />
+        <a href="/user" class="danger button">Abort</a>
+    </div>
+</form>
+{%- endblock content %}

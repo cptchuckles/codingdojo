@@ -14,12 +14,6 @@ class User:
         self.updated_at = data["updated_at"]
 
     @classmethod
-    def get_all(cls):
-        query = f"SELECT * FROM {cls.table}"
-        view = connectToMySQL(cls.db).query_db(query)
-        return [cls(row) for row in view]
-
-    @classmethod
     def create(cls, data):
         query = f"""
             INSERT INTO {cls.table}
@@ -30,9 +24,36 @@ class User:
 
         connectToMySQL(cls.db).query_db(query, data)
 
-        new_row = connectToMySQL(cls.db).query_db(f"SELECT * FROM {cls.table} ORDER BY id DESC LIMIT 1")
+        query = f"SELECT * FROM {cls.table} ORDER BY id DESC LIMIT 1"
+        view = connectToMySQL(cls.db).query_db(query)
 
-        if new_row:
-            return cls(new_row[0])
-        else:
-            return None
+        return cls(view[0]) if view else None
+
+    @classmethod
+    def get(cls, id: int):
+        query = f"SELECT * FROM {cls.table} WHERE id = %(id)s"
+        view = connectToMySQL(cls.db).query_db(query, {"id": id})
+        return cls(view[0]) if view else None
+
+    @classmethod
+    def get_all(cls):
+        query = f"SELECT * FROM {cls.table}"
+        view = connectToMySQL(cls.db).query_db(query)
+        return [cls(row) for row in view]
+
+    @classmethod
+    def update(cls, data):
+        query = f"""
+            UPDATE {cls.table} SET
+            first_name = %(first_name)s,
+            last_name = %(last_name)s,
+            email = %(email)s
+            WHERE id = %(id)s
+        """
+
+        return connectToMySQL(cls.db).query_db(query, data)
+
+    @classmethod
+    def delete(cls, id: int):
+        query = f"DELETE FROM {cls.table} WHERE id = %(id)s"
+        return connectToMySQL(cls.db).query_db(query, {"id": id})

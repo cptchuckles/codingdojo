@@ -23,5 +23,27 @@ def create_user():
         return abort(500)
 
 
+@app.route("/user/edit/<int:id>")
+def edit_user(id: int):
+    user = User.get(id)
+
+    if user is None:
+        return abort(404)
+
+    return render_template("/user/edit.html", user=user)
+
+
+@app.route("/user/update", methods=["POST"])
+def update_user():
+    User.update(request.form)
+    return redirect("/user")
+
+
+@app.route("/user/delete/<int:id>")
+def delete_user(id: int):
+    User.delete(id)
+    return redirect("/user")
+
+
 if __name__ == "__main__":
     app.run(debug=True, host="localhost", port=3000)

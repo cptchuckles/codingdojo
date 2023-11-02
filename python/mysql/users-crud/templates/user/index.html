@@ -11,6 +11,7 @@ Users
             <th>Email</th>
             <th>Created at</th>
             <th>Updated at</th>
+            <th>Actions</th>
         </tr>
     </thead>
     {%- for user in users %}
@@ -19,6 +20,10 @@ Users
         <td>{{ user.email }}</td>
         <td>{{ user.created_at }}</td>
         <td>{{ user.updated_at }}</td>
+        <td>
+            <a href="/user/edit/{{ user.id }}" class="button">Edit</a>
+            <a href="/user/delete/{{ user.id }}" class="danger button">Delet</a>
+        </td>
     </tr>
     {% endfor -%}
 </table>
