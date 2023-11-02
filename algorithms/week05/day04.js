@@ -30,7 +30,21 @@ to the original position.
  *    right.
  * @returns {string} The string rotated by the given amount.
  */
-function rotateStr(str, amnt) {}
+function rotateStr(str, amnt) {
+    let result = "";
+
+    // stolen from stack overflow
+    function mod(n, m) {
+        return ((n % m) + m) % m;
+    }
+
+    for (let i=0; i<str.length; i++) {
+        const from = mod(i-amnt, str.length);
+        result += str[from];
+    }
+
+    return result;
+}
 
 console.log(rotateStr(str, rotateAmnt1), "should be", expected1);
 console.log(rotateStr(str, rotateAmnt2), "should be", expected2);
@@ -68,7 +82,22 @@ const expected3a = false;
  * @param {string} s2
  * @returns {boolean} Whether the second string is a rotated version of the 1st.
  */
-function isRotation(s1, s2) {}
+function isRotation(s1, s2) {
+    if (s1.length !== s2.length) {
+        return false;
+    }
+    let offset = -1;
+    for (let i=0; i<s2.length; i++) {
+        if (s2[i] === s1[0]) {
+            offset = i;
+            break;
+        }
+    }
+    if (offset < 0) {
+        return false;
+    }
+    return s2 === rotateStr(s1, offset);
+}
 
 console.log(isRotation(strA1, strB1), "should be", expected1a);
 console.log(isRotation(strA2, strB2), "should be", expected2a);
