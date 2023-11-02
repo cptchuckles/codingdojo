@@ -1,0 +1,28 @@
+{% extends "layout/main.html" %}
+{%- block title -%}
+Users
+{%- endblock title -%}
+{% block content -%}
+<h1>All Users</h1>
+<table cellspacing="0" cellpadding="0">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Created at</th>
+            <th>Updated at</th>
+        </tr>
+    </thead>
+    {%- for user in users %}
+    <tr>
+        <td>{{ user.last_name }}, {{ user.first_name }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.created_at }}</td>
+        <td>{{ user.updated_at }}</td>
+    </tr>
+    {% endfor -%}
+</table>
+<div>
+    <a href="/user/new" class="plus button">Create User</a>
+</div>
+{%- endblock content %}
