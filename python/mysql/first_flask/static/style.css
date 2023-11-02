@@ -38,7 +38,17 @@ tr:nth-child(odd) {
 tr {
   & :where(th, td) {
     padding: .5em;
+    &:first-of-type {
+      text-align: right;
+    }
   }
+}
+
+input, button {
+  font-size: 1em;
+  padding: .5em;
+  border: none;
+  border-radius: .25em;
 }
 
 .button {
@@ -57,13 +67,16 @@ tr {
   border-radius: .25em;
   box-shadow: 1px 1px black;
 
-  &:is(.danger) {
+  &.danger {
     color: var(--dark-fg);
     background-color: var(--button-danger);
   }
 
-  &:is(.plus) {
+  &.plus {
     background-color: var(--button-plus);
+    &:before {
+      content: "+ ";
+    }
   }
 }
 
@@ -77,9 +90,14 @@ form {
   }
 }
 
-input {
-  font-size: 1em;
-  padding: .5em;
-  border: none;
-  border-radius: .25em;
+ol, ul {
+  list-style-position: inside;
+
+  & li {
+    margin: 1em;
+  }
+}
+
+a:not(.button) {
+  color: #dea !important;
 }

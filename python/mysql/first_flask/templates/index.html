@@ -22,7 +22,7 @@
                 {% for friend in friends %}
                 <tr>
                     <td>{{ friend.id }}</td>
-                    <td>{{ friend.first_name }}</td>
+                    <td><a href="/{{ friend.id }}">{{ friend.first_name }}</a></td>
                     <td>{{ friend.last_name }} </td>
                     <td>{{ friend.occupation }}</td>
                     <td>
@@ -34,7 +34,7 @@
             </tbody>
         </table>
         <div>
-            <a href="/new" class="plus button">+ Create new fren</a>
+            <a href="/new" class="plus button">Create new fren</a>
         </div>
     </body>
 </html>

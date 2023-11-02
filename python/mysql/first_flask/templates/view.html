@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>First Flask CRUD Project</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+    </head>
+    <body>
+        <h1>{{ friend.last_name }}, {{ friend.first_name }}</h1>
+        <ul>
+            <li>Occupation: {{ friend.occupation }}</li>
+            <li>Created {{ friend.created_at }}</li>
+            <li>Last updated on {{ friend.updated_at }}</li>
+        </ul>
+        <div>
+            <a href="/edit/{{friend.id}}" class="button">Edit this fren</a>
+            <a href="/" class="danger button">Return</a>
+        </div>
+    </body>
+</html>

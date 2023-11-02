@@ -7,16 +7,17 @@
         <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
     </head>
     <body>
-        <h1>Add a New Fren</h1>
-        <form action="/create" method="POST">
+        <h1>Edit {{ friend.first_name }}</h1>
+        <form action="/update" method="POST">
+            <input hidden name="id" value="{{ friend.id }}" />
             <label for="first_name">First name:</label>
-            <input type="text" name="first_name" id="first_name" required />
+            <input type="text" name="first_name" id="first_name" value="{{ friend.first_name }}" required />
             <label for="last_name">Last name:</label>
-            <input type="text" name="last_name" id="last_name" required />
+            <input type="text" name="last_name" id="last_name" value="{{ friend.last_name }}" required />
             <label for="occupation">Occupation:</label>
-            <input type="text" name="occupation" id="occupation" />
+            <input type="text" name="occupation" id="occupation" value="{{ friend.occupation }}" />
             <div>
-                <button type="submit" class="plus button">Create this new Fren</button>
+                <button type="submit" class="button">Save fren</button>
                 <a href="/" class="danger button">Abort</a>
             </div>
         </form>
