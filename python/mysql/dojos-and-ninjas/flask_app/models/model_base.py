@@ -25,3 +25,33 @@ class ModelBase:
         query = f"SELECT * FROM {cls.table} WHERE id = %(id)s"
         view = connectToMySQL(cls.db).query_db(query, {"id": id})
         return cls(view[0]) if view else None
+
+    @classmethod
+    def create(cls, data):
+        prepared_fields = [f"%({field})s" for field in cls.fields]
+        query = f"""
+            INSERT INTO {cls.table}
+            ({", ".join(cls.fields)})
+            VALUES
+            ({", ".join(prepared_fields)})
+        """
+        return connectToMySQL(cls.db).query_db(query, data)
+
+    @classmethod
+    def update(cls, data):
+        prepared_fields = [f"%({field})s" for field in cls.fields]
+        pairs = zip(cls.fields, prepared_fields)
+        sets = [f"{pair[0]} = {pair[1]}" for pair in pairs]
+        query = f"""
+            UPDATE {cls.table}
+            SET {", ".join(sets)}
+            WHERE id = %(id)s
+        """
+        connectToMySQL(cls.db).query_db(query, data)
+
+        return cls.get_by_id(int(data["id"]))
+
+    @classmethod
+    def delete(cls, id: int):
+        query = f"DELETE FROM {cls.table} WHERE id = %(id)s"
+        return connectToMySQL(cls.db).query_db(query, {"id": id})
