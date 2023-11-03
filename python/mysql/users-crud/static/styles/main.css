@@ -21,7 +21,9 @@ body {
   display: flex;
   flex-direction: column;
   gap: 1em;
+  justify-content: center;
 
+  min-height: 90vh;
   max-width: 800px;
   margin: auto;
 
@@ -31,6 +33,12 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   color: var(--fg-heading);
+}
+
+.wide-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
 }
 
 a:not(.button) {
