@@ -28,7 +28,7 @@ def new_user():
 def create_user():
     new_user = User.create(request.form)
     if new_user:
-        return redirect("/user")
+        return redirect(f"/user/{new_user.id}")
     else:
         return abort(500)
 
@@ -45,8 +45,9 @@ def edit_user(id: int):
 
 @app.route("/user/update", methods=["POST"])
 def update_user():
-    User.update(request.form)
-    return redirect("/user")
+    user = User.update(request.form)
+    result = redirect(f"/user/{user.id}")
+    return result if result else abort(500)
 
 
 @app.route("/user/delete/<int:id>")

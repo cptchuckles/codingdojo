@@ -51,7 +51,11 @@ class User:
             WHERE id = %(id)s
         """
 
-        return connectToMySQL(cls.db).query_db(query, data)
+        connectToMySQL(cls.db).query_db(query, data)
+
+        query = "SELECT * FROM users WHERE id = %(id)s"
+        view = connectToMySQL(cls.db).query_db(query, data)
+        return User(view[0]) if view else None
 
     @classmethod
     def delete(cls, id: int):

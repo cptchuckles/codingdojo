@@ -14,7 +14,8 @@ Edit User
     <input type="email" name="email" id="email" value="{{ user.email }}" required />
     <div>
         <input type="submit" value="Update this user" class="button" />
-        <a href="/user" class="danger button">Abort</a>
+        <a href="/user/{{ user.id }}" class="danger button">Abort</a>
+        <a href="/user">Index</a>
     </div>
 </form>
 {%- endblock content %}
