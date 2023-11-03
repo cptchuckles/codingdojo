@@ -36,8 +36,8 @@
         return str.slice(start, end+1);
     }
 
-    console.log(trim(str1), "should be", expected1);
-    console.log(trim(str2), "should be", expected2);
+    console.log(`"${trim(str1)}" should be "${expected1}"`);
+    console.log(`"${trim(str2)}" should be "${expected2}"`);
     /*****************************************************************************/
 }
 
