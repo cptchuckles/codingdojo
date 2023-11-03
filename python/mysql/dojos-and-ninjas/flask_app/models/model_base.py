@@ -4,11 +4,15 @@ from flask_app.config.mysqlconnection import connectToMySQL
 class ModelBase:
     db = "dojos_and_ninjas_schema"
     table = "none"
+    fields = []
 
     def __init__(self, data):
         self.id = data["id"]
         self.created_at = data["created_at"]
         self.updated_at = data["updated_at"]
+
+        for field in self.__class__.fields:
+            self.__dict__[field] = data[field]
 
     @classmethod
     def get_all(cls):
