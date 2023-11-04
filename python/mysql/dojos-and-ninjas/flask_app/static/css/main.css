@@ -27,6 +27,7 @@ body {
 
   min-height: 90vh;
   max-width: var(--page-width);
+  width: fit-content;
   margin: auto;
 
   color: var(--fg);
@@ -97,6 +98,8 @@ table {
   & tr:nth-child(even) {
     background-color: var(--bg-light);
   }
+
+  max-width: fit-content;
 }
 
 ol, ul {
