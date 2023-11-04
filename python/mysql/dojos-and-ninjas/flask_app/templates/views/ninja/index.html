@@ -1,0 +1,35 @@
+{% extends "layouts/main.html" %}
+{%- block title -%}Ninjas{%- endblock title -%}
+{% block content -%}
+{% if dojo is defined %}
+<h1>Ninjas of <a href="/dojo/{{ dojo.id }}">{{ dojo.name }}</a></h1>
+{% else %}
+<h1>Ninjas!!!!!!</h1>
+{% endif %}
+<table cellspacing="0">
+	<thead>
+		<tr>
+			<th>Full Name</th>
+			<th>Age</th>
+			<th>Actions</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for ninja in ninjas %}
+		<tr>
+			<td>
+				<a href="/ninja/{{ ninja.id }}">{{ ninja.last_name }}, {{ ninja.first_name }}</a>
+			</td>
+			<td>{{ ninja.age }}</td>
+			<td>
+				<a href="/ninja/{{ ninja.id }}/edit" class="button">Edit</a>
+				<a href="/ninja/{{ ninja.id }}/delete" class="danger button">Assassinate</a>
+			</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+{% if dojo is defined %}
+<div><a href="/ninja">View all Ninjas</a></div>
+{% endif %}
+{%- endblock content %}

@@ -1,0 +1,16 @@
+{% extends "layouts/main.html" %}
+{%- block title -%}Ninja {{ ninja.first_name }}{%- endblock title -%}
+{% block content -%}
+<h1>{{ ninja.first_name }} {{ ninja.last_name }}</h1>
+<div class="wide-row">
+	<a href="/ninja/{{ ninja.id }}/edit" class="button">Edit {{ ninja.first_name }}</a>
+	<a href="/ninja/{{ ninja.id }}/delete" class="danger button">KILL</a>
+</div>
+<ul>
+	<li>Age: {{ ninja.age }} yrs old</li>
+	<li>Born on {{ ninja.created_at }}</li>
+	<li>Earned latest belt at {{ ninja.updated_at }}</li>
+	<li><a href="/dojo/{{ ninja.dojo_id }}">View this ninja's Dojo</a></li>
+</ul>
+<div><a href="/ninja">Ninja NOC list</a></div>
+{%- endblock content %}

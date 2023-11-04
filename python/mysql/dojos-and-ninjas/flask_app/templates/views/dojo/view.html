@@ -1,0 +1,11 @@
+{% extends "layouts/main.html" %}
+{%- block title -%}Dojo {{ dojo.name }}{%- endblock title -%}
+{% block content -%}
+<h1>{{ dojo.name }}</h1>
+<ul>
+	<li>Est. {{ dojo.created_at }}</li>
+	<li>Last remodel on: {{ dojo.updated_at }}</li>
+	<li><a href="/dojo/{{ dojo.id }}/ninjas">View ninjas of this dojo</a></li>
+</ul>
+<div><a href="/dojo">Dojo Index</a></div>
+{%- endblock content %}
