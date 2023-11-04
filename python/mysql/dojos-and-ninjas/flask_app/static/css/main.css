@@ -111,6 +111,7 @@ ol, ul {
 
 .wide-row {
   display: flex;
+  align-items: baseline;
   justify-content: space-between;
   gap: 1em;
   width: 100%;
