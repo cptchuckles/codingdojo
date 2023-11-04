@@ -1,7 +1,6 @@
 from flask import render_template, abort, request, redirect
 from flask_app.controllers.controller_base import ControllerBase
 from flask_app.models import Ninja, Dojo
-from flask_app import app
 
 
 class NinjaController(ControllerBase):
