@@ -106,3 +106,10 @@ ol, ul {
     margin: 1em;
   }
 }
+
+.wide-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1em;
+  width: 100%;
+}
