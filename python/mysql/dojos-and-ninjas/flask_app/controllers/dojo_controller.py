@@ -8,8 +8,12 @@ class DojoController(ControllerBase):
         super().__init__(Dojo)
 
     def view(self, id: int):
-        pair = Dojo.one_join_many(id, Ninja)
-        if pair is None:
+        dojo_with_ninjas = Dojo.one_join_many(id, Ninja)
+
+        if dojo_with_ninjas is None:
             return abort(404)
-        else:
-            return render_template("/views/dojo/view.html", dojo=pair[0], ninjas=pair[1])
+
+        dojo = dojo_with_ninjas[0]
+        ninjas = dojo_with_ninjas[1]
+
+        return render_template("/views/dojo/view.html", dojo=dojo, ninjas=ninjas)

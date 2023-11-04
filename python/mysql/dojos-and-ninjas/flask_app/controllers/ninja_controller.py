@@ -8,14 +8,12 @@ class NinjaController(ControllerBase):
         super().__init__(Ninja)
 
     def view(self, id: int):
-        ninja = Ninja.get_by_id(id)
+        ninja_with_dojo = Ninja.many_join_one(id, Dojo)
 
-        if ninja is None:
+        if ninja_with_dojo is None:
             return abort(404)
 
-        dojo = Dojo.get_by_id(ninja.dojo_id)
-
-        if dojo is None:
-            print("Dojoless ninjas are verboten:", ninja.id)
+        ninja = ninja_with_dojo[0]
+        dojo = ninja_with_dojo[1]
 
         return render_template("views/ninja/view.html", ninja=ninja, dojo=dojo)
