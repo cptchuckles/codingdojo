@@ -1,11 +1,7 @@
 {% extends "layouts/main.html" %}
 {%- block title -%}Ninjas{%- endblock title -%}
 {% block content -%}
-{% if dojo is defined %}
-<h1>Ninjas of <a href="/dojo/{{ dojo.id }}">{{ dojo.name }}</a></h1>
-{% else %}
 <h1>Ninjas!!!!!!</h1>
-{% endif %}
 {% include "views/ninja/_table.html" %}
 {% if dojo is defined %}
 <div><a href="/ninja">View all Ninjas</a></div>

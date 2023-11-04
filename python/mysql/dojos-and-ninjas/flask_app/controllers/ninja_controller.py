@@ -18,6 +18,17 @@ class NinjaController(ControllerBase):
 
         return render_template("views/ninja/view.html", ninja=ninja, dojo=dojo)
 
+    def edit(self, id: int):
+        ninja = Ninja.get_by_id(id)
+        if ninja is None:
+            return abort(404)
+
+        dojos = Dojo.get_all()
+        if not dojos:
+            return abort(500)
+
+        return render_template("views/ninja/edit.html", ninja=ninja, dojos=dojos)
+
     def new(self):
         dojo_id = request.args.get("dojo_id")
         if dojo_id is not None:

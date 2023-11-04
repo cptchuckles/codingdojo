@@ -14,10 +14,11 @@
 			</td>
 			<td>{{ ninja.age }}</td>
 			<td>
-				<a href="/ninja/{{ ninja.id }}/edit" class="button">Edit</a>
 				{% if whence is defined %}
+				<a href="/ninja/{{ ninja.id }}/edit?whence=dojo-{{ dojo.id }}" class="button">Edit</a>
 				<a href="/ninja/{{ ninja.id }}/delete?whence=dojo-{{ dojo.id }}" class="danger button">Assassinate</a>
 				{% else %}
+				<a href="/ninja/{{ ninja.id }}/edit" class="button">Edit</a>
 				<a href="/ninja/{{ ninja.id }}/delete" class="danger button">Assassinate</a>
 				{% endif %}
 			</td>
@@ -25,9 +26,10 @@
 		{% endfor -%}
 	</tbody>
 </table>
-<div>
+<div class="wide-row">
 	{% if dojo is defined %}
 	<a href="/ninja/new?dojo_id={{ dojo.id }}" class="plus button">Enroll a Ninja</a>
+	<a href="/ninja">View all Ninjas</a>
 	{% else %}
 	<a href="/ninja/new" class="plus button">Add a Ninja</a>
 	{% endif %}
