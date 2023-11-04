@@ -55,3 +55,56 @@ class ModelBase:
     def delete(cls, id: int):
         query = f"DELETE FROM {cls.table} WHERE id = %(id)s"
         return connectToMySQL(cls.db).query_db(query, {"id": id})
+
+    @classmethod
+    def many_join_one(cls, right, right_id: int):
+        right_model = right.__name__.lower()
+        query = f"""
+            SELECT * FROM {cls.table}
+            JOIN {right.table}
+            ON {cls.table}.{right_model}_id = {right.table}.id
+            WHERE {right.table}.id = %(id)s
+        """
+        view = connectToMySQL(cls.db).query_db(query, {"id": right_id})
+
+        if not view:
+            return None
+
+        first_row = {**view[0]}
+
+        for key in first_row:
+            right_key = f"{right.table}.{key}"
+            if right_key in first_row:
+                first_row[key] = first_row[right_key]
+
+        right_item = right(first_row)
+
+        return ([cls(row) for row in view], right_item)
+
+    @classmethod
+    def one_join_many(cls, left_id: int, right):
+        left_model = cls.__name__.lower()
+        query = f"""
+            SELECT * FROM {cls.table}
+            JOIN {right.table}
+            ON {cls.table}.id = {right.table}.{left_model}_id
+            WHERE {cls.table}.id = %(id)s
+        """
+        view = connectToMySQL(cls.db).query_db(query, {"id": left_id})
+
+        if not view:
+            return None
+
+        first_row = {**view[0]}
+        left_item = cls(first_row)
+
+        right_items = []
+
+        for row in view:
+            for key in row:
+                right_key = f"{right.table}.{key}"
+                if right_key in row:
+                    row[key] = row[right_key]
+            right_items.append(right(row))
+
+        return (left_item, right_items)
