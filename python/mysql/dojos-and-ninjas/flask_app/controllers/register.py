@@ -8,12 +8,12 @@ def register_crud_routes_for(model: ModelBase):
     item_name = model_name
     collection_name = model_name + "s"
 
-    @app.route(f"/{model_name}", endpoint=f"{model_name}_index")
+    @app.route(f"/{model_name}", endpoint=f"{model_name}/index")
     def index():
         collection = model.get_all()
         return render_template(f"views/{model_name}/index.html", **{collection_name: collection})
 
-    @app.route(f"/{model_name}/<int:id>", endpoint=f"{model_name}_view")
+    @app.route(f"/{model_name}/<int:id>", endpoint=f"{model_name}/view")
     def view(id: int):
         item = model.get_by_id(id)
 
@@ -26,7 +26,7 @@ def register_crud_routes_for(model: ModelBase):
     def new():
         return render_template(f"/views/{model_name}/new.html")
 
-    @app.route(f"/{model_name}/create", methods=["POST"], endpoint=f"{model_name}_create")
+    @app.route(f"/{model_name}/create", methods=["POST"], endpoint=f"{model_name}/create")
     def create():
         new_id = model.create(request.form)
         return redirect(f"/{model_name}/{new_id}")
@@ -39,7 +39,7 @@ def register_crud_routes_for(model: ModelBase):
         else:
             return render_template(f"/views/{model_name}/edit.html", **{item_name: item})
 
-    @app.route(f"/{model_name}/update", methods=["POST"], endpoint=f"{model_name}_update")
+    @app.route(f"/{model_name}/update", methods=["POST"], endpoint=f"{model_name}/update")
     def update():
         item = model.update(request.form)
         if item is None:
@@ -47,7 +47,7 @@ def register_crud_routes_for(model: ModelBase):
         else:
             return redirect(f"/views/{model_name}/{item.id}")
 
-    @app.route(f"/{model_name}/delete/<int:id>", endpoint=f"{model_name}_delete")
+    @app.route(f"/{model_name}/delete/<int:id>", endpoint=f"{model_name}/delete")
     def delete(id: int):
         model.delete(id)
         return redirect(f"/{model_name}")
