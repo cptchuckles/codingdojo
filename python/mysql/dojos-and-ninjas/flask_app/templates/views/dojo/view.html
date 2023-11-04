@@ -3,7 +3,8 @@
 {% block content -%}
 <h1>{{ dojo.name }}</h1>
 <div class="wide-row">
-    <div>
+    <div class="card">
+        <h3>Details</h3>
         <ul>
             <li>Est. {{ dojo.created_at }}</li>
             <li>Last remodel on: {{ dojo.updated_at }}</li>
@@ -13,12 +14,12 @@
             <a href="/dojo/{{ dojo.id }}/delete" class="danger button">Disband {{ dojo.name }}</a>
         </div>
     </div>
-    <div>
+    {% if ninjas is defined %}
+    <div class="card">
         <h3>Ninjas of {{ dojo.name }}:</h3>
-        {% if ninjas is defined %}
         {% include "views/ninja/_table.html" %}
-        {% endif %}
     </div>
+    {% endif %}
 </div>
 <div><a href="/dojo">Dojo Index</a></div>
 {%- endblock content %}

@@ -1,18 +1,23 @@
 {% extends "layouts/main.html" %}
 {%- block title -%}Ninja {{ ninja.first_name }}{%- endblock title -%}
 {% block content -%}
+<div class="wide-row">
 <h1>{{ ninja.first_name }} {{ ninja.last_name }}</h1>
-<div>
-	<a href="/ninja/{{ ninja.id }}/edit" class="button">Edit {{ ninja.first_name }}</a>
-	<a href="/ninja/{{ ninja.id }}/delete" class="danger button">KILL</a>
+    <div>
+        <a href="/ninja/{{ ninja.id }}/edit" class="button">Edit {{ ninja.first_name }}</a>
+        <a href="/ninja/{{ ninja.id }}/delete" class="danger button">KILL</a>
+    </div>
 </div>
-<ul>
-	<li>Age: {{ ninja.age }} yrs old</li>
-	<li>Born on {{ ninja.created_at }}</li>
-	<li>Earned latest belt at {{ ninja.updated_at }}</li>
-	{% if dojo is defined %}
-	<li>Trains at <strong><a href="/dojo/{{ dojo.id }}">{{ dojo.name }}</a></strong></li>
-	{% endif %}
-</ul>
+<div class="card">
+    <h3>Details</h3>
+    <ul>
+    <li>Age: {{ ninja.age }} yrs old</li>
+    <li>Born on {{ ninja.created_at }}</li>
+    <li>Earned latest belt at {{ ninja.updated_at }}</li>
+        {% if dojo is defined %}
+    <li>Trains at <strong><a href="/dojo/{{ dojo.id }}">{{ dojo.name }}</a></strong></li>
+        {% endif %}
+    </ul>
+</div>
 <div><a href="/ninja">Ninja NOC list</a></div>
 {%- endblock content %}
