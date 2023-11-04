@@ -2,27 +2,5 @@
 {%- block title -%}Dojos{%- endblock title -%}
 {% block content -%}
 <h1>Our network of Dojos</h1>
-<table cellpadding="0" cellspacing="0">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Established</th>
-            <th>Remodeled</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for dojo in dojos %}
-        <tr>
-            <td><a href="/dojo/{{ dojo.id }}">{{ dojo.name }}</a></td>
-            <td>{{ dojo.created_at }}</td>
-            <td>{{ dojo.updated_at }}</td>
-            <td>
-                <a href="/dojo/{{ dojo.id }}/edit" class="button">Edit</a>
-                <a href="/dojo/{{ dojo.id }}/delete" class="danger button">Disband</a>
-            </td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+{% include "views/dojo/_table.html" %}
 {%- endblock content %}

@@ -1,0 +1,23 @@
+<table cellspacing="0">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Established</th>
+            <th>Remodeled</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for dojo in dojos %}
+        <tr>
+            <td><a href="/dojo/{{ dojo.id }}">{{ dojo.name }}</a></td>
+            <td>{{ dojo.created_at }}</td>
+            <td>{{ dojo.updated_at }}</td>
+            <td>
+                <a href="/dojo/{{ dojo.id }}/edit" class="button">Edit</a>
+                <a href="/dojo/{{ dojo.id }}/delete" class="danger button">Disband</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

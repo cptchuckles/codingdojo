@@ -1,0 +1,23 @@
+<table cellspacing="0">
+	<thead>
+		<tr>
+			<th>Full Name</th>
+			<th>Age</th>
+			<th>Actions</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for ninja in ninjas %}
+		<tr>
+			<td>
+				<a href="/ninja/{{ ninja.id }}">{{ ninja.last_name }}, {{ ninja.first_name }}</a>
+			</td>
+			<td>{{ ninja.age }}</td>
+			<td>
+				<a href="/ninja/{{ ninja.id }}/edit" class="button">Edit</a>
+				<a href="/ninja/{{ ninja.id }}/delete" class="danger button">Assassinate</a>
+			</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
