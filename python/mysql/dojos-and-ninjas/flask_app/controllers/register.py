@@ -37,7 +37,7 @@ def register_crud_routes_for(model: ModelBase):
         if item is None:
             return abort(404)
         else:
-            return render_template(f"/views/{model_name}/edit", **{item_name: item})
+            return render_template(f"/views/{model_name}/edit.html", **{item_name: item})
 
     @app.route(f"/{model_name}/update", methods=["POST"], endpoint=f"{model_name}_update")
     def update():
