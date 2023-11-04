@@ -7,7 +7,7 @@
 		</tr>
 	</thead>
 	<tbody>
-		{% for ninja in ninjas %}
+		{% for ninja in ninjas -%}
 		<tr>
 			<td>
 				<a href="/ninja/{{ ninja.id }}">{{ ninja.last_name }}, {{ ninja.first_name }}</a>
@@ -18,6 +18,6 @@
 				<a href="/ninja/{{ ninja.id }}/delete" class="danger button">Assassinate</a>
 			</td>
 		</tr>
-		{% endfor %}
+		{% endfor -%}
 	</tbody>
 </table>
