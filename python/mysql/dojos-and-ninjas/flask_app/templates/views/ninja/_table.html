@@ -21,3 +21,10 @@
 		{% endfor -%}
 	</tbody>
 </table>
+<div>
+	{% if dojo is defined %}
+	<a href="/ninja/new?dojo_id={{ dojo.id }}" class="plus button">Enroll a Ninja</a>
+	{% else %}
+	<a href="/ninja/new" class="plus button">Add a Ninja</a>
+	{% endif %}
+</div>

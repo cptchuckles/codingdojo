@@ -1,0 +1,31 @@
+{% extends "layouts/main.html" %}
+{%- block title -%}Add a new Ninja{%- endblock title -%}
+{% block content -%}
+<div class="card">
+<h1>Add a new Ninja</h1>
+    <form action="/ninja/create" method="POST">
+        <label for="first_name">First Name:</label>
+        <input type="text" name="first_name" id="first_name" required />
+        <label for="last_name">Last Name:</label>
+        <input type="text" name="last_name" id="last_name" required />
+        <label for="age">Age:</label>
+        <input type="number" name="age" id="age" min="1" max="200" required />
+        <label for="dojo_id">Dojo training this Ninja:</label>
+        {% if dojo_id == None %}
+        <select name="dojo_id" id="dojo_id" required>
+        {% else %}
+        <input type="hidden" value="{{dojo_id}}" name="dojo_id" />
+        <select id="dojo_id" disabled required>
+        {% endif %}
+            {% for dojo in dojos -%}
+            {% if dojo.id == dojo_id %}
+            <option value="{{ dojo.id }}" selected>{{ dojo.name }}</option>
+            {% else %}
+            <option value="{{ dojo.id }}">{{ dojo.name }}</option>
+            {% endif %}
+            {% endfor -%}
+        </select>
+        <input type="submit" value="Add this Ninja" class="plus button" />
+    </form>
+</div>
+{%- endblock content %}
