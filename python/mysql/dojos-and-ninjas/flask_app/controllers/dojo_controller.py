@@ -1,4 +1,4 @@
-from flask import render_template, abort
+from flask import render_template, abort, request
 from flask_app.controllers.controller_base import ControllerBase
 from flask_app.models import Dojo, Ninja
 
@@ -16,4 +16,7 @@ class DojoController(ControllerBase):
         dojo = dojo_with_ninjas[0]
         ninjas = dojo_with_ninjas[1]
 
-        return render_template("/views/dojo/view.html", dojo=dojo, ninjas=ninjas)
+        return render_template("/views/dojo/view.html",
+                               dojo=dojo,
+                               ninjas=ninjas,
+                               whence=request.url)

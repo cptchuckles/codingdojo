@@ -1,4 +1,4 @@
-from flask import render_template, abort, request
+from flask import render_template, abort, request, redirect
 from flask_app.controllers.controller_base import ControllerBase
 from flask_app.models import Ninja, Dojo
 from flask_app import app
@@ -24,3 +24,12 @@ class NinjaController(ControllerBase):
         if dojo_id is not None:
             dojo_id = int(dojo_id)
         return render_template("views/ninja/new.html", dojo_id=dojo_id, dojos=Dojo.get_all())
+
+    def delete(self, id: int):
+        Ninja.delete(id)
+        whence = request.args.get("whence")
+        if whence is None:
+            return redirect("/ninja")
+        else:
+            url = f"/{whence.replace('-', '/')}"
+            return redirect(url)

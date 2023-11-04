@@ -15,7 +15,11 @@
 			<td>{{ ninja.age }}</td>
 			<td>
 				<a href="/ninja/{{ ninja.id }}/edit" class="button">Edit</a>
+				{% if whence is defined %}
+				<a href="/ninja/{{ ninja.id }}/delete?whence=dojo-{{ dojo.id }}" class="danger button">Assassinate</a>
+				{% else %}
 				<a href="/ninja/{{ ninja.id }}/delete" class="danger button">Assassinate</a>
+				{% endif %}
 			</td>
 		</tr>
 		{% endfor -%}
