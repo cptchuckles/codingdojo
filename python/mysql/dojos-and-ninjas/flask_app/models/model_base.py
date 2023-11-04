@@ -86,7 +86,7 @@ class ModelBase:
         left_model = cls.__name__.lower()
         query = f"""
             SELECT * FROM {cls.table}
-            JOIN {right.table}
+            LEFT JOIN {right.table}
             ON {cls.table}.id = {right.table}.{left_model}_id
             WHERE {cls.table}.id = %(id)s
         """
@@ -105,6 +105,9 @@ class ModelBase:
                 right_key = f"{right.table}.{key}"
                 if right_key in row:
                     row[key] = row[right_key]
+            if row["id"] is None:
+                right_items = None
+                break
             right_items.append(right(row))
 
         return (left_item, right_items)

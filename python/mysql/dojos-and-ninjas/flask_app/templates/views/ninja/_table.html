@@ -1,3 +1,6 @@
+{% if ninjas == None %}
+<h1>There are no Ninjas here</h1>
+{% else %}
 <table cellspacing="0">
 	<thead>
 		<tr>
@@ -26,6 +29,7 @@
 		{% endfor -%}
 	</tbody>
 </table>
+{% endif %}
 <div class="wide-row">
 	{% if dojo is defined %}
 	<a href="/ninja/new?dojo_id={{ dojo.id }}" class="plus button">Enroll a Ninja</a>
