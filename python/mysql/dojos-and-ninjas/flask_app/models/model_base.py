@@ -57,15 +57,15 @@ class ModelBase:
         return connectToMySQL(cls.db).query_db(query, {"id": id})
 
     @classmethod
-    def many_join_one(cls, right, right_id: int):
+    def many_join_one(cls, left_id: int, right):
         right_model = right.__name__.lower()
         query = f"""
             SELECT * FROM {cls.table}
             JOIN {right.table}
             ON {cls.table}.{right_model}_id = {right.table}.id
-            WHERE {right.table}.id = %(id)s
+            WHERE {cls.table}.id = %(id)s
         """
-        view = connectToMySQL(cls.db).query_db(query, {"id": right_id})
+        view = connectToMySQL(cls.db).query_db(query, {"id": left_id})
 
         if not view:
             return None
@@ -79,7 +79,7 @@ class ModelBase:
 
         right_item = right(first_row)
 
-        return ([cls(row) for row in view], right_item)
+        return (cls(view[0]), right_item)
 
     @classmethod
     def one_join_many(cls, left_id: int, right):
