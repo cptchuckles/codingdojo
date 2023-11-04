@@ -31,7 +31,7 @@ def register_crud_routes_for(model: ModelBase):
         new_id = model.create(request.form)
         return redirect(f"/{model_name}/{new_id}")
 
-    @app.route(f"/{model_name}/edit/<int:id>", endpoint=f"{model_name}_edit")
+    @app.route(f"/{model_name}/<int:id>/edit", endpoint=f"{model_name}/edit")
     def edit(id: int):
         item = model.get_by_id(id)
         if item is None:
@@ -47,7 +47,7 @@ def register_crud_routes_for(model: ModelBase):
         else:
             return redirect(f"/views/{model_name}/{item.id}")
 
-    @app.route(f"/{model_name}/delete/<int:id>", endpoint=f"{model_name}/delete")
+    @app.route(f"/{model_name}/<int:id>/delete", endpoint=f"{model_name}/delete")
     def delete(id: int):
         model.delete(id)
         return redirect(f"/{model_name}")
@@ -58,10 +58,15 @@ def register_one_to_many_routes(one: ModelBase, many: ModelBase):
     many_name = many.__name__.lower()
     many_collection = many_name + "s"
 
-    @app.route(f"/{one_name}/<int:id>/{many_name}", endpoint=f"{one_name}/has/{many_name}s")
+    @app.route(f"/{one_name}/<int:id>/{many_name}s", endpoint=f"{one_name}/has/{many_name}s")
     def one_to_many(id: int):
         one_has_many = one.one_join_many(id, many)
         if one_has_many is None:
             return abort(404)
         else:
-            return render_template(f"/views/{many_name}/index.html", **{many_collection: one_has_many[1]})
+            return render_template(
+                f"/views/{many_name}/index.html",
+                **{
+                    one_name: one_has_many[0],
+                    many_collection: one_has_many[1],
+                })
