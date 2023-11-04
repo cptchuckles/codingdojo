@@ -3,13 +3,22 @@
 {% block content -%}
 <h1>{{ dojo.name }}</h1>
 <div class="wide-row">
-    <ul>
-        <li>Est. {{ dojo.created_at }}</li>
-        <li>Last remodel on: {{ dojo.updated_at }}</li>
-    </ul>
-    {% if ninjas is defined %}
-    {% include "views/ninjas/_table.html" %}
-    {% endif %}
+    <div>
+        <ul>
+            <li>Est. {{ dojo.created_at }}</li>
+            <li>Last remodel on: {{ dojo.updated_at }}</li>
+        </ul>
+        <div style="display: flex; flex-direction: column; gap: 1em; align-items: flex-start;"">
+            <a href="/dojo/{{ dojo.id }}/edit" class="button">Edit {{ dojo.name }}</a>
+            <a href="/dojo/{{ dojo.id }}/delete" class="danger button">Disband {{ dojo.name }}</a>
+        </div>
+    </div>
+    <div>
+        <h3>Ninjas of {{ dojo.name }}:</h3>
+        {% if ninjas is defined %}
+        {% include "views/ninja/_table.html" %}
+        {% endif %}
+    </div>
 </div>
 <div><a href="/dojo">Dojo Index</a></div>
 {%- endblock content %}

@@ -1,8 +1,5 @@
-from flask_app.controllers.register import register_one_to_many_routes
-from flask_app.controllers.controller_base import ControllerBase
-import flask_app.models as models
+from flask_app.controllers.dojo_controller import DojoController
+from flask_app.controllers.ninja_controller import NinjaController
 
-ControllerBase(models.Dojo).register_crud_routes()
-ControllerBase(models.Ninja).register_crud_routes()
-
-register_one_to_many_routes(models.Dojo, models.Ninja)
+DojoController().register_crud_routes()
+NinjaController().register_crud_routes()
