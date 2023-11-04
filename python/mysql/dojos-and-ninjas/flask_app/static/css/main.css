@@ -98,8 +98,6 @@ table {
   & tr:nth-child(even) {
     background-color: var(--bg-light);
   }
-
-  max-width: fit-content;
 }
 
 ol, ul {
