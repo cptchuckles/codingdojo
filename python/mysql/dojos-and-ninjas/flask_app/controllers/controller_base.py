@@ -63,7 +63,7 @@ class ControllerBase:
         if item is None:
             return abort(500)
         else:
-            return redirect(f"/views/{self.model_name}/{item.id}")
+            return redirect(f"/{self.model_name}/{item.id}")
 
     def delete(self, id: int):
         self.model.delete(id)
