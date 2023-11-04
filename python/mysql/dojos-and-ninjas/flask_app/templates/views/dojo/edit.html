@@ -1,0 +1,16 @@
+{% extends "layouts/main.html" %}
+{%- block title -%}Renovate Dojo {{ dojo.name }}{%- endblock title -%}
+{% block content -%}
+<div class="card">
+	<h1>Renovate Dojo {{ dojo.name }}</h1>
+	<form action="/dojo/update" method="POST">
+		<input type="hidden" name="id" value="{{ dojo.id }}" />
+		<label for="name">Name:</label>
+		<input type="text" name="name" id="name" value="{{ dojo.name }}" />
+		<div class="wide-row">
+			<input type="submit" class="plus button" value="Renovate {{ dojo.name }}" />
+			<a href="/dojo/{{ dojo.id }}" class="danger button">Cancel</a>
+		</div>
+	</form>
+</div>
+{%- endblock content %}
