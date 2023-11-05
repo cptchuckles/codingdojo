@@ -7,6 +7,7 @@
         <h3>Details</h3>
         <hr>
         <ul>
+            <li>Pages: {{ book.pages }}</li>
             <li>Published: {{ book.created_at }}</li>
             <li>Last Edition: {{ book.updated_at }}</li>
         </ul>
@@ -25,6 +26,19 @@
         {% else %}
         <h3>This book wrote itself.</h3>
         {% endif %}
+        <hr>
+        <form class="wide-row" action="/book/add_author" method="POST">
+            <input type="hidden" name="book_id" value="{{ book.id }}" />
+            <h3>Credit an author for this book:</h3>
+            <select name="author_id" id="author_id" onchange="this.form.submit()">
+                <option>-- Select an author --</option>
+                {% for author in all_authors %}
+                {% if not author.id in authors|map(attribute='id') %}
+                <option value="{{ author.id }}">{{ author.name }}</option>
+                {% endif %}
+                {% endfor %}
+            </select>
+        </form>
         {% endwith %}
     </div>
 </div>
