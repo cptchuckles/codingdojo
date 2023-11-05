@@ -1,0 +1,8 @@
+<form action="/author/{% if author is defined %}update{% else %}create{% endif %}" method="POST">
+    {% if author is defined %}
+    <input type="hidden" name="id" value="{{ author.id }}" />
+    {% endif %}
+    <label for="name">Name:</label>
+    <input type="text" name="name" id="name" {% if author is defined %}value="{{ author.name }}"{% endif %} />
+    <button class="plus">{% if author is defined %}Update {{ author.name }}{% else %}Create Author{% endif %}</button>
+</form>

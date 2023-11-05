@@ -1,0 +1,8 @@
+{% extends "layouts/main.html" %}
+{%- block title -%}Edit {{ author.name }}{%- endblock title -%}
+{% block content -%}
+<div class="card">
+    <h1>Edit {{ author.name }}</h1>
+    {% include "views/author/_form.html" %}
+</div>
+{%- endblock content %}
