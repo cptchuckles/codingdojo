@@ -1,0 +1,9 @@
+{% extends "layouts/main.html" %}
+{%- block title -%}Books{%- endblock title -%}
+{% block content -%}
+<h1>Books</h1>
+<div class="wide-row">
+    {% include "views/book/_new_form.html" %}
+    {% include "views/book/_table.html" %}
+</div>
+{%- endblock content %}

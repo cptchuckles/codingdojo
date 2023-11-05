@@ -1,0 +1,26 @@
+<div class="card">
+    <h3>All Authors</h3>
+    <table cellspacing="0">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Born</th>
+                <th>Died</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for author in authors %}
+            <tr>
+                <td><a href="/author/{{ author.id }}">{{ author.name }}</a></td>
+                <td>{{ author.created_at }}</td>
+                <td>{{ author.updated_at }}</td>
+                <td>
+                    <a href="/author/{{ author.id }}/edit" class="button">Edit</a>
+                    <a href="/author/{{ author.id }}/delete" class="danger button">Forget</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,28 @@
+<div class="card">
+    <h3>Our Library</h3>
+    <table cellspacing="0">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Page Count</th>
+                <th>Writted</th>
+                <th>Latest Ed</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for book in books %}
+            <tr>
+                <td><a href="/book/{{ book.id }}">{{ book.title }}</a></td>
+                <td>{{ book.pages }}</td>
+                <td>{{ book.created_at }}</td>
+                <td>{{ book.updated_at }}</td>
+                <td>
+                    <a href="/book/{{ book.id }}/edit" class="button">Edit</a>
+                    <a href="/book/{{ book.id }}/delete" class="danger button">Burn</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{% block title %}Dojos and Ninjas{% endblock title %}</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet">
+    </head>
+    <body>
+        {% block content %}<h1>There's nothing here</h1>{% endblock content %}
+        <div><a href="/">Home</a></div>
+    </body>
+</html>
