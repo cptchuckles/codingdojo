@@ -123,6 +123,7 @@ ol, ul {
 }
 
 .card {
+  margin-bottom: 1em;
   padding: 2em;
   border-radius: 1em;
   box-shadow: 0px 5px 10px black;

@@ -3,7 +3,16 @@
 {% block content -%}
 <h1>Authors</h1>
 <div class="wide-row">
-    {% include "views/author/_new_form.html" %}
-    {% include "views/author/_table.html" %}
+    <div>
+        <div class="card">
+            {% include "views/author/_new_form.html" %}
+        </div>
+        <div class="card">
+            <a href="/book" class="button">View Library</a>
+        </div>
+    </div>
+    <div class="card">
+        {% include "views/author/_table.html" %}
+    </div>
 </div>
 {%- endblock content %}
