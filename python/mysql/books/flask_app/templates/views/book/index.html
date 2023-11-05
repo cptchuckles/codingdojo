@@ -5,13 +5,16 @@
 <div class="wide-row">
     <div>
         <div class="card">
-            {% include "views/book/_new_form.html" %}
+            <h3>Write a new Book</h3>
+            <hr>
+            {% include "views/book/_form.html" %}
         </div>
         <div class="card">
             <a href="/author" class="button">View Authors</a>
         </div>
     </div>
     <div class="card">
+        <h3>Our Library</h3>
         {% include "views/book/_table.html" %}
     </div>
 </div>

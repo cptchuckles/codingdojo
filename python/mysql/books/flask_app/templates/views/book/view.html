@@ -1,0 +1,31 @@
+{% extends "layouts/main.html" %}
+{%- block title -%}{{ book.title }}{%- endblock title -%}
+{% block content -%}
+<h1><em>{{ book.title }}</em></h1>
+<div class="wide-row">
+    <div class="card">
+        <h3>Details</h3>
+        <hr>
+        <ul>
+            <li>Published: {{ book.created_at }}</li>
+            <li>Last Edition: {{ book.updated_at }}</li>
+        </ul>
+        <hr>
+        <div class="wide-row">
+            <a href="/book/{{ book.id }}/edit" class="button">Edit</a>
+            <a href="/book/{{ book.id }}/delete" class="danger button">Burn</a>
+            <a href="/book">Return to Library</a>
+        </div>
+    </div>
+    <div class="card">
+        {% with authors = book.authors %}
+        {% if authors|length > 0 %}
+        <h3>Contributing authors:</h3>
+        {% include "views/author/_table.html" %}
+        {% else %}
+        <h3>This book wrote itself.</h3>
+        {% endif %}
+        {% endwith %}
+    </div>
+</div>
+{%- endblock content %}
