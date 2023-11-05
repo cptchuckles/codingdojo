@@ -11,6 +11,11 @@ class AuthorController(ControllerBase):
         @app.route("/author/add_book", methods=["POST"])
         def add_book(): return self.add_book(request.form)
 
+        @app.route("/author/<int:author_id>/remove_book/<int:book_id>")
+        def remove_book(author_id: int, book_id: int):
+            Author.remove_book(author_id, book_id)
+            return redirect(f"/author/{author_id}")
+
     def view(self, id: int):
         author = Author.get_with_books(id)
         if author is None:

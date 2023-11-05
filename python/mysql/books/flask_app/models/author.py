@@ -8,6 +8,13 @@ class Author(ModelBase):
     fields = ["name"]
     book_link_table = "authors_have_books"
 
+    @classmethod
+    def remove_book(cls, author_id: int, book_id: int):
+        query = f"""
+            DELETE FROM {cls.book_link_table}
+            WHERE author_id = %(author_id)s AND book_id = %(book_id)s
+        """
+        return connectToMySQL(cls.db).query_db(query, {"author_id": author_id, "book_id": book_id})
 
     @classmethod
     def add_book(cls, author_id: int, book_id: int):
