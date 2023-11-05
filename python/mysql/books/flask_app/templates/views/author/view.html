@@ -25,6 +25,19 @@
         {% else %}
         <h3>This author has made no contributions.</h3>
         {% endif %}
+        <hr>
+        <form class="wide-row" action="/author/add_book" method="POST">
+            <input type="hidden" name="author_id" value="{{ author.id }}" />
+            <h3>Cite a work by this author:</h3>
+            <select name="book_id" id="book_id" onchange="this.form.submit()">
+                <option>-- Select a work --</option>
+                {% for book in all_books %}
+                {% if not book.id in books|map(attribute='id') %}
+                <option value="{{ book.id }}">{{ book.title }}</option>
+                {% endif %}
+                {% endfor %}
+            </select>
+        </form>
         {% endwith %}
     </div>
 </div>
