@@ -8,10 +8,10 @@ class AuthorController(ControllerBase):
     def __init__(self):
         super().__init__(Author)
 
-        @app.route("/author/add_book", methods=["POST"])
+        @app.route("/author/add_book", methods=["POST"], endpoint="author/add_book")
         def add_book(): return self.add_book(request.form)
 
-        @app.route("/author/<int:author_id>/remove_book/<int:book_id>")
+        @app.route("/author/<int:author_id>/remove_book/<int:book_id>", endpoint="author/remove_book")
         def remove_book(author_id: int, book_id: int):
             Author.remove_book(author_id, book_id)
             return redirect(f"/author/{author_id}")
