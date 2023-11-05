@@ -3,8 +3,8 @@
     <input type="hidden" name="id" value="{{ book.id }}" />
     {% endif %}
     <label for="title">Title:</label>
-    <input type="text" title="title" id="title" {% if book is defined %}value="{{ book.title }}"{% endif -%} required />
+    <input type="text" name="title" id="title" {% if book is defined %}value="{{ book.title }}"{% endif -%} required />
     <label for="pages">Page count:</label>
     <input type="number" name="pages" id="pages" {% if book is defined %}value="{{ book.pages }}"{% endif -%} required />
-    <button class="plus">Publish</button>
+    <button class="plus">{% if book is defined %}Release Edition{% else %}Publish{% endif %}</button>
 </form>
