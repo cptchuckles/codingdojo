@@ -6,17 +6,28 @@ from flask_app.models import book
 class Author(ModelBase):
     table = "authors"
     fields = ["name"]
+    book_link_table = "authors_have_books"
+
+
+    @classmethod
+    def add_book(cls, author_id: int, book_id: int):
+        query = f"""
+            INSERT INTO {cls.book_link_table}
+            (author_id, book_id)
+            VALUES
+            (%(author_id)s, %(book_id)s)
+        """
+        return connectToMySQL(cls.db).query_db(query, {"author_id": author_id, "book_id": book_id})
 
     @classmethod
     def get_with_books(cls, id: int):
         right_table = book.Book.table
-        link_table = "authors_have_books"
         query = f"""
             SELECT * FROM {cls.table}
-            LEFT JOIN {link_table}
-            ON {link_table}.author_id = {cls.table}.id
+            LEFT JOIN {cls.book_link_table}
+            ON {cls.book_link_table}.author_id = {cls.table}.id
             LEFT JOIN {right_table}
-            ON {link_table}.book_id = {right_table}.id
+            ON {cls.book_link_table}.book_id = {right_table}.id
             WHERE {cls.table}.id = %(id)s
         """
         view = connectToMySQL(cls.db).query_db(query, {"id": id})

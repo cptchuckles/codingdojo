@@ -10,16 +10,27 @@ class Book(ModelBase):
         "pages",
     ]
 
+    author_link_table = "authors_have_books"
+
+    @classmethod
+    def add_author(cls, book_id: int, author_id: int):
+        query = f"""
+            INSERT INTO {cls.book_link_table}
+            (author_id, book_id)
+            VALUES
+            (%(author_id)s, %(book_id)s)
+        """
+        return connectToMySQL(cls.db).query_db(query, {"author_id": author_id, "book_id": book_id})
+
     @classmethod
     def get_with_authors(cls, id: int):
         author_table = author.Author.table
-        link_table = "authors_have_books"
         query = f"""
             SELECT * FROM {cls.table}
-            LEFT JOIN {link_table}
-            ON {link_table}.book_id = {cls.table}.id
+            LEFT JOIN {cls.author_link_table}
+            ON {cls.author_link_table}.book_id = {cls.table}.id
             LEFT JOIN {author_table}
-            ON {link_table}.author_id = {author_table}.id
+            ON {cls.author_link_table}.author_id = {author_table}.id
             WHERE {cls.table}.id = %(id)s
         """
         view = connectToMySQL(cls.db).query_db(query, {"id": id})
