@@ -1,4 +1,4 @@
-from app.models.model_base import ModelBase
+from flask_app.models.model_base import ModelBase
 
 
 class Survey(ModelBase):

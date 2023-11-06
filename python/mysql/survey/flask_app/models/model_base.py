@@ -1,8 +1,8 @@
-from app.config.mysqlconnection import connectToMySQL
+from flask_app.config.mysqlconnection import connectToMySQL
 
 
 class ModelBase:
-    db = "books_schema"
+    db = "dojo_survey_schema"
     table = ""
     fields = []
 

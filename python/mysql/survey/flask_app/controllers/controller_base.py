@@ -1,6 +1,6 @@
 from flask import render_template, abort, request, redirect
-from app.models import ModelBase
-from app import app
+from flask_app.models.model_base import ModelBase
+from flask_app import app
 
 
 class ControllerBase:
