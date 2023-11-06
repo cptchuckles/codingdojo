@@ -16,7 +16,11 @@ const expected1 = 2;
 const nums2 = [9, 9];
 const expected2 = -1;
 
-const nums3 = [1, 1, 4, 5, 4, 2];
+//             →  →  →  →   →   →
+//            [0, 1, 2, 6, 11, 15] ↓
+//                      i   ←   ←
+//            [         0   9  15]
+const nums3 = [1, 1, 4, 5,  4,  2];
 const expected3 = 3;
 
 /**
