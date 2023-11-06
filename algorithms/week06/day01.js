@@ -26,8 +26,8 @@ const expected3 = 3;
 /**
  * Finds the balance index in the given array where the sum to the left of the
  *    index is equal to the sum to the right of the index.
- * - Time: O(?).
- * - Space: O(?).
+ * - Time: O(n).
+ * - Space: O(n).
  * @param {Array<number>} nums
  * @returns {number} The balance index or -1 if there is none.
  */
