@@ -46,7 +46,7 @@ function balanceIndex(nums) {
         if (sums[i] === 0) {
             return i;
         }
-        acc += Number(nums[i]) || 0;
+        acc += nums[i] || 0;
     }
     return -1;
 }
