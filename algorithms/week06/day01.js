@@ -42,8 +42,7 @@ function balanceIndex(nums) {
     // accumulate and subtract right sums
     acc = 0;
     for (let i=nums.length-1; i>=0; i--) {
-        sums[i] -= acc;
-        if (sums[i] === 0) {
+        if (sums[i] - acc === 0) {
             return i;
         }
         acc += nums[i] || 0;
