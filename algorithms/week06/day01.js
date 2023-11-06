@@ -28,7 +28,27 @@ const expected3 = 3;
  * @returns {number} The balance index or -1 if there is none.
  */
 function balanceIndex(nums) {
-    // TODO
+    // accumulate and add left sums
+    const sums = [];
+    let acc = 0;
+    for (let n of nums) {
+        sums.push(acc);
+        acc += n;
+    }
+    // accumulate and subtract right sums
+    acc = 0;
+    for (let i=nums.length-1; i>=0; i--) {
+        sums[i] -= acc;
+        if (sums[i] === 0) {
+            return i;
+        }
+        acc += Number(nums[i]) || 0;
+    }
+    return -1;
 }
+
+console.log(balanceIndex(nums1), "should be", expected1);
+console.log(balanceIndex(nums2), "should be", expected2);
+console.log(balanceIndex(nums3), "should be", expected3);
 
 /*****************************************************************************/
