@@ -14,10 +14,10 @@
             <td>{{ author.created_at }}</td>
             <td>{{ author.updated_at }}</td>
             <td>
-                <a href="/author/{{ author.id }}/edit" class="button">Edit</a>
                 {% if book is defined %}
                 <a href="/book/{{ book.id }}/remove_author/{{ author.id }}" class="danger button">Discredit</a>
                 {% else %}
+                <a href="/author/{{ author.id }}/edit" class="button">Edit</a>
                 <a href="/author/{{ author.id }}/delete" class="danger button">Forget</a>
                 {% endif %}
             </td>
