@@ -109,7 +109,7 @@ ul {
   justify-content: flex-end;
 }
 
-.button {
+button, .button {
   color: black;
   background-color: goldenrod;
   border: none;
@@ -118,5 +118,6 @@ ul {
   cursor: pointer;
   text-decoration: none !important;
   font-weight: bold;
+  font-size: 1em;
   box-shadow: 2px 2px black;
 }
