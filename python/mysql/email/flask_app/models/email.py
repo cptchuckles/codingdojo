@@ -23,6 +23,10 @@ class Email(ModelBase):
             valid = False
             flash("DO YOU MOCK ME???", "email")
 
+        if "id" not in data and cls.address_exists(data["email"]):
+            valid = False
+            flash(f"{data['email']} already exists, please use another", "email")
+
         if valid:
             flash(f"The email address {data['email']} is valid! Thank you for your data!", "success")
 

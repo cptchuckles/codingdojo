@@ -11,11 +11,8 @@ class EmailController(ControllerBase):
         return redirect("/email")
 
     def create(self, data):
-        if not Email.validate(data):
-            return redirect("/email/new")
 
-        if Email.address_exists(data["email"]):
-            flash(f"{data['email']} already exists, please use another", "email")
+        if not Email.validate(data):
             return redirect("/email/new")
 
         return super().create(data)
