@@ -12,45 +12,45 @@
 
             <p class="entry">
                 <span><small>Name:</small></span>
-                <span><strong>{{ formdata["name"] }}</strong></span>
+                <span><strong>{{ survey.name }}</strong></span>
             </p>
 
             <p class="entry">
                 <span><small>Dojo Location:</small></span>
-                <span>{{ formdata["location"] }}</span>
+                <span>{{ survey.location }}</span>
             </p>
 
             <p class="entry">
                 <span><small>Favorite Language:</small></span>
-                <span>{{ formdata["language"] }}</span>
+                <span>{{ survey.favorite_language }}</span>
             </p>
 
             <p class="entry">
                 <span><small>Preferred Paradigm:</small></span>
-                <span>{{ formdata["paradigm"] }}</span>
+                <span>{{ survey.paradigm }}</span>
             </p>
 
             <p><small>Devices:</small></p>
             <ul>
-                {% if formdata["Desktop"] == "on" %}
+                {% if survey.desktop %}
                 <li>Desktop</li>
                 {% endif %}
 
-                {% if formdata["Laptop"] == "on" %}
+                {% if survey.laptop %}
                 <li>Laptop</li>
                 {% endif %}
 
-                {% if formdata["Tablet"] == "on" %}
+                {% if survey.tablet %}
                 <li>Tablet</li>
                 {% endif %}
 
-                {% if formdata["Phone"] == "on" %}
+                {% if survey.phone %}
                 <li>Phone</li>
                 {% endif %}
             </ul>
 
             <p><small>Comments:</small></p>
-            <p>{{ formdata["comments"] }}</p>
+            <p>{{ survey.comments }}</p>
             <div class="shrink">
                 <a href="/" class="button">Go Back</a>
             </div>
