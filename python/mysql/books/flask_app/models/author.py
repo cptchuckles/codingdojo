@@ -48,9 +48,9 @@ class Author(ModelBase):
             if row[f"{right_table}.id"] is None:
                 continue
             for key in row:
-                author_key = f"{right_table}.{key}"
-                if author_key in row:
-                    row[key] = row[author_key]
+                book_key = f"{right_table}.{key}"
+                if book_key in row:
+                    row[key] = row[book_key]
             author.books.append(book.Book(row))
 
         return author
