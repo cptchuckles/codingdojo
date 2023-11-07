@@ -14,3 +14,12 @@ class Survey(ModelBase):
         "phone",
         "comments",
     ]
+
+    @classmethod
+    def create(cls, data):
+        new_data = {**data}
+        new_data["desktop"] = "desktop" in data
+        new_data["laptop"] = "laptop" in data
+        new_data["tablet"] = "tablet" in data
+        new_data["phone"] = "phone" in data
+        return super().create(new_data)
