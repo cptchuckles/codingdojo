@@ -8,6 +8,9 @@ class Survey(ModelBase):
         "location",
         "favorite_language",
         "paradigm",
-        "devices",
+        "desktop",
+        "laptop",
+        "tablet",
+        "phone",
         "comments",
     ]
