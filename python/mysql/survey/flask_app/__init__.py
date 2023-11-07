@@ -4,6 +4,6 @@ app.secret_key = "bingus"
 
 
 @app.route("/")
-def index():
+def home():
     session.clear()
     return redirect("/survey/new")
