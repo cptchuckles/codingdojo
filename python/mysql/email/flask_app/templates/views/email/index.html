@@ -1,6 +1,9 @@
 {% extends "layouts/main.html" %}
 {%- block title -%}All Emails{%- endblock -%}
 {% block content -%}
+{% for message in get_flashed_messages(category_filter="success") %}
+<div class="success flash">{{ message }}</div>
+{% endfor %}
 <h1>All Emails</h1>
 <table cellspacing="0" class="card">
     <thead>

@@ -1,4 +1,4 @@
-from flask import redirect
+from flask import redirect, request, flash
 from flask_app.controllers.controller_base import ControllerBase
 from flask_app.models.email import Email
 
@@ -9,3 +9,13 @@ class EmailController(ControllerBase):
 
     def show(self, id):
         return redirect("/email")
+
+    def create(self, data):
+        if not Email.validate(data):
+            return redirect("/email/new")
+
+        if Email.address_exists(data["email"]):
+            flash(f"{data['email']} already exists, please use another", "email")
+            return redirect("/email/new")
+
+        return super().create(data)

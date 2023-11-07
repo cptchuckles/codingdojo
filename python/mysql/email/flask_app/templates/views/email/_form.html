@@ -1,4 +1,7 @@
 <form action="/email/{% if email is defined %}update{% else %}create{% endif %}" method="POST" class="card">
+    {% for message in get_flashed_messages(category_filter="email") %}
+    <div class="danger flash">{{ message }}</div>
+    {% endfor %}
     {% if email is defined %}
     <input type="hidden" name="id" value="{{ email.id }}" />
     {% endif %}

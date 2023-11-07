@@ -8,7 +8,7 @@
 
   --bg: #333;
   --bg-light: #444;
-  --bg-danger: #c00;
+  --bg-danger: #ff4;
   --button: #08d;
   --plus-button: #475;
   --danger-button: #d44;
@@ -135,6 +135,26 @@ ol, ul {
   justify-content: space-between;
   gap: 1em;
   width: 100%;
+}
+
+.flash {
+  padding: 1em;
+  border-radius: .5em;
+  font-size: .8em;
+  color: var(--fg-dark);
+  background-color: var(--fg-heading);
+
+  &.danger {
+    background-color: var(--bg-danger);
+    font-style: oblique;
+    font-weight: bold;
+  }
+
+  &.success {
+    background-color: var(--plus-button);
+    font-style: oblique;
+    color: white;
+  }
 }
 
 .card {
