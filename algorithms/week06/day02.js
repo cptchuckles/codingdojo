@@ -41,13 +41,13 @@ function binarySearch(sortedNums, searchNum) {
         const n = sortedNums[mid];
         if (n === searchNum) {
             let count = 1;
-            for (let i=mid-1, j=mid+1;; i--, j++) {
+            for (let i=mid, j=mid;;) {
                 let done = true;
-                if (sortedNums[i] === searchNum) {
+                if (sortedNums[--i] === searchNum) {
                     done = false;
                     count++;
                 }
-                if (sortedNums[j] === searchNum) {
+                if (sortedNums[++j] === searchNum) {
                     done = false;
                     count++;
                 }
