@@ -1,0 +1,33 @@
+{% extends "layouts/main.html" %}
+{%- block title -%}All Emails{%- endblock -%}
+{% block content -%}
+<h1>All Emails</h1>
+<table cellspacing="0" class="card">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Email</th>
+            <th>Created At</th>
+            <th>Last Updated</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for email in emails %}
+        <tr>
+            <td>{{ email.id }}</td>
+            <td>{{ email.email }}</td>
+            <td>{{ email.created_at }}</td>
+            <td>{{ email.updated_at }}</td>
+            <td>
+                <a href="/email/{{ email.id }}/edit" class="button">Edit</a>
+                <a href="/email/{{ email.id }}/delete" class="danger button">Delet</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<div class="wide-row">
+    <a href="/email/new" class="plus button">Add an Email Address</a>
+</div>
+{%- endblock %}

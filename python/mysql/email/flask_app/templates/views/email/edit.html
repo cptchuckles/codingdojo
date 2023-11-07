@@ -1,0 +1,9 @@
+{% extends "layouts/main.html" %}
+{%- block title -%}Edit {{ email.email }}{%- endblock -%}
+{% block content -%}
+<h1>Edit address {{ email.email }}</h1>
+{% include "views/email/_form.html" %}
+<div class="wide-row">
+    <a href="/" class="button">Home</a>
+</div>
+{%- endblock %}
