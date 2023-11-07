@@ -18,3 +18,12 @@ class EmailController(ControllerBase):
             return redirect("/email/new")
 
         return super().create(data)
+
+    def update(self, form_data):
+        data = {**form_data}
+        data["email"] = data["email"].lower()
+
+        if not Email.validate(data):
+            return redirect(f"/email/{data['id']}/edit")
+
+        return super().update(data)
