@@ -30,6 +30,6 @@ class Email(ModelBase):
 
     @classmethod
     def address_exists(cls, email: str) -> bool:
-        query = f"SELECT * FROM {cls.table} WHERE email = %(email)s;"
+        query = f"SELECT COUNT(*) AS count FROM {cls.table} WHERE email = %(email)s;"
         view = connectToMySQL(cls.db).query_db(query, {"email": email})
-        return len(view) > 0
+        return view[0].get("count") > 0
