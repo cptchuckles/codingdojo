@@ -10,7 +10,9 @@ class EmailController(ControllerBase):
     def show(self, id):
         return redirect("/email")
 
-    def create(self, data):
+    def create(self, form_data):
+        data = {**form_data}
+        data["email"] = data["email"].lower()
 
         if not Email.validate(data):
             return redirect("/email/new")
