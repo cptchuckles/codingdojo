@@ -109,6 +109,17 @@ ul {
   justify-content: flex-end;
 }
 
+.flash-warning {
+  display: block;
+  background-color: #f50;
+  color: black;
+  padding: .8em;
+  font-size: .8em;
+  font-style: italic;
+  font-weight: bold;
+  border-radius: .6em;
+}
+
 button, .button {
   color: black;
   background-color: goldenrod;
