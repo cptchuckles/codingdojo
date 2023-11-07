@@ -2,6 +2,16 @@
     {% if email is defined %}
     <input type="hidden" name="id" value="{{ email.id }}" />
     {% endif %}
-    <label for="email">Add a valid email address:</label>
+    <label for="email">Add a valid email address (do not write @email.com):</label>
     <input type="email" name="email" id="email" {%- if email is defined %}value="{{ email.email }}"{% endif %} pattern="[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+" required />
+    <button class="plus">Add this email address</button>
+    <button class="danger" type="button" onclick="removePattern(this)">Pattern too hard!</button>
 </form>
+<script type="text/javascript">
+function removePattern(el) {
+    const email = document.getElementById("email");
+    email.removeAttribute("pattern");
+    email.style.backgroundColor = "white";
+    el.remove();
+}
+</script>
