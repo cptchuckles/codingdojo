@@ -25,7 +25,7 @@ class User(ModelBase):
 
     @classmethod
     def get_by_email(cls, email: str):
-        query = f"SELECT COUNT(*) AS count FROM {cls.table} WHERE email = %({email})s;"
+        query = f"SELECT * FROM {cls.table} WHERE email = %(email)s;"
         view = connectToMySQL(cls.db).query_db(query, {"email": email})
         return cls(view[0]) if view else None
 
