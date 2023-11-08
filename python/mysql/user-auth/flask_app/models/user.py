@@ -5,7 +5,8 @@ class User(ModelBase):
     db = "user_auth_schema"
     table = "users"
     fields = [
-        "username",
+        "first_name",
+        "last_name",
         "email",
         "password_hash",
     ]
