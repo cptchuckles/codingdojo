@@ -29,13 +29,14 @@ class User(ModelBase):
         view = connectToMySQL(cls.db).query_db(query, {"email": email})
         return cls(view[0]) if view else None
 
-    def authenticate_to_id(self, data):
-        target_user = self.get_by_email(data["email"])
+    @classmethod
+    def authenticate_to_id(cls, data):
+        target_user = cls.get_by_email(data["email"])
         if target_user is None:
-            flash("Username or password not valid")
+            flash("Username or password not valid", "login")
             return None
         elif not bcrypt.check_password_hash(target_user.password_hash, data["password"]):
-            flash("Username or password not valid")
+            flash("Username or password not valid", "login")
             return None
         else:
             return target_user.id
