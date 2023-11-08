@@ -1,4 +1,15 @@
-<form action="/user/{% if user is defined %}update{% else %}login{% endif %}" method="POST">
+<form action="/user/{% if user is defined %}update{% else %}create{% endif %}" method="POST">
+    {%- with messages = get_flashed_messages(with_categories=true) -%}
+    {% if messages|count > 0 %}
+    <div class="danger flash">
+        <ul>
+            {% for category, message in messages %}
+            <li>{{ category }}: {{ message }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+    {%- endwith -%}
     {% if user is defined %}
     <input type="hidden" name="id" value="{{ user.id }}" required />
     {% endif %}
