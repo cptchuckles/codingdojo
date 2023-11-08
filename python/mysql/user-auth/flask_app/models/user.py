@@ -1,6 +1,7 @@
 from flask import flash
 from flask_app.models.model_base import ModelBase
 from flask_app.config.mysqlconnection import connectToMySQL
+from flask_app import bcrypt
 import re
 
 
@@ -17,13 +18,30 @@ class User(ModelBase):
     valid_email_format = re.compile(r"^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$")
 
     @classmethod
-    def user_exists_with(cls, property_name: str, property_value: str) -> bool:
-        query = f"SELECT COUNT(*) AS count FROM {cls.table} WHERE {property_name} = %({property_name})s;"
-        view = connectToMySQL(cls.db).query_db(query, {property_name: property_value})
-        return view[0].get("count") > 0
+    def create(self, form_data):
+        data = {**form_data}
+        data["password_hash"] = bcrypt.generate_password_hash(data["password"], 12)
+        return super().create(data)
 
     @classmethod
-    def validate_form_input(cls, data):
+    def get_by_email(cls, email: str):
+        query = f"SELECT COUNT(*) AS count FROM {cls.table} WHERE email = %({email})s;"
+        view = connectToMySQL(cls.db).query_db(query, {"email": email})
+        return cls(view[0]) if view else None
+
+    def authenticate_to_id(self, data):
+        target_user = self.get_by_email(data["email"])
+        if target_user is None:
+            flash("Username or password not valid")
+            return None
+        elif not bcrypt.check_password_hash(target_user.password_hash, data["password"]):
+            flash("Username or password not valid")
+            return None
+        else:
+            return target_user.id
+
+    @classmethod
+    def validate_form_input(cls, data) -> bool:
         is_valid = True
 
         # Presence of data
@@ -64,7 +82,7 @@ class User(ModelBase):
 
         # Duplicates
 
-        if "id" not in data and cls.user_exists_with("email", data["email"]):
+        if "id" not in data and cls.get_by_email(data["email"]) is not None:
             flash(f"Email address {data['email']} is already in use, please login", "email")
             is_valid = False
 

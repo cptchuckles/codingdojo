@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, session, redirect
 from flask_bcrypt import Bcrypt
 
 app = Flask(__name__)
@@ -9,4 +9,6 @@ bcrypt = Bcrypt(app)
 
 @app.route("/")
 def home():
+    if "user_id" in session:
+        return redirect("/dashboard")
     return render_template("home.html")
