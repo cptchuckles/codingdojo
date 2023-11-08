@@ -8,6 +8,11 @@ class UserController(ControllerBase):
     def __init__(self):
         super().__init__(User)
 
+    def register_crud_routes(self):
+        super().register_crud_routes()
+        return self
+
+    def register_user_auth_routes(self):
         @app.route("/dashboard")
         def dashboard():
             if "user_id" not in session:
@@ -18,6 +23,8 @@ class UserController(ControllerBase):
         def logout():
             del session["user_id"]
             return redirect("/")
+
+        return self
 
     def create(self, form_data):
         data = {**form_data}
