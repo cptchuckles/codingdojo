@@ -1,0 +1,15 @@
+<form action="/user/{% if user is defined %}update{% else %}login{% endif %}" method="POST">
+    {% if user is defined %}
+    <input type="hidden" name="id" value="{{ user.id }}" required />
+    {% endif %}
+    <label for="username">Username:</label>
+    <input type="text" name="username" id="username" {%- if user is defined %}value="{{ user.username }}"{% endif %} required />
+    <label for="email">Email address:</label>
+    <input type="email" name="email" id="email" {%- if user is defined %}value="{{ user.email }}"{% endif %} required />
+    <label for="password">Password:</label>
+    <input type="password" name="password" id="password" required />
+    <label for="confirm-password">Confirm password:</label>
+    <input type="password" name="confirm-password" id="confirm-password" required />
+    <hr>
+    <button class="plus">Create account</button>
+</form>
