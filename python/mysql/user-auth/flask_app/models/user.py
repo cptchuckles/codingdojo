@@ -16,6 +16,7 @@ class User(ModelBase):
     ]
 
     valid_email_format = re.compile(r"^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$")
+    password_min_length = 8
 
     @classmethod
     def create(self, form_data):
@@ -81,6 +82,14 @@ class User(ModelBase):
             flash("Password confirmation does not match!", "password")
             is_valid = False
 
+        if len(data["password"]) < cls.password_min_length:
+            flash("Password must be at least 8 characters", "password")
+            is_valid = False
+
+        if not cls.is_strong_password(data["password"]):
+            flash("Your password is weak babysauce, only chad passwords allowed", "password")
+            is_valid = False
+
         # Duplicates
 
         if "id" not in data and cls.get_by_email(data["email"]) is not None:
@@ -88,3 +97,30 @@ class User(ModelBase):
             is_valid = False
 
         return is_valid
+
+    @staticmethod
+    def is_strong_password(password: str) -> bool:
+        class Checks:  # having a 'var' keyword would elide shit like this, thanks python
+            has_alpha = False
+            has_upper = False
+            has_lower = False
+            has_numeric = False
+            has_special = False
+
+        for char in password:
+            if char.isalpha():
+                Checks.has_alpha = True
+                if char.isupper():
+                    Checks.has_upper = True
+                elif char.islower():
+                    Checks.has_lower = True
+            elif char.isnumeric():
+                Checks.has_numeric = True
+            elif char.isprintable():
+                Checks.has_special = True
+
+        return Checks.has_alpha \
+            and Checks.has_upper \
+            and Checks.has_lower \
+            and Checks.has_numeric \
+            and Checks.has_special
