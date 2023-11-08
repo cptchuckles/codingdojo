@@ -3,7 +3,9 @@
     {% if messages|count > 0 %}
     <div class="danger flash">
         <ul>
+            {% for message in messages %}
             <li>{{ message }}</li>
+            {% endfor %}
         </ul>
     </div>
     {% endif %}
