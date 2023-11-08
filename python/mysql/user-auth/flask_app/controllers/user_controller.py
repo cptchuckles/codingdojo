@@ -1,4 +1,4 @@
-from flask import redirect, session, render_template, flash
+from flask import redirect, session, render_template, flash, request
 from flask_app.controllers.controller_base import ControllerBase
 from flask_app.models.user import User
 from flask_app import app
@@ -13,6 +13,18 @@ class UserController(ControllerBase):
         return self
 
     def register_user_auth_routes(self):
+        @app.route("/login", methods=["POST"])
+        def login():
+            if "user_id" in session:
+                return redirect("/")
+
+            user_id = User.authenticate_to_id(request.form)
+            if user_id is None:
+                return redirect("/")
+
+            session["user_id"] = user_id
+            return redirect("/dashboard")
+
         @app.route("/dashboard")
         def dashboard():
             if "user_id" not in session:
