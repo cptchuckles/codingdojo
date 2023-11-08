@@ -1,11 +1,9 @@
 <form action="/user/{% if user is defined %}update{% else %}create{% endif %}" method="POST">
-    {%- with messages = get_flashed_messages(with_categories=true) -%}
+    {%- with messages = get_flashed_messages(category_filter=["name", "email", "password"]) -%}
     {% if messages|count > 0 %}
     <div class="danger flash">
         <ul>
-            {% for category, message in messages %}
-            <li>{{ category }}: {{ message }}</li>
-            {% endfor %}
+            <li>{{ message }}</li>
         </ul>
     </div>
     {% endif %}
