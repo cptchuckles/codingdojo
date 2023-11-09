@@ -1,6 +1,6 @@
-exam/
 projects/
 .ropeproject/
+**/exam/
 **/__pycache__/
 **/_raw/
 **/_ignore/
