@@ -97,6 +97,10 @@ button, textarea, input, select {
   resize: none;
 }
 
+blockquote {
+  margin: 1em 0 1em 1em;
+}
+
 button, .button {
   display: inline-block;
 

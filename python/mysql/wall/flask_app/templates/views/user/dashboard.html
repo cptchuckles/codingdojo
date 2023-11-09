@@ -4,17 +4,6 @@
 {%- block header -%}
 <header>
     <h1>CodingDojo Wall</h1>
-    {% with messages = get_flashed_messages(category_filter="success") %}
-    {% if messages|count > 0 %}
-    <div class="success flash" style="cursor: pointer;" onclick="this.remove()">
-        <ul>
-            {% for message in messages %}
-            <li>{{ message }}</li>
-            {% endfor %}
-        </ul>
-    </div>
-    {% endif %}
-    {% endwith %}
     <div style="display: flex; gap: 2em; align-items: baseline;">
         <h3>Welcome, {{ user.first_name }}</h3>
         <a href="/logout" class="danger button">Log Out</a>
@@ -23,9 +12,24 @@
 {%- endblock -%}
 
 {% block content -%}
+{% with messages = get_flashed_messages(category_filter="success") %}
+{% if messages|count > 0 %}
+<div class="success flash" style="cursor: pointer;" onclick="this.remove()">
+    <ul>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+{% endwith %}
+
 <div class="page row">
     <div class="wide card">
-        <h3 style="text-decoration: underline;">12834 Message(s) for You</h3>
+        <h3 style="text-decoration: underline;">{{ messages|count }} Message(s) for You</h3>
+        {% for message in messages %}
+        {% include "views/message/_insert.html" %}
+        {% endfor %}
     </div>
     <div class="wide card">
         <h3 style="text-decoration: underline;">Send Messages</h3>

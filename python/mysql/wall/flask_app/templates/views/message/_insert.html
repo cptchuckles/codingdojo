@@ -1,0 +1,10 @@
+<div class="wide row">
+    <div style="flex: 2; display: flex; flex-direction: column;">
+        <p>
+            <a href="/user/{{ message.sender.id }}">{{ message.sender.first_name }} {{ message.sender.last_name }}</a>
+            said <span style="color: teal;">({{ message.created_at }})</span>
+        </p>
+        <blockquote>{{ message.message }}</blockquote>
+    </div>
+    <a href="/message/{{ message.id }}/delete" class="danger button">X</a>
+</div>

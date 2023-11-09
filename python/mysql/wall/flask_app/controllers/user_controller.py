@@ -1,6 +1,7 @@
 from flask import redirect, session, render_template, flash, request
 from flask_app.controllers.controller_base import ControllerBase
 from flask_app.models.user import User
+from flask_app.models.message import Message
 from flask_app import app
 
 
@@ -31,7 +32,8 @@ class UserController(ControllerBase):
                 return redirect("/")
             current_user = User.get_by_id(int(session["user_id"]))
             all_users = User.get_all()
-            return render_template("/views/user/dashboard.html", user=current_user, all_users=all_users)
+            messages = Message.get_all_for_user(current_user.id)
+            return render_template("/views/user/dashboard.html", user=current_user, messages=messages, all_users=all_users)
 
         @app.route("/logout")
         def logout():
