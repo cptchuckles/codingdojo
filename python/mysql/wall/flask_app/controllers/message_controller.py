@@ -22,7 +22,7 @@ class MessageController(ControllerBase):
 
         user_id = session["user_id"]
 
-        if msg.sender_user_id == user_id or msg.receiver_user_id == user_id:
+        if msg.receiver_user_id == user_id:
             flash("Message deleted successfully", "success")
             Message.delete(id)
         else:
