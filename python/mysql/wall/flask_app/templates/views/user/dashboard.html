@@ -23,6 +23,17 @@
 </div>
 {% endif %}
 {% endwith %}
+{% with messages = get_flashed_messages(category_filter="message-error") %}
+{% if messages|count > 0 %}
+<div class="danger flash" style="cursor: pointer;" onclick="this.remove()">
+    <ul>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+{% endwith %}
 
 <div class="page row">
     <div class="wide card">

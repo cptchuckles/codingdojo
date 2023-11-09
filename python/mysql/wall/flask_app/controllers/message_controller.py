@@ -9,6 +9,7 @@ class MessageController(ControllerBase):
 
     def create(self, data):
         Message.create(data)
+        flash("Message sent successfully!", "success")
         return redirect("/dashboard")
 
     def delete(self, id: int):
@@ -22,7 +23,9 @@ class MessageController(ControllerBase):
         user_id = session["user_id"]
 
         if msg.sender_user_id == user_id or msg.receiver_user_id == user_id:
-            flash("You do not have permission to delete this!", "message-error")
+            flash("Message deleted successfully", "success")
             Message.delete(id)
+        else:
+            flash("You do not have permission to delete this!", "message-error")
 
         return redirect("/dashboard")
