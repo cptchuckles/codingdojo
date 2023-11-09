@@ -1,0 +1,7 @@
+<form action="/message/create" method="POST" class="wide row" style="margin: 1em 0;">
+	<input type="hidden" name="sender_user_id" value="{{ user.id }}" />
+	<input type="hidden" name="receiver_user_id" value="{{ receiver_user.id }}" />
+	<label for="message" style="flex: 1; text-align: right;">{{ receiver_user.last_name }}, {{ receiver_user.first_name }}</label>
+	<textarea name="message" id="message" rows="2" style="flex: 2;" maxlength="180" required></textarea>
+	<button class="plus">SHITPOST</button>
+</form>
