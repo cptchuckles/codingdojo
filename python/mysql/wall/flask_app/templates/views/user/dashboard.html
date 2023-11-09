@@ -44,7 +44,7 @@
     </div>
     <div class="wide card">
         <h3 style="text-decoration: underline;">Send Messages</h3>
-        <p style="color: lime;">You have sent 69 messages so far</p>
+        <p style="color: lime;">You have sent {{ send_count }} messages so far</p>
         {% for receiver_user in all_users|rejectattr("id", "equalto", user.id)|sort(attribute="last_name") %}
         {% include "views/message/_form.html" %}
         {% endfor %}

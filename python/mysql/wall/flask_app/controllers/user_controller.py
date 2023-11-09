@@ -33,7 +33,12 @@ class UserController(ControllerBase):
             current_user = User.get_by_id(int(session["user_id"]))
             all_users = User.get_all()
             messages = Message.get_all_for_user(current_user.id)
-            return render_template("/views/user/dashboard.html", user=current_user, messages=messages, all_users=all_users)
+            send_count = Message.count_all_from_user(current_user.id)
+            return render_template("/views/user/dashboard.html",
+                                   user=current_user,
+                                   messages=messages,
+                                   send_count=send_count,
+                                   all_users=all_users)
 
         @app.route("/logout")
         def logout():

@@ -63,6 +63,15 @@ class Message(ModelBase):
         return cls.instantiate_from_view(view)
 
     @classmethod
+    def count_all_from_user(cls, sender_user_id: int) -> int:
+        query = f"""
+            SELECT COUNT(*) AS count FROM {cls.table}
+            WHERE sender_user_id = %(id)s;
+        """
+        view = connectToMySQL(cls.db).query_db(query, {"id": sender_user_id})
+        return view[0].get("count")
+
+    @classmethod
     def get_all_between_users(cls, user_a_id: int, user_b_id: int):
         query = f"""
             SELECT * FROM {cls.table}
