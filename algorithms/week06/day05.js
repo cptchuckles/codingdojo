@@ -25,8 +25,20 @@ const expected4 = { quarter: 3, dime: 2, penny: 4 };
  *    needed.
  */
 
- function fewestCoinChange(cents) {
-    //Your code here
+function fewestCoinChange(cents) {
+    const coins = {
+        quarters: 25,
+        dimes: 10,
+        nickels: 5,
+        pennies: 1,
+    };
+    return Object.keys(coins).reduce((change, key) => {
+        if (cents >= coins[key]) {
+            change[key] = Math.floor(cents / coins[key]);
+            cents %= coins[key];
+        }
+        return change;
+    }, {});
 }
 
 console.log(fewestCoinChange(cents1)) // { quarter: 1 }
