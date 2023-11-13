@@ -22,6 +22,16 @@ const expected4 = 15;
  * @param {Array<number>} nums
  * @returns {number} The sum of the given nums.
  */
-function sumArr(nums) {}
+function sumArr(nums) {
+    if (nums.length === 0) {
+        return 0;
+    }
+    return nums[0] + sumArr(nums.slice(1));
+}
+
+console.log(sumArr(nums1), "should be", expected1);
+console.log(sumArr(nums2), "should be", expected2);
+console.log(sumArr(nums3), "should be", expected3);
+console.log(sumArr(nums4), "should be", expected4);
 
 /*****************************************************************************/
