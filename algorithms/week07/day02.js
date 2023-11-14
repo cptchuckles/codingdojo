@@ -83,7 +83,43 @@
  * @param {number} num The position of the desired number in the fibonacci sequence.
  * @returns {number} The fibonacci number at the given position.
  */
-    function fibonacci(num) {}
+    memo = {}
+    function fibonacci(num) {
+        if (num in memo) {
+            return memo[num];
+        }
+        let result = 0;
+        if (0 < num && num <= 2) {
+            result = 1;
+        }
+        else if (num > 0) {
+            result = fibonacci(num-1) + fibonacci(num-2);
+        }
+        memo[num] = result;
+        return result;
+    }
 
+    function dynamicFibonacci(num) {
+        const memo = {};
+        for (let i=0; i<=num; i++) {
+            let result = 0;
+            if (0 < i && i <= 2) {
+                result = 1;
+            }
+            else if (i > 0) {
+                result = memo[i-1] + memo[i-2];
+            }
+            memo[i] = result;
+        }
+        return memo[num];
+    }
+
+    console.log(fibonacci(num1), "should be", expected1);
+    console.log(fibonacci(num2), "should be", expected2);
+    console.log(fibonacci(num3), "should be", expected3);
+    console.log(fibonacci(num4), "should be", expected4);
+    console.log(fibonacci(num5), "should be", expected5);
+    console.log(fibonacci(num6), "should be", expected6);
+    console.log(fibonacci(50), "should not take forever")
     /*****************************************************************************/
 }
