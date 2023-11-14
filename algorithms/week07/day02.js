@@ -114,6 +114,14 @@
         return memo[num];
     }
 
+    function arrayFibonacci(num) {
+        const fib = [0, 1];
+        while (fib.length <= num) {
+            fib.push(fib[fib.length-1] + fib[fib.length-2]);
+        }
+        return fib[num];
+    }
+
     console.log(fibonacci(num1), "should be", expected1);
     console.log(fibonacci(num2), "should be", expected2);
     console.log(fibonacci(num3), "should be", expected3);
