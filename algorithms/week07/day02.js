@@ -122,6 +122,15 @@
         return fib[num];
     }
 
+    function constantFibonacci(num) {
+        let current = 0, next = 1;
+        while (num-- > 0) {
+            next += current;
+            current = next - current;
+        }
+        return current;
+    }
+
     console.log(fibonacci(num1), "should be", expected1);
     console.log(fibonacci(num2), "should be", expected2);
     console.log(fibonacci(num3), "should be", expected3);
