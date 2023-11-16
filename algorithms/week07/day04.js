@@ -29,6 +29,22 @@ const expected4 = 3
  * @param {number} num The number to sum to one digit.
  * @returns {number} One digit.
  */
-function sumToOneDigit(num) {}
+function sumToOneDigit(num) {
+    if (num < 10) {
+        return num;
+    }
+    const ones = num % 10;
+    num = Math.floor(num / 10);
+    result = ones + sumToOneDigit(num);
+    while (result > 9) {
+        result = sumToOneDigit(result);
+    }
+    return result;
+}
+
+console.log(sumToOneDigit(num1), "should be", expected1);
+console.log(sumToOneDigit(num2), "should be", expected2);
+console.log(sumToOneDigit(num3), "should be", expected3);
+console.log(sumToOneDigit(num4), "should be", expected4);
 
 /*****************************************************************************/
