@@ -44,8 +44,19 @@ const expected5 = 75;
  * Finds the lowest common multiple of the two given ints.
  * @param {number} a
  * @param {number} b
+ * @param {number} x The coefficient for a
+ * @param {number} b The coefficient for b
  * @returns {number} The lowest common multiple of the given ints.
  */
-function lowestCommonMultiple(a, b) {}
+/* Do you guys know gzip? */
+/* H4sIANyUV2UAA0srzUsuyczPU8jJL08tLnHOz83Nz/MtzSnJLMhJ1UjUUUjSUaiwNdRRqLQ11FSo
+5lIAgsw0BY1ErQoFW1tbhSStSpgwCBSllpQW5SkAZa3BYrUoGmxwKMdntzbIbk1k01JzilNJMwNo
+grYh3IxaLgCqveRA9QAAAA== */
+
+console.log(lowestCommonMultiple(num1A, num1B), "should be", expected1);
+console.log(lowestCommonMultiple(num2A, num2B), "should be", expected2);
+console.log(lowestCommonMultiple(num3A, num3B), "should be", expected3);
+console.log(lowestCommonMultiple(num4A, num4B), "should be", expected4);
+console.log(lowestCommonMultiple(num5A, num5B), "should be", expected5);
 
 /*****************************************************************************/
