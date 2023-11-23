@@ -45,7 +45,7 @@ const expected5 = 75;
  * @param {number} a
  * @param {number} b
  * @param {number} x The coefficient for a
- * @param {number} b The coefficient for b
+ * @param {number} y The coefficient for b
  * @returns {number} The lowest common multiple of the given ints.
  */
 /* Do you guys know gzip? */
