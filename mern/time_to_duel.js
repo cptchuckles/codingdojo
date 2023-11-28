@@ -77,3 +77,10 @@ class Effect extends Card {
         target[stat] += this.magnitude;
     }
 }
+
+const redBeltNinja = new Unit("Red Belt Ninja", 3, 3, 4);
+const blackBeltNinja = new Unit("Black Belt Ninja", 4, 5, 4);
+
+const hardAlgorithm = new Effect("Hard Algorithm", 2, "resilience", 3);
+const unhandledPromiseRejection = new Effect("Unhandled Promise Rejection", 1, "resilience", -2);
+const pairProgramming = new Effect("Pair Programming", 3, "power", 2);
