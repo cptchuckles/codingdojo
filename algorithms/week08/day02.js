@@ -1,12 +1,15 @@
 // MERN Algos Week 1 - Sorting Algorithms
 // https://www.bigocheatsheet.com/
 
-// Bubble Sort
-
-// For every pair of adjacent indicies
-// swap them if the item on the left is larger than the item on the right
-// continue until array is fully sorted
-
+/**
+ * Bubble Sort
+ * For every pair of adjacent indicies
+ * swap them if the item on the left is larger than the item on the right
+ * continue until array is fully sorted
+ *
+ * @param {number[]} arr
+ * @returns {number[]}
+ */
 function bubbleSort(arr) {
     for (let end=arr.length-1; end>0; end--) {
         let sorted = true;
