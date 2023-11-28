@@ -65,7 +65,7 @@ class Effect extends Card {
      *
      * @param {Unit} target
      * @throws when target is not a Unit
-     * @throws when the stat is not a property of Unit
+     * @throws when this Effect's stat is not a property of Unit
      */
     play(target) {
         if (!(target instanceof Unit)) {
@@ -82,5 +82,12 @@ const redBeltNinja = new Unit("Red Belt Ninja", 3, 3, 4);
 const blackBeltNinja = new Unit("Black Belt Ninja", 4, 5, 4);
 
 const hardAlgorithm = new Effect("Hard Algorithm", 2, "resilience", 3);
+hardAlgorithm.play(redBeltNinja);
+
 const unhandledPromiseRejection = new Effect("Unhandled Promise Rejection", 1, "resilience", -2);
+unhandledPromiseRejection(redBeltNinja);
+
 const pairProgramming = new Effect("Pair Programming", 3, "power", 2);
+pairProgramming.play(redBeltNinja);
+
+redBeltNinja.attack(blackBeltNinja);
