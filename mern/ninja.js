@@ -36,3 +36,21 @@ class Ninja {
         this.health += 10;
     }
 }
+
+class Sensei extends Ninja {
+    /**
+     * Constructs a new Sensei object
+     *
+     * @param {string} name
+     * @param {number} wisdom Default 10
+     */
+    constructor(name, wisdom = 10) {
+        super(name, 200, 10, 10);
+        this.wisdom = wisdom;
+    }
+
+    speakWisdom() {
+        this.drinkSake();
+        console.log("What one programmer can do in one month, two programmers can do in two months.");
+    }
+}
