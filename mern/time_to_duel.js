@@ -49,15 +49,15 @@ class Effect extends Card {
      * @constructor
      * @param {string} name
      * @param {number} cost
-     * @param {string} text The card's description
      * @param {string} stat The stat of the target Unit to affect
      * @param {number} magnitude How to affect the target Unit's specified stat
      */
-    constructor(name, cost, text, stat, magnitude) {
+    constructor(name, cost, stat, magnitude) {
         super(name, cost);
-        this.text = text;
         this.stat = stat;
         this.magnitude = magnitude;
+
+        this.text = `${magnitude > 0 ? "Raise" : "Lower"} the target's ${stat} by ${magnitude}`;
     }
 
     /**
