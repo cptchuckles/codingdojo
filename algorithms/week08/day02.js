@@ -26,7 +26,8 @@ function bubbleSort(arr) {
 }
 
 const arr1 = [78, 5, 678, 765, 456, 78, 265, 908];
-console.log(bubbleSort([...arr1]), "should be", arr1.sort((a,b) => a-b))
+const answer1 = [...arr1].sort((a,b) => a - b);
+console.log(bubbleSort(arr1), "should be", answer1)
 
 
 // Time Complexity
