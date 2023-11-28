@@ -3,9 +3,9 @@ class Ninja {
      * Creates a new Ninja object
      *
      * @param {string} name
-     * @param {number} health
-     * @param {number} speed
-     * @param {number} strength
+     * @param {number} health Default 90
+     * @param {number} speed Default 3
+     * @param {number} strength Default 3
      */
     constructor(
         name,
