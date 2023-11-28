@@ -41,3 +41,39 @@ class Unit extends Card {
         target.resilience -= this.power;
     }
 }
+
+class Effect extends Card {
+    /**
+     * Create a new instance of an Effect card.
+     *
+     * @constructor
+     * @param {string} name
+     * @param {number} cost
+     * @param {string} text The card's description
+     * @param {string} stat The stat of the target Unit to affect
+     * @param {number} magnitude How to affect the target Unit's specified stat
+     */
+    constructor(name, cost, text, stat, magnitude) {
+        super(name, cost);
+        this.text = text;
+        this.stat = stat;
+        this.magnitude = magnitude;
+    }
+
+    /**
+     * Play this Effect card on a Unit
+     *
+     * @param {Unit} target
+     * @throws when target is not a Unit
+     * @throws when the stat is not a property of Unit
+     */
+    play(target) {
+        if (!(target instanceof Unit)) {
+            throw new Error("Target is not a Unit");
+        }
+        if (! this.stat in target) {
+            throw new Error(`Unit does not have a stat '${this.stat}'`);
+        }
+        target[stat] += this.magnitude;
+    }
+}
