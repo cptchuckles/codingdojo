@@ -63,12 +63,3 @@ console.log(insertionSortShift(testArr), "should be", testAnswer);
 //   4. if item to left of current item is less than current, swap
 //   5. repeat step 4 until item to left is less than current item
 //   6. move to next item and repeat
-
-
-
-let glass = "water";
-let cup = "milk";
-
-[glass, cup] = [cup, glass];
-
-console.log(glass);
