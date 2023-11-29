@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>My First React App</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script crossorigin="anonymous" src="https://unpkg.com/react@16/umd/react.development.js"></script>
+        <script crossorigin="anonymous" src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script> 
+    </head>
+    <body>
+        <div id="root">Waiting for React app to render...</div>
+        <script>
+            const App = React.createElement("h1", {}, "MY first React page has been rendered");
+            ReactDOM.render(App, document.getElementById("root"));
+        </script>
+    </body>
+</html>
