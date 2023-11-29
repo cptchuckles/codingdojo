@@ -74,7 +74,7 @@ class Effect extends Card {
         if (! this.stat in target) {
             throw new Error(`Unit does not have a stat '${this.stat}'`);
         }
-        target[stat] += this.magnitude;
+        target[this.stat] += this.magnitude;
     }
 }
 
@@ -85,7 +85,7 @@ const hardAlgorithm = new Effect("Hard Algorithm", 2, "resilience", 3);
 hardAlgorithm.play(redBeltNinja);
 
 const unhandledPromiseRejection = new Effect("Unhandled Promise Rejection", 1, "resilience", -2);
-unhandledPromiseRejection(redBeltNinja);
+unhandledPromiseRejection.play(redBeltNinja);
 
 const pairProgramming = new Effect("Pair Programming", 3, "power", 2);
 pairProgramming.play(redBeltNinja);
