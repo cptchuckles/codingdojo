@@ -29,6 +29,13 @@ class Validator {
   }
 }
 
+const validationMap = {
+  firstName: new Validator((v) => v.length >= 2, "First Name must be at least 2 characters"),
+  lastName: new Validator((v) => v.length >= 2, "Last Name must be at least 2 characters"),
+  email: new Validator((v) => v.length >= 5, "Email must be at least 5 characters"),
+  confirmPassword: new Validator((v) => formData.password === v, "Password and Confirmation must match"),
+};
+
 
 function App() {
   const defaultFormData = {
@@ -41,13 +48,6 @@ function App() {
 
   const [formData, setFormData] = useState({...defaultFormData});
   const [validations, setValidations] = useState({});
-
-  const validationMap = {
-    firstName: new Validator((v) => v.length >= 2, "First Name must be at least 2 characters"),
-    lastName: new Validator((v) => v.length >= 2, "Last Name must be at least 2 characters"),
-    email: new Validator((v) => v.length >= 5, "Email must be at least 5 characters"),
-    confirmPassword: new Validator((v) => formData.password === v, "Password and Confirmation must match"),
-  };
 
   /**
    * Set the formData's field matching the target name to the target value
