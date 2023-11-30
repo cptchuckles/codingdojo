@@ -31,6 +31,7 @@ function App() {
 
   return (
     <>
+      <a target="_blank" href="https://github.com/cptchuckles/codingdojo/tree/mern-hookForm/mern/hook-form/src/App.jsx">github source</a>
       <h1>MY MAGICAL FORM</h1>
       <form onSubmit={submitForm}>
         <label htmlFor="firstName">
