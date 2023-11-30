@@ -16,6 +16,15 @@ function App() {
   const [formData, setFormData] = useState({...defaultFormData});
 
   /**
+   * Set the formData's field matching the target name to the target value
+   *
+   * @param {Event} ev
+   */
+  const setFormField = (ev) => {
+    setFormData({...formData, [ev.target.name]: ev.target.value});
+  };
+
+  /**
    * Submits the form and clears user input
    *
    * @param {SubmitEvent} ev
@@ -36,23 +45,23 @@ function App() {
       <form onSubmit={submitForm}>
         <label htmlFor="firstName">
           First Name:
-          <input onChange={(e) => setFormData({...formData, firstName: e.target.value})} type="text" name="firstName" id="firstName" />
+          <input onChange={setFormField} type="text" name="firstName" id="firstName" />
         </label>
         <label htmlFor="lastName">
           Last Name:
-          <input onChange={(e) => setFormData({...formData, lastName: e.target.value})} type="text" name="lastName" id="lastName" />
+          <input onChange={setFormField} type="text" name="lastName" id="lastName" />
         </label>
         <label htmlFor="email">
           Email:
-          <input onChange={(e) => setFormData({...formData, email: e.target.value})} type="email" name="email" id="email" />
+          <input onChange={setFormField} type="email" name="email" id="email" />
         </label>
         <label htmlFor="password">
           Password:
-          <input onChange={(e) => setFormData({...formData, password: e.target.value})} type="password" name="password" id="password" />
+          <input onChange={setFormField} type="password" name="password" id="password" />
         </label>
         <label htmlFor="confirmPassword">
           Confirm Password:
-          <input onChange={(e) => setFormData({...formData, confirmPassword: e.target.value})} type="password" name="confirmPassword" id="confirmPassword" />
+          <input onChange={setFormField} type="password" name="confirmPassword" id="confirmPassword" />
         </label>
         <button>SuBmIT</button>
       </form>
