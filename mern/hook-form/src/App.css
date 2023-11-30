@@ -13,10 +13,15 @@ form {
   max-width: fit-content;
   margin: auto;
 
-  label {
+  & label {
     display: flex;
     justify-content: flex-end;
     gap: 1ch;
+
+  }
+
+  & .validation {
+    color: firebrick;
   }
 }
 
