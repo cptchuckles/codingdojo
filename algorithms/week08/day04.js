@@ -25,7 +25,7 @@
  * Merge Sort algorithm
  *
  * @param {number[]} arr Initial list of unsorted numbers
- * @returns {number[]}
+ * @returns {number[]} The sorted array
  */
 function mergeSort(arr) {
     if (arr.length <= 1) {
@@ -44,14 +44,14 @@ function mergeSort(arr) {
  *
  * @param {number[]} left
  * @param {number[]} right
- * @returns {number[]}
+ * @returns {number[]} The sorted union of left and right
  */
 function mergeSortedArrays(left, right) {
     const result = [];
     const I=left.length, J=right.length;
     for (let i=0, j=0; i<I || j<J;) {
         result.push(
-            (i==I ? Infinity : left[i]) < (j==J ? Infinity : right[j])
+            (i<I ? left[i] : Infinity) < (j<J ? right[j] : Infinity)
             ? left[i++]
             : right[j++]
         );
