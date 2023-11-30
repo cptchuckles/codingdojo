@@ -39,14 +39,21 @@ function mergeSort(arr) {
     return mergeSortedArrays(mergeSort(left), mergeSort(right));
 }
 
-function mergeSortedArrays(arr1, arr2) {
+/**
+ * Merge sorted arrays
+ *
+ * @param {number[]} left
+ * @param {number[]} right
+ * @returns {number[]}
+ */
+function mergeSortedArrays(left, right) {
     const result = [];
-    const I=arr1.length, J=arr2.length;
+    const I=left.length, J=right.length;
     for (let i=0, j=0; i<I || j<J;) {
         result.push(
-            (i==I ? Infinity : arr1[i]) < (j==J ? Infinity : arr2[j])
-            ? arr1[i++]
-            : arr2[j++]
+            (i==I ? Infinity : left[i]) < (j==J ? Infinity : right[j])
+            ? left[i++]
+            : right[j++]
         );
     }
     return result;
