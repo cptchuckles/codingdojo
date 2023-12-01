@@ -2,6 +2,7 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import BoxForm from './BoxForm'
 
 
 class Box {
@@ -60,15 +61,7 @@ function App() {
   return (
     <>
       <h1>Box Generator</h1>
-      <form onSubmit={boxFormSubmitHandler}>
-        <label htmlFor="color">Color:
-          <input type="text" name="color" id="color" />
-        </label>
-        <label htmlFor="size">Size in pixels:
-          <input type="number" min="50" max="500" name="size" defaultValue={120} />
-        </label>
-        <button>MAKE BOCKS</button>
-      </form>
+      <BoxForm submitHandler={boxFormSubmitHandler} />
       <div style={{display: "flex", gap: "1em", flexWrap: "wrap"}}>
         {
           boxes.map(box => (

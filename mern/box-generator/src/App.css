@@ -10,6 +10,9 @@ form {
   flex-direction: column;
   gap: .5em;
 
+  width: 300px;
+  margin: auto;
+
   & label {
     display: flex;
     gap: 1ch;
