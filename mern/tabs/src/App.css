@@ -1,0 +1,33 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+
+  width: 90vw;
+  max-width: 600px;
+}
+
+.tabBody {
+  width: 100%;
+  border: 1px solid white;
+}
+
+.tabHeadings {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  gap: 0;
+  justify-content: flex-begin;
+
+  & a {
+    cursor: pointer;
+    color: white !important;
+    font-weight: bold;
+
+    padding: 1em;
+    border: 1px solid white;
+    border-bottom: none;
+    margin-right: -1px;
+  }
+}
