@@ -3,6 +3,13 @@
 // https://upload.wikimedia.org/wikipedia/commons/8/84/Lomuto_animated.gif
 
 
+/**
+ * Swaps values in an array beteween index i and j
+ *
+ * @param {any[]} arr
+ * @param {number} i
+ * @param {number} j
+ */
 function swap(arr, i, j) {
     const tmp = arr[i];
     arr[i] = arr[j];
