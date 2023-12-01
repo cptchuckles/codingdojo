@@ -11,6 +11,7 @@ class Box {
   /**
    * Creates a new Box object with a unique auto-incrementing id number
    *
+   * @constructor
    * @param {Object} args
    * @param {string} args.color
    * @param {number} args.size
