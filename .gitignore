@@ -1,5 +1,6 @@
 csm/
 projects/
+node_modules/
 .ropeproject/
 **/exam/
 **/__pycache__/
