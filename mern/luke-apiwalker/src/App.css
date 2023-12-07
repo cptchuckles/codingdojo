@@ -1,0 +1,23 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+form {
+  display: flex;
+  gap: 2ch;
+  width: fit-content;
+  margin: auto;
+}
+
+button, input, select {
+  padding: .5em;
+  border-radius: .25em;
+}
+
+input[type="number"] {
+  text-align: right;
+  width: 6ch;
+}
