@@ -1,0 +1,290 @@
+ $ mongosh "mongodb+srv://jcg-cluster0.tl5qsc7.mongodb.net/" --apiVersion 1 --username based
+Enter password: ************************
+Current Mongosh Log ID: 6573576876b961091260be8c
+Connecting to:          mongodb+srv://<credentials>@jcg-cluster0.tl5qsc7.mongodb.net/?appName=mongosh+2.1.1
+Using MongoDB:          6.0.12 (API Version 1)
+Using Mongosh:          2.1.1
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+Atlas atlas-f1mri0-shard-0 [primary] test> use my_first_db
+switched to db my_first_db
+Atlas atlas-f1mri0-shard-0 [primary] my_first_db> db.createCollection("students")
+{ ok: 1 }
+Atlas atlas-f1mri0-shard-0 [primary] my_first_db> db.my_first_db.insertOne({name: "anrold swerzigener", home_state: "CA", lucky_number: 77, birthday: {month: 2, day: 39, year: 1890}})
+{
+  acknowledged: true,
+  insertedId: ObjectId('6573581976b961091260be8d')
+}
+Atlas atlas-f1mri0-shard-0 [primary] my_first_db> db.my_first_db.insertOne({name: "justin bimberbonk", home_state: "WA", lucky_number: 69, birthday: {month: 8, day: 12, year: 1999}})
+{
+  acknowledged: true,
+  insertedId: ObjectId('6573585476b961091260be8e')
+}
+Atlas atlas-f1mri0-shard-0 [primary] my_first_db> db.my_first_db.insertOne({name: "mr potato", home_state: "TX", lucky_number: 3, birthday: {month: 4, day: 22, year: 2004}})
+{
+  acknowledged: true,
+  insertedId: ObjectId('6573587a76b961091260be8f')
+}
+Atlas atlas-f1mri0-shard-0 [primary] my_first_db> db.my_first_db.insertOne({name: "lord cromwell", home_state: "EN", lucky_number: 57, birthday: {month: 11, day: 2, year: 1629}})
+{
+  acknowledged: true,
+  insertedId: ObjectId('6573589d76b961091260be90')
+}
+Atlas atlas-f1mri0-shard-0 [primary] my_first_db> db.my_first_db.insertOne({name: "darth vader", home_state: "TA", lucky_number: 66, birthday: {month: 1, day: 27, year: -5627}})
+{
+  acknowledged: true,
+  insertedId: ObjectId('657358c976b961091260be91')
+}
+Atlas atlas-f1mri0-shard-0 [primary] my_first_db> db.my_first_db.find()
+[
+  {
+    _id: ObjectId('6573581976b961091260be8d'),
+    name: 'anrold swerzigener',
+    home_state: 'CA',
+    lucky_number: 77,
+    birthday: { month: 2, day: 39, year: 1890 }
+  },
+  {
+    _id: ObjectId('6573585476b961091260be8e'),
+    name: 'justin bimberbonk',
+    home_state: 'WA',
+    lucky_number: 69,
+    birthday: { month: 8, day: 12, year: 1999 }
+  },
+  {
+    _id: ObjectId('6573587a76b961091260be8f'),
+    name: 'mr potato',
+    home_state: 'TX',
+    lucky_number: 3,
+    birthday: { month: 4, day: 22, year: 2004 }
+  },
+  {
+    _id: ObjectId('6573589d76b961091260be90'),
+    name: 'lord cromwell',
+    home_state: 'EN',
+    lucky_number: 57,
+    birthday: { month: 11, day: 2, year: 1629 }
+  },
+  {
+    _id: ObjectId('657358c976b961091260be91'),
+    name: 'darth vader',
+    home_state: 'TA',
+    lucky_number: 66,
+    birthday: { month: 1, day: 27, year: -5627 }
+  }
+]
+Atlas atlas-f1mri0-shard-0 [primary] my_first_db> db.my_first_db.find({home_state: {$in: ["TX", "WA"]}})
+[
+  {
+    _id: ObjectId('6573585476b961091260be8e'),
+    name: 'justin bimberbonk',
+    home_state: 'WA',
+    lucky_number: 69,
+    birthday: { month: 8, day: 12, year: 1999 }
+  },
+  {
+    _id: ObjectId('6573587a76b961091260be8f'),
+    name: 'mr potato',
+    home_state: 'TX',
+    lucky_number: 3,
+    birthday: { month: 4, day: 22, year: 2004 }
+  }
+]
+Atlas atlas-f1mri0-shard-0 [primary] my_first_db> db.my_first_db.find({lucky_number: {$gt: 3}})
+[
+  {
+    _id: ObjectId('6573581976b961091260be8d'),
+    name: 'anrold swerzigener',
+    home_state: 'CA',
+    lucky_number: 77,
+    birthday: { month: 2, day: 39, year: 1890 }
+  },
+  {
+    _id: ObjectId('6573585476b961091260be8e'),
+    name: 'justin bimberbonk',
+    home_state: 'WA',
+    lucky_number: 69,
+    birthday: { month: 8, day: 12, year: 1999 }
+  },
+  {
+    _id: ObjectId('6573589d76b961091260be90'),
+    name: 'lord cromwell',
+    home_state: 'EN',
+    lucky_number: 57,
+    birthday: { month: 11, day: 2, year: 1629 }
+  },
+  {
+    _id: ObjectId('657358c976b961091260be91'),
+    name: 'darth vader',
+    home_state: 'TA',
+    lucky_number: 66,
+    birthday: { month: 1, day: 27, year: -5627 }
+  }
+]
+Atlas atlas-f1mri0-shard-0 [primary] my_first_db> db.my_first_db.updateMany({}, {$set: {interests: ["coding", "brunch", "MongoDB"]}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 5,
+  modifiedCount: 5,
+  upsertedCount: 0
+}
+Atlas atlas-f1mri0-shard-0 [primary] my_first_db> db.my_first_db.updateOne({$eq: {name: "anrold swerzigener"}}, {$addToSet: {interests: "lifting"}})
+MongoServerError: unknown top level operator: $eq. If you have a field name that starts with a '$' symb
+ol, consider using $getField or $setField.
+Atlas atlas-f1mri0-shard-0 [primary] my_first_db> db.my_first_db.updateOne({name: {$eq: "anrold swerzigener"}}, {$addToSet: {interests: "lifing"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+Atlas atlas-f1mri0-shard-0 [primary] my_first_db> db.my_first_db.updateOne({name: {$eq: "justin bimberbonk"}}, {$addToSet: {interests: "squawking"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+Atlas atlas-f1mri0-shard-0 [primary] my_first_db> db.my_first_db.updateOne({name: {$eq: "lord cromwell"}}, {$addToSet: {interests: "scheming"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+Atlas atlas-f1mri0-shard-0 [primary] my_first_db> db.my_first_db.updateOne({name: {$eq: "darth vader"}}, {$addToSet: {interests: "slaying younglings"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+Atlas atlas-f1mri0-shard-0 [primary] my_first_db> db.my_first_db.updateOne({name: {$eq: "mr potato"}}, {$addToSet: {interests: "peeling"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+Atlas atlas-f1mri0-shard-0 [primary] my_first_db> db.my_first_db.updateOne({name: {$eq: "lord cromwell"}}, {$addToSet: {interests: "scheming"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 0,
+  upsertedCount: 0
+}
+Atlas atlas-f1mri0-shard-0 [primary] my_first_db> db.my_first_db.updateOne({name: {$eq: "lord cromwell"}}, {$addToSet: {interests: "taxes"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+Atlas atlas-f1mri0-shard-0 [primary] my_first_db> db.my_first_db.findOne({name: {$eq: "lord cromwell"}})
+{
+  _id: ObjectId('6573589d76b961091260be90'),
+  name: 'lord cromwell',
+  home_state: 'EN',
+  lucky_number: 57,
+  birthday: { month: 11, day: 2, year: 1629 },
+  interests: [ 'coding', 'brunch', 'MongoDB', 'scheming', 'taxes' ]
+}
+Atlas atlas-f1mri0-shard-0 [primary] my_first_db> db.my_first_db.updateOne({name: {$eq: "lord cromwell"}}, {$removeFromSet: {interests: "taxes"}})
+MongoServerError: Unknown modifier: $removeFromSet. Expected a valid update modifier or pipeline-style 
+update specified as an array
+Atlas atlas-f1mri0-shard-0 [primary] my_first_db> db.my_first_db.updateOne({name: {$eq: "lord cromwell"}}, {$pop: {interests: 1}}
+... )
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+Atlas atlas-f1mri0-shard-0 [primary] my_first_db> db.my_first_db.findOne({name: {$eq: "lord cromwell"}})
+{
+  _id: ObjectId('6573589d76b961091260be90'),
+  name: 'lord cromwell',
+  home_state: 'EN',
+  lucky_number: 57,
+  birthday: { month: 11, day: 2, year: 1629 },
+  interests: [ 'coding', 'brunch', 'MongoDB', 'scheming' ]
+}
+Atlas atlas-f1mri0-shard-0 [primary] my_first_db> db.my_first_db.deleteMany({$eq: {home_state: "CA"}})
+MongoServerError: unknown top level operator: $eq. If you have a field name that starts with a '$' symb
+ol, consider using $getField or $setField.
+Atlas atlas-f1mri0-shard-0 [primary] my_first_db> db.my_first_db.deleteMany({home_state: {$eq: "CA"}})
+{ acknowledged: true, deletedCount: 1 }
+Atlas atlas-f1mri0-shard-0 [primary] my_first_db> db.my_first_db.deleteOne({name: {$eq: "lord cromwell"}})
+{ acknowledged: true, deletedCount: 1 }
+Atlas atlas-f1mri0-shard-0 [primary] my_first_db> db.my_first_db.deleteOne({lucky_number: {$gt: 5}})
+{ acknowledged: true, deletedCount: 1 }
+Atlas atlas-f1mri0-shard-0 [primary] my_first_db> db.my_first_db.updateMany({}, {number_of_belts: 0})
+MongoInvalidArgumentError: Update document requires atomic operators
+Atlas atlas-f1mri0-shard-0 [primary] my_first_db> db.my_first_db.updateMany({}, {$set: {number_of_belts: 0}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 2,
+  modifiedCount: 2,
+  upsertedCount: 0
+}
+Atlas atlas-f1mri0-shard-0 [primary] my_first_db> db.my_first_db.updateMany({home_state: {$eq: "WA"}}, {$inc: {number_of_belts: 1}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 0,
+  modifiedCount: 0,
+  upsertedCount: 0
+}
+Atlas atlas-f1mri0-shard-0 [primary] my_first_db> db.my_first_db.updateMany({}, {$set: {updated_on: $now}})
+ReferenceError: $now is not defined
+Atlas atlas-f1mri0-shard-0 [primary] my_first_db> db.my_first_db.updateMany({}, {$set: {updated_on: $currentDate}})
+ReferenceError: $currentDate is not defined
+Atlas atlas-f1mri0-shard-0 [primary] my_first_db> db.my_first_db.updateMany({}, {$set: {$currentDate: {updated_on: "timestamp"}}})
+MongoServerError: The dollar ($) prefixed field '$currentDate' in '$currentDate' is not allowed in the 
+context of an update's replacement document. Consider using an aggregation pipeline with $replaceWith.
+Atlas atlas-f1mri0-shard-0 [primary] my_first_db> db.my_first_db.updateMany({}, {$currentDate: {updated: "timestamp"}})
+MongoServerError: string is not valid type for $currentDate. Please use a boolean ('true') or a $type e
+xpression ({$type: 'timestamp/date'}).
+Atlas atlas-f1mri0-shard-0 [primary] my_first_db> db.my_first_db.updateMany({}, {$currentDate: {updated_on: {$type: "timestamp"}}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 2,
+  modifiedCount: 2,
+  upsertedCount: 0
+}
+Atlas atlas-f1mri0-shard-0 [primary] my_first_db> db.my_first_db.find()
+[
+  {
+    _id: ObjectId('6573587a76b961091260be8f'),
+    name: 'mr potato',
+    home_state: 'TX',
+    lucky_number: 3,
+    birthday: { month: 4, day: 22, year: 2004 },
+    interests: [ 'coding', 'brunch', 'MongoDB', 'peeling' ],
+    number_of_belts: 0,
+    updated_on: Timestamp({ t: 1702059534, i: 2 })
+  },
+  {
+    _id: ObjectId('657358c976b961091260be91'),
+    name: 'darth vader',
+    home_state: 'TA',
+    lucky_number: 66,
+    birthday: { month: 1, day: 27, year: -5627 },
+    interests: [ 'coding', 'brunch', 'MongoDB', 'slaying younglings' ],
+    number_of_belts: 0,
+    updated_on: Timestamp({ t: 1702059534, i: 4 })
+  }
+]
+Atlas atlas-f1mri0-shard-0 [primary] my_first_db> 
