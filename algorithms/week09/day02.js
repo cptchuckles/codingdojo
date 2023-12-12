@@ -36,4 +36,19 @@ function findConsqSums(arr, k) {
     return result;
 }
 
-console.log(findConsqSums(arr, k));
+function findConsqSumsSlidingWindow(arr, k) {
+    const result = [];
+    let runningSum = 0;
+    for (let i=0, j=0; i<=j; runningSum -= arr[i++]) {
+        while (runningSum <= k && j < arr.length) {
+            if (runningSum === k) {
+                result.push(arr.slice(i, j));
+            }
+            runningSum += arr[j++];
+        }
+    }
+    return result;
+}
+
+console.log("O((n³+n)/2):", findConsqSums(arr, k));
+console.log("O(n):", findConsqSumsSlidingWindow(arr, k));
