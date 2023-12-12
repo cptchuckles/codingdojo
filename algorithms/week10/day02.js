@@ -35,7 +35,32 @@ const students = [{
     }
 ];
 
-// Input: 3, { redBeltStatus: true }, students
+function findByIdAndUpdate(id, updatedVals, collection) {
+    for (const element of collection) {
+        if (element.id === id) {
+            for (const key in element) {
+                element[key] = updatedVals[key] ?? element[key];
+            }
+            return element;
+        }
+    }
+    return null;
+}
+
+studentIndex = students.reduce((index, student) => {
+    index[student.id] = student;
+    return index;
+}, {});
+function findByIdAndUpdateIndexed(id, updatedVals, collectionIndex) {
+    const element = collectionIndex[id];
+    for (const key in element) {
+        element[key] = updatedVals[key] ?? element[key];
+    }
+    return element ?? null;
+}
+
+console.log(findByIdAndUpdate(3, { redBeltStatus: true }, students));
+console.log(findByIdAndUpdateIndexed(3, { redBeltStatus: true }, studentIndex));
 // Output: {
 //   id: 3,
 //   name: "student3",
@@ -44,7 +69,8 @@ const students = [{
 //   redBeltStatus: true
 // }
 
-// Input: 1, { isLateToday: true, lateCount: 16, randomKey: "randomValue"  }, students
+console.log(findByIdAndUpdate(1, { isLateToday: true, lateCount: 16, randomKey: "randomValue"  }, students));
+console.log(findByIdAndUpdateIndexed(1, { isLateToday: true, lateCount: 16, randomKey: "randomValue"  }, studentIndex));
 // Output: {
 //   id: 1,
 //   name: "student1",
@@ -53,7 +79,6 @@ const students = [{
 //   redBeltStatus: false
 // }
 
-// Input: 5, {}, students
+console.log(findByIdAndUpdateIndexed(5, {}, studentIndex));
 // Output: null
 
-function findByIdAndUpdate(id, updatedVals, collection) {}
