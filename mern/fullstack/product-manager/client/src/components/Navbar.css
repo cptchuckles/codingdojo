@@ -1,0 +1,12 @@
+.navbar {
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+  width: fit-content;
+  margin: auto;
+
+  & > *:not(:last-child) {
+    padding-right: 1em;
+    border-right: 1px solid white;
+  }
+}
