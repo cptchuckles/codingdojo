@@ -1,10 +1,13 @@
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 import "./CreateProduct.css"
 
 export default ({ createProduct }) => {
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState(0);
   const [description, setDescription] = useState("");
+
+  const navigator = useNavigate();
 
   const setter = {
     title: setTitle,
@@ -20,9 +23,7 @@ export default ({ createProduct }) => {
   function submitForm(ev) {
     ev.preventDefault();
     createProduct({ title, price, description });
-    setTitle("");
-    setPrice(0);
-    setDescription("");
+    navigator("/products");
   }
 
   return (

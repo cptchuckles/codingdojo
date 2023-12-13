@@ -1,0 +1,20 @@
+* {
+  text-align: left;
+}
+
+.heading, .price {
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+  align-items: baseline;
+  margin: auto;
+  width: fit-content;
+}
+.heading {
+  justify-items: space-between;
+  width: 100%;
+}
+.date {
+  color: #777;
+  font-size: .8em;
+}

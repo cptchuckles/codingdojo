@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import "./ProductList.css"
+import { Link } from "react-router-dom";
 
 let antiDoubleGet = false;
 export default ({state}) => {
@@ -23,17 +24,17 @@ export default ({state}) => {
                 antiDoubleGet = false;
             })
             .catch(err => setError(err));
-    }, [products]);
+    }, []);
 
     return (
         <>
-        { error && ( <p>{error.message}!!!</p> ) }
+        { error && ( <p style={{color: "red"}}>{error.message}!!!</p> ) }
         { products.map(product => (
-            <p className="product" key={product.id}>
-                <strong>{product.title}</strong>
+            <div className="product" key={product._id}>
+                <strong><Link to={`/products/${product._id}`}>{product.title}</Link></strong>
                 <span className="description">{product.description}</span>
                 <pre>{product.price}</pre>
-            </p>
+            </div>
         ))}
         </>
     )
