@@ -19,4 +19,8 @@
 
   border-bottom: 1px solid gray;
   padding: 1em 0 1em 0;
+
+  & button {
+    flex: 0;
+  }
 }

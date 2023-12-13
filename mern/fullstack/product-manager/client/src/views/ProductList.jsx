@@ -4,7 +4,7 @@ import "./ProductList.css"
 import { Link } from "react-router-dom";
 
 let antiDoubleGet = false;
-export default ({state}) => {
+export default ({ state, deleteAction }) => {
     const { products, setProducts } = state;
 
     const [error, setError] = useState(null);
@@ -34,6 +34,7 @@ export default ({state}) => {
                 <strong><Link to={`/products/${product._id}`}>{product.title}</Link></strong>
                 <span className="description">{product.description}</span>
                 <pre>{product.price}</pre>
+                <button type="button" onClick={() => deleteAction(product._id)}>X</button>
             </div>
         ))}
         </>

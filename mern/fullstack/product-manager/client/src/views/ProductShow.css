@@ -9,6 +9,16 @@
   align-items: baseline;
   margin: auto;
   width: fit-content;
+
+  & .actions {
+    text-align: right;
+
+    & a:not(:last-child) {
+      padding-right: .5em;
+      border-right: 1px solid gray;
+      margin-right: .5em;
+    }
+  }
 }
 .heading {
   justify-items: space-between;

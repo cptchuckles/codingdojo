@@ -19,4 +19,17 @@ form {
       }
     }
   }
+
+  & .form-actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    & button {
+      margin-right: 1em;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
 }
