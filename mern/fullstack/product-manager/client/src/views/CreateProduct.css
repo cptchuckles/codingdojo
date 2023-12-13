@@ -1,0 +1,22 @@
+form {
+  display: flex;
+  flex-direction: column;
+  gap: .5em;
+
+  & label {
+    display: flex;
+    flex-direction: row;
+    gap: .5em;
+    align-items: baseline;
+
+    & input {
+      flex: 1;
+      border-radius: .25em;
+      padding: .5em;
+
+      &[type="number"] {
+        text-align: right;
+      }
+    }
+  }
+}

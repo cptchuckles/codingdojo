@@ -1,0 +1,22 @@
+.product {
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+  width: 100%;
+  text-align: left;
+  align-items: baseline;
+
+  & * {
+    flex: 1;
+    &:last-child {
+      text-align: right;
+    }
+  }
+
+  & .description {
+    flex: 3;
+  }
+
+  border-bottom: 1px solid gray;
+  padding: 1em 0 1em 0;
+}
