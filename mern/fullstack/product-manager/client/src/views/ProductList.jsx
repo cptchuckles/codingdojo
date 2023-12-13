@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import "./ProductList.css"
 import { Link } from "react-router-dom";
+import "./ProductList.css"
 
 let antiDoubleGet = false;
 export default ({ state, deleteAction }) => {

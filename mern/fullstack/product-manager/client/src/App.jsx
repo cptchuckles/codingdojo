@@ -1,11 +1,11 @@
 import { useState } from 'react'
-import './App.css'
 import { useNavigate, Route, Routes } from 'react-router-dom'
-import ProductList from './views/ProductList'
-import Navbar from './components/Navbar'
-import ProductForm from './views/ProductForm'
 import axios from 'axios'
+import ProductList from './views/ProductList'
+import ProductForm from './views/ProductForm'
 import ProductShow from './views/ProductShow'
+import Navbar from './components/Navbar'
+import './App.css'
 
 function App() {
   const [products, setProducts] = useState([]);
