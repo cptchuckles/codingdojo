@@ -68,3 +68,15 @@ function getMaxServingsNested(recipe, ingredients) {
     }
     return limit;
 }
+
+console.log(getMaxServings(recipe, available));
+
+const recipe2 = {
+    stuff: recipe,
+};
+
+const available2 = {
+    stuff: available,
+};
+
+console.log(getMaxServingsNested(recipe2, available2));
