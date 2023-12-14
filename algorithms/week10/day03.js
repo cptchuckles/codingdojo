@@ -45,25 +45,25 @@ const available = {
 // Output: 0 IF we had 0 live squids or live squids key didn't exist in 'available'
 
 function getMaxServings(recipe, ingredients) {
-    let limit = Infinity;
+    let limit = undefined;
     for (const key in recipe) {
         const needed = recipe[key];
         const onHand = ingredients[key] ?? 0;
-        limit = Math.min(limit, Math.floor(onHand / needed));
+        limit = Math.min(limit ?? Infinity, Math.floor(onHand / needed));
     }
     return limit;
 }
 
 function getMaxServingsNested(recipe, ingredients) {
-    let limit = Infinity;
+    let limit = undefined;
     for (const key in recipe) {
         const needed = recipe[key];
         if (typeof needed === 'number') {
             const onHand = ingredients[key] ?? 0;
-            limit = Math.min(limit, Math.floor(onHand / needed));
+            limit = Math.min(limit ?? Infinity, Math.floor(onHand / needed));
         }
         else {
-            limit = Math.min(limit, getMaxServingsNested(needed, ingredients[key] ?? {}));
+            limit = Math.min(limit ?? Infinity, getMaxServingsNested(needed, ingredients[key] ?? {}));
         }
     }
     return limit;
