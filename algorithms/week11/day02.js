@@ -12,19 +12,25 @@ const Search = "Remind me to record the video"
 const Output = 2
 
 const strMatcher = (search, target) => {
-    const freqs = {};
-    for (let i=0; i<search.length; i++) {
-        const c = search[i].toLowerCase();
-        freqs[c] = (freqs[c] ?? 0) + 1;
+    const getFreqs = (str) => {
+        const freqs = {};
+        for (let i=0; i<str.length; i++) {
+            const c = str[i].toLowerCase();
+            freqs[c] = (freqs[c] ?? 0) + 1;
+        }
+        return freqs;
     }
 
-    let times = Infinity;
-    for (let i=0; i<target.length; i++) {
-        const c = target[i].toLowerCase();
-        times = Math.min(times, freqs[c] ?? 0);
+    const searchFreqs = getFreqs(search);
+    const targetFreqs = getFreqs(target);
+
+    let timesSpelled = Infinity;
+    for (const c in targetFreqs) {
+        const letterTimes = Math.floor((searchFreqs[c] ?? 0) / targetFreqs[c]);
+        timesSpelled = Math.min(timesSpelled, letterTimes);
     }
 
-    return times;
+    return timesSpelled;
 }
 
 console.log(strMatcher(Search, Target), "should be", Output);
