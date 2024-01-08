@@ -29,9 +29,9 @@ public class CafeJava {
         // Example:
         System.out.println(generalGreeting + customer1); // Displays "Welcome to Cafe Java, Cindhuri"
         // ** Your customer interaction print statements will go here ** //
-        System.out.println(generalGreeting + customer2); // Displays "Welcome to Cafe Java, Cindhuri"
-        System.out.println(generalGreeting + customer3); // Displays "Welcome to Cafe Java, Cindhuri"
-        System.out.println(generalGreeting + customer4); // Displays "Welcome to Cafe Java, Cindhuri"
+        System.out.println(generalGreeting + customer2); // Displays "Welcome to Cafe Java, Sam"
+        System.out.println(generalGreeting + customer3); // Displays "Welcome to Cafe Java, Jimmy"
+        System.out.println(generalGreeting + customer4); // Displays "Welcome to Cafe Java, Noah"
 
         System.out.println(customer1 + (isReadyOrder1 ? readyMessage : pendingMessage));
 
