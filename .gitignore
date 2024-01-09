@@ -13,3 +13,4 @@ node_modules/
 *.docx
 *.lock
 *.env
+*.class
