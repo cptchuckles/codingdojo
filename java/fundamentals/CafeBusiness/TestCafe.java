@@ -37,5 +37,9 @@ public class TestCafe {
             appTest.addCustomer(customers);
             System.out.println("\n");
         }
+
+        appTest.printPriceChart("Columbian Coffee Grounds", 2.00, 4);
+
+        appTest.addCustomers();
     }
 }

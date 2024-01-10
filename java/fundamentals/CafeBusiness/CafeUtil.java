@@ -32,4 +32,44 @@ public class CafeUtil {
         customers.add(username);
         customers.forEach(customer -> System.out.println(customer));
     }
+
+    public void printPriceChart(String product, double price, int maxQuantity) {
+        System.out.println(product);
+        for (int i = 1; i <= maxQuantity; i++) {
+            double runningPrice = price * i;
+            runningPrice -= 0.5 * (i-1);
+            System.out.printf("%d - $%.2f\n", i, runningPrice);
+        }
+    }
+
+    public boolean displayMenu(ArrayList<String> menuItems, ArrayList<Double> prices) {
+        if (menuItems.size() != prices.size()) {
+            return false;
+        }
+
+        for (int i = 0; i < menuItems.size(); i++) {
+            System.out.printf("%d %s -- $%.2f\n", i, menuItems.get(i), prices.get(i));
+        }
+
+        return true;
+    }
+
+    public void addCustomers() {
+        var customers = new ArrayList<String>();
+
+        while (true) {
+            System.out.print("Enter a new customer name ('q' when done): ");
+            String input = System.console().readLine();
+            if (input.equals("q")) {
+                break;
+            }
+
+            customers.add(input);
+        }
+
+        System.out.println("----- New customers added -----");
+        for (String customer : customers) {
+            System.out.println(customer);
+        }
+    }
 }
