@@ -1,12 +1,16 @@
 import java.util.ArrayList;
 
 public class Order {
-    private String name;
-    private double total;
-    private boolean ready;
-    private ArrayList<Item> items;
+    private String name = "Anonymous";
+    private double total = 0.0;
+    private boolean ready = false;
+    private ArrayList<Item> items = new ArrayList<>();
 
 	public Order() {}
+
+    public Order(String name) {
+        this.name = name;
+    }
 
     public String getName() {
 		return name;
@@ -39,6 +43,15 @@ public class Order {
 
 	public void setItems(ArrayList<Item> items) {
 		this.items = items;
+        this.updateTotal();
+    }
+
+    public void addItem(Item item) {
+        this.items.add(item);
+        this.updateTotal();
+    }
+
+    private void updateTotal() {
         double total = 0;
         for (Item item : items) {
             total += item.getPrice();
