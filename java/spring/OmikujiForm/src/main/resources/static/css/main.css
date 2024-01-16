@@ -1,0 +1,67 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+html {
+    padding: 1em 0;
+}
+
+h1, p {
+    margin: .75em 0;
+}
+
+h1 {
+    text-align: center;
+}
+
+p.results {
+    font-size: 2em;
+    padding: 1em;
+    background-color: #3ef;
+    border: 2px solid black;
+    text-align: center;
+}
+
+a {
+    display: block;
+    text-align: center;
+}
+
+body {
+    width: 600px;
+    margin: auto;
+}
+
+form {
+    border: 1px solid black;
+    padding: 1.5em;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+
+    & label {
+        display: flex;
+        flex-direction: column;
+    }
+
+    & :where(input, textarea, button) {
+        border: 1px solid gray;
+        border-radius: .25em;
+        font-size: 1em;
+        padding: .25em;
+        &[type="number"] {
+            width: 5ch;
+        }
+    }
+
+    & button {
+        background-color: #3ab;
+        color: #efe;
+        box-shadow: 2px 2px black;
+        text-align: center;
+        cursor: pointer;
+    }
+}
