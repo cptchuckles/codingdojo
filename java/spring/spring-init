@@ -1,0 +1,2 @@
+#!/bin/bash
+spring init --build=maven -d=web,devtools -g world.grendel --package-name world.grendel."${1,,}" -n "$1" "$1" && cd "$1"
