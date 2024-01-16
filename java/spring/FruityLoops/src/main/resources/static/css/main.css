@@ -1,0 +1,27 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  margin: .5rem 0;
+}
+
+body {
+  padding-top: 1em;
+  width: 1200px;
+  max-width: 95vw;
+  min-width: 600px;
+  margin: auto;
+}
+
+table :where(th, td) {
+  padding: .25em 1em;
+  border: 1px solid black;
+
+  &:where(.item-name, .price) {
+    text-align: right;
+  }
+}
