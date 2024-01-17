@@ -5,7 +5,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.view.RedirectView;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -21,7 +20,7 @@ public class OmikujiController {
     }
 
     @PostMapping("")
-    public RedirectView submit(HttpSession session,
+    public String submit(HttpSession session,
         @RequestParam(value="number") Integer number,
         @RequestParam(value="city") String city,
         @RequestParam(value="endeavor") String endeavor,
@@ -36,7 +35,7 @@ public class OmikujiController {
             session.setAttribute("compliments", compliments);
         }
 
-        return new RedirectView("/omikuji/results");
+        return "redirect:/omikuji/results";
     }
 
     @GetMapping("/results")
