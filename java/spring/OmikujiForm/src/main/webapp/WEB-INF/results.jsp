@@ -19,7 +19,7 @@ pageEncoding="UTF-8" import="java.util.Date"%>
             <c:out value="${endeavor}" /> for a living.
             The next time you see a <c:out value="${organism}" />,
             you will have good luck.
-            <c:if test="${compliments != null}">
+            <c:if test="${compliments.length() gt 0}">
             Also, <c:out value="${compliments}" />
             </c:if>
         </p>

@@ -32,7 +32,7 @@ public class OmikujiController {
         session.setAttribute("city", city);
         session.setAttribute("endeavor", endeavor);
         session.setAttribute("organism", organism);
-        if (compliments != null) {
+        if (!compliments.equals("")) {
             session.setAttribute("compliments", compliments);
         }
 
