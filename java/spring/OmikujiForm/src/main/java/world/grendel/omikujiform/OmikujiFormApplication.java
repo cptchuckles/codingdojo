@@ -16,7 +16,7 @@ public class OmikujiFormApplication {
 
 	@GetMapping("/")
 	public RedirectView index() {
-		return new RedirectView("/omikuji/");
+		return new RedirectView("/omikuji");
 	}
 
 }

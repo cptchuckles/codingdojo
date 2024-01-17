@@ -11,7 +11,7 @@ pageEncoding="UTF-8" import="java.util.Date"%>
     </head>
     <body>
         <h1>Send an Omikuji!</h1>
-        <form action="/omikuji/" method="POST">
+        <form action="/omikuji" method="POST">
             <label>Pick any number form 5 to 25:
                 <input type="number" name="number" id="number" min="5" max="25" required />
             </label>

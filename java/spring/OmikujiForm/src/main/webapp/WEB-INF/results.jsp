@@ -23,6 +23,6 @@ pageEncoding="UTF-8" import="java.util.Date"%>
             Also, <c:out value="${compliments}" />
             </c:if>
         </p>
-        <a href="/omikuji/">Go back</a>
+        <a href="/omikuji">Go back</a>
     </body>
 </html>

@@ -15,12 +15,12 @@ import jakarta.servlet.http.HttpSession;
 @Controller
 @RequestMapping("/omikuji")
 public class OmikujiController {
-    @GetMapping("/")
+    @GetMapping("")
     public String form() {
         return "form.jsp";
     }
 
-    @PostMapping("/")
+    @PostMapping("")
     public RedirectView submit(HttpSession session,
         @RequestParam(value="number") Integer number,
         @RequestParam(value="city") String city,
