@@ -34,10 +34,11 @@ public class BooksApiController {
     @PostMapping("")
     public Book create(
             @RequestParam(value="title") String title,
+            @RequestParam(value="language") String language,
             @RequestParam(value="description") String description,
             @RequestParam(value="pageCount") Integer pageCount
     ) {
-        Book b = new Book(title, description, pageCount);
+        Book b = new Book(title, language, description, pageCount);
         return bookService.createBook(b);
     }
 

@@ -12,6 +12,7 @@
     <body>
         <div class="container mt-5">
             <h1><c:out value="${shownBook.title}" /></h1>
+            <p>Language: <c:out value="${shownBook.language}" /></p>
             <p>Description: <c:out value="${shownBook.description}" /></p>
             <p>Page Count: <c:out value="${shownBook.pageCount}" /></p>
             <a href="/books">Return to Index</a>

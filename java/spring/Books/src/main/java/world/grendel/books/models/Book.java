@@ -31,12 +31,16 @@ public class Book {
     private String title;
 
     @NotNull
+    @Size(min = 2, max = 40, message = "Language must be at least 2 characters")
+    private String language;
+
+	@NotNull
     @Size(min = 5)
     @Column(columnDefinition = "TEXT")
     private String description;
 
     @NotNull
-    @Min(100)
+    @Min(value = 100, message = "Must be at least 100 pages long or else it's not really a book it's just a pamphlet and the website isn't called Pamphlets!")
     private Integer pageCount;
 
     @Column(updatable = false)
@@ -48,8 +52,10 @@ public class Book {
 
     public Book() {
     }
-    public Book(String title, String description, Integer pageCount) {
+
+    public Book(String title, String language, String description, Integer pageCount) {
         this.title = title;
+        this.language = language;
         this.description = description;
         this.pageCount = pageCount;
     }
@@ -79,6 +85,14 @@ public class Book {
     public void setTitle(String title) {
         this.title = title;
     }
+
+    public String getLanguage() {
+		return language;
+	}
+
+	public void setLanguage(String language) {
+		this.language = language;
+	}
 
     public String getDescription() {
         return description;
