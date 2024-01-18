@@ -22,7 +22,8 @@ public class BooksController {
     }
 
     @GetMapping("")
-    public String index() {
+    public String index(Model model) {
+        model.addAttribute("allBooks", bookService.allBooks());
         return "booksIndex.jsp";
     }
 

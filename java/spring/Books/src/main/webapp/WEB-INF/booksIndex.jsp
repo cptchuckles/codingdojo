@@ -11,7 +11,27 @@
     </head>
     <body>
         <div class="container mt-5">
-            <h1>henlo</h1>
+            <h1>here are some books!!!!!!</h1>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th># Pages</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <c:forEach var="oneBook" items="${allBooks}">
+                    <tr>
+                        <td><c:out value="${oneBook.id}" /></td>
+                        <td><em><a href="/books/${oneBook.id}"><c:out value="${oneBook.title}" /></a></em></td>
+                        <td><c:out value="${oneBook.description}" /></td>
+                        <td><c:out value="${oneBook.pageCount}" /></td>
+                    </tr>
+                    </c:forEach>
+                </tbody>
+            </table>
         </div>
     </body>
 </html>
