@@ -1,4 +1,4 @@
-package world.grendel.booksapi.controllers;
+package world.grendel.books.controllers;
 
 import java.util.List;
 
@@ -11,18 +11,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import world.grendel.booksapi.models.Book;
-import world.grendel.booksapi.services.BookService;
+import world.grendel.books.models.Book;
+import world.grendel.books.services.BookService;
 
 /**
- * BooksApi
+ * Books
  */
 @RestController
 @RequestMapping("/api/books")
-public class BooksApi {
+public class BooksApiController {
     private final BookService bookService;
 
-    public BooksApi(BookService bookService) {
+    public BooksApiController(BookService bookService) {
         this.bookService = bookService;
     }
 

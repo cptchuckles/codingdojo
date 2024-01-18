@@ -1,13 +1,13 @@
-package world.grendel.booksapi;
+package world.grendel.books;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class BooksApiApplication {
+public class BooksApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(BooksApiApplication.class, args);
+		SpringApplication.run(BooksApplication.class, args);
 	}
 
 }

@@ -1,11 +1,11 @@
-package world.grendel.booksapi.repositories;
+package world.grendel.books.repositories;
 
 import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import world.grendel.booksapi.models.Book;
+import world.grendel.books.models.Book;
 
 /**
  * BookRepository

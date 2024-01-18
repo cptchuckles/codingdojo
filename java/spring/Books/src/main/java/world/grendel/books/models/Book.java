@@ -1,4 +1,4 @@
-package world.grendel.booksapi.models;
+package world.grendel.books.models;
 
 import java.util.Date;
 

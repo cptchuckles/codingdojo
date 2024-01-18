@@ -1,11 +1,11 @@
-package world.grendel.booksapi.services;
+package world.grendel.books.services;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import world.grendel.booksapi.models.Book;
-import world.grendel.booksapi.repositories.BookRepository;
+import world.grendel.books.models.Book;
+import world.grendel.books.repositories.BookRepository;
 
 /**
  * BooksService
