@@ -34,6 +34,15 @@ public class BurgerController {
         model.addAttribute("allBurgers", allBurgers);
         return "listBurgers.jsp";
     }
+
+    @GetMapping("/{id}")
+    public String show(@PathVariable("id") Long id, Model model) {
+        Burger burger = burgerService.getBurger(id);
+        if (burger == null) {
+            return "redirect:/burgers";
+        }
+        model.addAttribute("burger", burger);
+        return "showBurger.jsp";
     }
 
     @PostMapping("")

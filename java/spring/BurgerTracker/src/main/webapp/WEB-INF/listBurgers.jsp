@@ -17,7 +17,7 @@
         <thead>
           <tr>
             <th>Burger name</th>
-            <th>Restaraunt Name</th>
+            <th>Restaurant Name</th>
             <th>Rating (out of 5)</th>
           </tr>
         </thead>
@@ -25,7 +25,7 @@
           <c:forEach var="oneBurger" items="${allBurgers}">
           <tr>
             <td><a href="/burgers/${oneBurger.id}"><c:out value="${oneBurger.burgerName}" /></a></td>
-            <td><c:out value="${oneBurger.restarauntName}" /></td>
+            <td><c:out value="${oneBurger.restaurantName}" /></td>
             <td><c:out value="${oneBurger.rating}" /></td>
           </tr>
           </c:forEach>
@@ -40,9 +40,9 @@
             <form:input class="form-control" path="burgerName" />
           </p>
           <p>
-            <form:label class="form-label" path="restarauntName">Restaraunt Name</form:label>
-            <form:errors class="form-text text-danger" path="restarauntName" />
-            <form:input class="form-control" path="restarauntName" />
+            <form:label class="form-label" path="restaurantName">Restaurant Name</form:label>
+            <form:errors class="form-text text-danger" path="restaurantName" />
+            <form:input class="form-control" path="restaurantName" />
           </p>
           <p>
             <form:label class="form-label" path="rating">Rating</form:label>

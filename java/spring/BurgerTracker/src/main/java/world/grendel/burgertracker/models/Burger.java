@@ -32,7 +32,7 @@ public class Burger {
 
     @NotNull
     @Length(min = 5, max = 32)
-    private String restarauntName;
+    private String restaurantName;
 
     @NotNull
     @Range(min = 1, max = 5)
@@ -52,9 +52,9 @@ public class Burger {
 
 	public Burger() {
     }
-    public Burger(String burgerName, String restarauntName, Integer rating, String notes) {
+    public Burger(String burgerName, String restaurantName, Integer rating, String notes) {
         this.burgerName = burgerName;
-        this.restarauntName = restarauntName;
+        this.restaurantName = restaurantName;
         this.rating = rating;
 		this.notes = notes;
     }
@@ -80,11 +80,11 @@ public class Burger {
 	public void setBurgerName(String burgerName) {
 		this.burgerName = burgerName;
 	}
-	public String getRestarauntName() {
-		return restarauntName;
+	public String getRestaurantName() {
+		return restaurantName;
 	}
-	public void setRestarauntName(String restarauntName) {
-		this.restarauntName = restarauntName;
+	public void setRestaurantName(String restaurantName) {
+		this.restaurantName = restaurantName;
 	}
 	public Integer getRating() {
 		return rating;

@@ -22,9 +22,9 @@
           <form:input class="form-control" path="burgerName" />
         </p>
         <p>
-          <form:label class="form-label" path="restarauntName">Restaraunt Name</form:label>
-          <form:errors class="form-text text-danger" path="restarauntName" />
-          <form:input class="form-control" path="restarauntName" />
+          <form:label class="form-label" path="restaurantName">Restaurant Name</form:label>
+          <form:errors class="form-text text-danger" path="restaurantName" />
+          <form:input class="form-control" path="restaurantName" />
         </p>
         <p>
           <form:label class="form-label" path="rating">Rating</form:label>
