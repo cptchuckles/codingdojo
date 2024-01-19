@@ -30,9 +30,11 @@ public class ExpenseController {
     // create
     @PostMapping("")
     public String create(
-        @Valid @ModelAttribute("newExpense") Expense newExpense, BindingResult result
+        @Valid @ModelAttribute("newExpense") Expense newExpense, BindingResult result,
+        Model model
     ) {
         if (result.hasErrors()) {
+            model.addAttribute("allExpenses", expenseService.getAll());
             return "expensesIndex.jsp";
         }
         expenseService.create(newExpense);
