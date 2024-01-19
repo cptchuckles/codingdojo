@@ -37,6 +37,7 @@
           <form:textarea class="form-control" path="notes" />
         </p>
         <input type="submit" value="UPDATE RECIPE!!!" class="btn btn-primary" />
+        <a href="/burgers" class="btn btn-secondary">Cancel</a>
       </form:form>
     </div>
   </body>
