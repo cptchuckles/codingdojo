@@ -29,4 +29,8 @@ public class BurgerService {
     public void createBurger(Burger newBurger) {
         burgerRepository.save(newBurger);
     }
+
+    public void updateBurger(Burger burger) {
+        burgerRepository.save(burger);
+    }
 }
