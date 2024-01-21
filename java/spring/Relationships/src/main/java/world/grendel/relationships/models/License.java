@@ -31,6 +31,7 @@ public class License {
     @NotEmpty
     private String number;
     @NotNull
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date expirationDate;
     @NotEmpty
     private String state;
@@ -41,6 +42,7 @@ public class License {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date updatedAt;
 
+    @NotNull
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "person_id")
     private Person person;
