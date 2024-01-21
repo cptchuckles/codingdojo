@@ -1,3 +1,4 @@
+<%@ page isErrorPage="true" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="java.util.Date"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -15,12 +16,12 @@
       <form:form class="form" action="/persons" method="POST" modelAttribute="newPerson">
         <p>
           <form:label class="form-label" path="firstName">First Name</form:label>
-          <form:errors class="text-error" path="firstName" />
+          <form:errors class="form-text text-danger" path="firstName" />
           <form:input class="form-control" path="firstName" />
         </p>
         <p>
           <form:label class="form-label" path="lastName">Last Name</form:label>
-          <form:errors class="text-error" path="lastName" />
+          <form:errors class="form-text text-danger" path="lastName" />
           <form:input class="form-control" path="lastName" />
         </p>
         <p>

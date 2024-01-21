@@ -43,7 +43,7 @@ public class PersonController {
         Model model
     ) {
         if (result.hasErrors()) {
-            model.addAttribute("newPerson", new Person());
+            model.addAttribute("newPerson", newPerson);
             return "personForm.jsp";
         }
         personService.create(newPerson);
