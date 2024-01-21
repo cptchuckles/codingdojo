@@ -11,34 +11,37 @@
   </head>
   <body>
     <div class="container pt-5">
-      <h1>People</h1>
+      <h1>Person Details</h1>
       <table class="table">
         <thead>
           <tr>
-            <th>Name</th>
+            <th>Full Name</th>
+            <th>License Number</th>
+            <th>State</th>
+            <th>Expiration</th>
             <th>Actions</th>
           </tr>
         </thead>
         <tbody>
-          <c:forEach var="onePerson" items="${allPersons}">
           <tr>
             <td>
-              <c:out value="${onePerson.firstName}" />
-              <c:out value="${onePerson.lastName}" />
+              <c:out value="${person.firstName}" />
+              <c:out value="${person.lastName}" />
             </td>
-            <td class="row">
-              <a class="col" href="/persons/${onePerson.id}">View</a>
-              <form:form class="col" action="/persons/${onePerson.id}" method="DELETE">
-                <input type="submit" value="Delete" class="btn btn-link p-0" />
+            <td><c:out value="${person.license.number}" /></td>
+            <td><c:out value="${person.license.state}" /></td>
+            <td><c:out value="${person.license.expirationDate}" /></td>
+            <td>
+              <c:if test="${person.license ne null}">
+              <form:form action="/licenses/${person.license.id}" method="DELETE">
+                <input type="submit" value="Revoke License" class="btn btn-link p-0" />
               </form:form>
+              </c:if>
             </td>
           </tr>
-          </c:forEach>
         </tbody>
       </table>
-      <h2>Actions</h2>
-      <a href="/persons/new" class="btn btn-success">Add a Person</a>
-      <a href="/licenses/new" class="btn btn-primary">Add a License</a>
+      <a href="/persons">Back</a>
     </div>
   </body>
 </html>

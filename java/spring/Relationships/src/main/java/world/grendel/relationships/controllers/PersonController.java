@@ -32,6 +32,16 @@ public class PersonController {
         return "personIndex.jsp";
     }
 
+    @GetMapping("/{id}")
+    public String show(@PathVariable("id") Long id, Model model) {
+        Person person = personService.getById(id);
+        if (person == null) {
+            return "redirect:/persons";
+        }
+        model.addAttribute("person", person);
+        return "personShow.jsp";
+    }
+
     @GetMapping("/new")
     public String newForm(@ModelAttribute("newPerson") Person newPerson) {
         return "personForm.jsp";
