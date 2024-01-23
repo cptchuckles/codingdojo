@@ -36,7 +36,7 @@ public class User {
     private String email;
 
     @NotEmpty
-    @Size(min = 72, max = 72)
+    @Size(min = 60, max = 60)
     @Column(columnDefinition = "CHAR(72)")
     private String passwordHash;
 

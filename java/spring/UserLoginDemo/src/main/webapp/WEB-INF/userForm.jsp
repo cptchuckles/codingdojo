@@ -42,13 +42,16 @@
         <div class="col card continer pb-3">
           <h1>Login</h1>
           <form:form class="form" action="/login" method="POST" modelAttribute="userLogin">
-            <form:label class="form-label" path="username">Username</form:label>
-            <form:errors class="form-text text-danger" path="username" />
-              <form:input class="form-control" path="username" />
+            <p>
+              <form:errors class="form-text text-danger" path="email" />
+              <form:errors class="form-text text-danger" path="password" />
             </p>
             <p>
-            <form:label class="form-label" path="password">Password</form:label>
-            <form:errors class="form-text text-danger" path="password" />
+              <form:label class="form-label" path="email">Email</form:label>
+              <form:input type="email" class="form-control" path="email" />
+            </p>
+            <p>
+              <form:label class="form-label" path="password">Password</form:label>
               <form:input type="password" class="form-control" path="password" />
             </p>
             <input type="submit" value="Sign In" class="btn btn-primary" />

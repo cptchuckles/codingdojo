@@ -2,10 +2,11 @@ package world.grendel.userlogindemo.services;
 
 import java.util.List;
 
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
 
+import world.grendel.userlogindemo.dataobjects.UserLoginDTO;
 import world.grendel.userlogindemo.dataobjects.UserRegisterDTO;
 import world.grendel.userlogindemo.models.User;
 import world.grendel.userlogindemo.repositories.UserRepository;
@@ -50,7 +51,24 @@ public class UserService {
         User newUser = new User();
         newUser.setUsername(userRegister.getUsername());
         newUser.setEmail(userRegister.getEmail());
+        newUser.setPasswordHash(BCrypt.hashpw(userRegister.getPassword(), BCrypt.gensalt()));
         return userRepository.save(newUser);
+    }
+
+    public User login(UserLoginDTO userLogin, BindingResult result) {
+        User user = userRepository.findByEmail(userLogin.getEmail()).orElse(null);
+        if (result.hasErrors()) {
+            return null;
+        }
+        if (user == null) {
+            result.rejectValue("email", "Login", "User credentials are invalid");
+            return null;
+        }
+        if (! BCrypt.checkpw(userLogin.getPassword(), user.getPasswordHash())) {
+            result.rejectValue("password", "Login", "User credentials are invalid");
+            return null;
+        }
+        return user;
     }
 
     public User update(User whomstdve) {

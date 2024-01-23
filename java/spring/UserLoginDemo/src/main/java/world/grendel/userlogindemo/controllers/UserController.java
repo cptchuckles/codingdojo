@@ -50,17 +50,33 @@ public class UserController {
         return "userIndex.jsp";
     }
 
+    @GetMapping("/dashboard")
+    public String dashboard(HttpSession session, Model model) {
+        try {
+            identifyCurrentUser(session, model);
+        }
+        catch (NotFoundException e) {
+            return "redirect:/logout";
+        }
+
+        return "dashboard.jsp";
+    }
+
     @GetMapping("/logout")
     public String logout(HttpSession session) {
         session.invalidate();
-        return "logout.jsp";
+        return "redirect:/login";
     }
 
     @GetMapping("/login")
     public String loginForm(
+        HttpSession session,
         @ModelAttribute("userLogin") UserLoginDTO userLogin,
         @ModelAttribute("userRegister") UserRegisterDTO userRegister
     ) {
+        if (session.getAttribute("currentUser") != null) {
+            return "redirect:/dashboard";
+        }
         return "userForm.jsp";
     }
 
@@ -71,11 +87,13 @@ public class UserController {
         HttpSession session,
         Model model
     ) {
+        User user = userService.login(userLogin, result);
         if (result.hasErrors()) {
             model.addAttribute("userLogin", userLogin);
             model.addAttribute("userRegister", new UserRegisterDTO());
             return "userForm.jsp";
         }
+        session.setAttribute("currentUser", user.getId());
         return "redirect:/dashboard";
     }
 
