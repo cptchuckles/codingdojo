@@ -3,11 +3,9 @@ package world.grendel.userlogindemo.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.webjars.NotFoundException;
 
 import jakarta.servlet.http.HttpSession;
-import world.grendel.userlogindemo.annotation.AuthenticatedRoute;
 import world.grendel.userlogindemo.models.User;
 import world.grendel.userlogindemo.services.UserService;
 
@@ -15,7 +13,6 @@ import world.grendel.userlogindemo.services.UserService;
  * UserController
  */
 @Controller
-@RequestMapping("/users")
 public class UserController {
     private final UserService userService;
 
@@ -23,7 +20,7 @@ public class UserController {
 		this.userService = userService;
     }
 
-    protected void identifyCurrentUser(HttpSession session, Model model) throws NotFoundException {
+    private void identifyCurrentUser(HttpSession session, Model model) throws NotFoundException {
         Long userId = (Long) session.getAttribute("currentUser");
         if (userId == null) {
             throw new NotFoundException("User not found");
@@ -35,16 +32,21 @@ public class UserController {
         model.addAttribute("currentUser", currentUser);
     }
 
-    @GetMapping("")
-    @AuthenticatedRoute
+    @GetMapping("/users")
     public String index(HttpSession session, Model model) {
-        // try {
-        //     identifyCurrentUser(session, model);
-        // }
-        // catch (NotFoundException e) {
-        //     return "redirect:/logout";
-        // }
+        try {
+            identifyCurrentUser(session, model);
+        }
+        catch (NotFoundException e) {
+            return "redirect:/logout";
+        }
         model.addAttribute("allUsers", userService.getAll());
         return "userIndex.jsp";
+    }
+
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "logout.jsp";
     }
 }
