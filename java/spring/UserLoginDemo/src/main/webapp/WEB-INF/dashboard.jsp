@@ -11,7 +11,8 @@
     <body>
         <div class="container mt-5">
             <h1>henlo <c:out value="${currentUser.username}" /></h1>
-            <a href="/logout">get outta here</a>
+            <p><a href="/logout">get outta here</a></p>
+            <p><a href="/users">see all users</a></p>
         </div>
     </body>
 </html>

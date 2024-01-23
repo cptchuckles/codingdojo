@@ -3,8 +3,10 @@ package world.grendel.userlogindemo.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.webjars.NotFoundException;
 
@@ -112,5 +114,26 @@ public class UserController {
         }
         session.setAttribute("currentUser", newUser.getId());
         return "redirect:/dashboard";
+    }
+
+    @DeleteMapping("/users/{id}")
+    public String deleteById(
+        @PathVariable("id") Long id,
+        HttpSession session,
+        Model model
+    ) {
+        try {
+            identifyCurrentUser(session, model);
+        }
+        catch (NotFoundException e) {
+            return "redirect:/users";
+        }
+        User currentUser = (User) model.getAttribute("currentUser");
+        User removeUser = userService.getById(id);
+        if (removeUser == null || currentUser.getId() != removeUser.getId()) {
+            return "redirect:/users";
+        }
+        userService.deleteById(id);
+        return "redirect:/users";
     }
 }
