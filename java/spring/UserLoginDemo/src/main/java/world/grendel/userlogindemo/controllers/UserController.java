@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.webjars.NotFoundException;
 
 import jakarta.servlet.http.HttpSession;
+import world.grendel.userlogindemo.annotation.AuthenticatedRoute;
 import world.grendel.userlogindemo.models.User;
 import world.grendel.userlogindemo.services.UserService;
 
@@ -35,13 +36,14 @@ public class UserController {
     }
 
     @GetMapping("")
+    @AuthenticatedRoute
     public String index(HttpSession session, Model model) {
-        try {
-            identifyCurrentUser(session, model);
-        }
-        catch (NotFoundException e) {
-            return "redirect:/logout";
-        }
+        // try {
+        //     identifyCurrentUser(session, model);
+        // }
+        // catch (NotFoundException e) {
+        //     return "redirect:/logout";
+        // }
         model.addAttribute("allUsers", userService.getAll());
         return "userIndex.jsp";
     }
