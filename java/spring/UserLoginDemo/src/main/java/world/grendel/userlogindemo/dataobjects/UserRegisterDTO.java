@@ -55,4 +55,8 @@ public class UserRegisterDTO {
 	public void setConfirmPassword(String confirmPassword) {
 		this.confirmPassword = confirmPassword;
 	}
+
+	public boolean passwordIsConfirmed() {
+		return password.equals(confirmPassword);
+	}
 }
