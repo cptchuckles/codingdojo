@@ -37,7 +37,7 @@
           </c:forEach>
         </tbody>
       </table>
-      <a href="/dashboard">back to dashboard</a>
+      <a href="/books">back to books</a>
     </div>
   </body>
 </html>

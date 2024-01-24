@@ -31,7 +31,7 @@ public class Book {
     private String title;
     @Length(min = 2, max = 128)
     private String author;
-    
+
     @Column(columnDefinition = "TEXT")
     private String thoughts;
 

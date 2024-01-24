@@ -39,18 +39,6 @@ public class UserController {
         return "userIndex.jsp";
     }
 
-    @GetMapping("/dashboard")
-    public String dashboard(HttpSession session, Model model) {
-        try {
-            userService.getCurrentUser(session, model);
-        }
-        catch (Exception e) {
-            return "redirect:/logout";
-        }
-
-        return "dashboard.jsp";
-    }
-
     @GetMapping("/logout")
     public String logout(HttpSession session) {
         session.invalidate();
@@ -64,7 +52,7 @@ public class UserController {
         @ModelAttribute("userRegister") UserRegisterDTO userRegister
     ) {
         if (session.getAttribute("currentUser") != null) {
-            return "redirect:/dashboard";
+            return "redirect:/books";
         }
         return "userForm.jsp";
     }
@@ -83,7 +71,7 @@ public class UserController {
             return "userForm.jsp";
         }
         session.setAttribute("currentUser", user.getId());
-        return "redirect:/dashboard";
+        return "redirect:/books";
     }
 
     @PostMapping("/register")
@@ -100,7 +88,7 @@ public class UserController {
             return "userForm.jsp";
         }
         session.setAttribute("currentUser", newUser.getId());
-        return "redirect:/dashboard";
+        return "redirect:/books";
     }
 
     @DeleteMapping("/users/{id}")
