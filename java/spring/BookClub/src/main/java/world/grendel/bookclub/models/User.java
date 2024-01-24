@@ -1,15 +1,18 @@
 package world.grendel.bookclub.models;
 
 import java.util.Date;
+import java.util.List;
 
 import org.hibernate.validator.constraints.Length;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
@@ -45,6 +48,9 @@ public class User {
     private Date createdAt;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date updatedAt;
+
+	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+	private List<Book> books;
 
     public User() {
     }

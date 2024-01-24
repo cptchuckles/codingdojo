@@ -6,9 +6,12 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
@@ -23,18 +26,22 @@ public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @NotEmpty
     private String title;
-
     @NotEmpty
     private String author;
-
-    @Column(updatable = false)
+    @NotEmpty
+    @Column(columnDefinition = "TEXT")
+    private String thoughts;
+	@Column(updatable = false)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date createdAt;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date updatedAt;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "bookclub_user_id")
+    private User user;
 
 	public Book() {
     }
@@ -77,6 +84,14 @@ public class Book {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+    public String getThoughts() {
+		return thoughts;
+	}
+
+	public void setThoughts(String thoughts) {
+		this.thoughts = thoughts;
 	}
 
     @PrePersist
