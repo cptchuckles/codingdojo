@@ -25,6 +25,7 @@
                         <th>Title</th>
                         <th>Author</th>
                         <th>Posted by</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -34,6 +35,14 @@
                         <td><a href="/books/${oneBook.id}"><em><c:out value="${oneBook.title}" /></em></a></td>
                         <td><c:out value="${oneBook.author}" /></td>
                         <td><c:out value="${oneBook.user.username}" /></td>
+                        <td>
+                            <c:if test="${oneBook.user.id eq currentUser.id}">
+                            <a href="/books/${oneBook.id}/edit" class="btn btn-link p-0">Edit</a> |
+                            <form:form action="/books/${oneBook.id}" method="DELETE" class="d-inline p-0 m-0">
+                                <input type="submit" value="Delete" class="btn btn-link p-0" />
+                            </form:form>
+                            </c:if>
+                        </td>
                     </tr>
                     </c:forEach>
                 </tbody>
