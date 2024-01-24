@@ -4,8 +4,10 @@ import java.util.List;
 
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 
+import jakarta.servlet.http.HttpSession;
 import world.grendel.bookclub.dataobjects.UserLoginDTO;
 import world.grendel.bookclub.dataobjects.UserRegisterDTO;
 import world.grendel.bookclub.models.User;
@@ -20,6 +22,18 @@ public class UserService {
 
 	public UserService(UserRepository userRepository) {
 		this.userRepository = userRepository;
+    }
+
+    public void getCurrentUser(HttpSession session, Model model) throws Exception {
+        Long userId = (Long) session.getAttribute("currentUser");
+        if (userId == null) {
+            throw new Exception("Client is not authenticated");
+        }
+        User currentUser = userRepository.findById(userId).orElse(null);
+        if (currentUser == null) {
+            throw new Exception("User ID is not valid");
+        }
+        model.addAttribute("currentUser", currentUser);
     }
 
     public User getByEmail(String email) {

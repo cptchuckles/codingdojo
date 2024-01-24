@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.webjars.NotFoundException;
 
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
@@ -28,24 +27,12 @@ public class UserController {
 		this.userService = userService;
     }
 
-    private void identifyCurrentUser(HttpSession session, Model model) throws NotFoundException {
-        Long userId = (Long) session.getAttribute("currentUser");
-        if (userId == null) {
-            throw new NotFoundException("User not found");
-        }
-        User currentUser = userService.getById(userId);
-        if (currentUser == null) {
-            throw new NotFoundException("User ID is not valid");
-        }
-        model.addAttribute("currentUser", currentUser);
-    }
-
     @GetMapping("/users")
     public String index(HttpSession session, Model model) {
         try {
-            identifyCurrentUser(session, model);
+            userService.getCurrentUser(session, model);
         }
-        catch (NotFoundException e) {
+        catch (Exception e) {
             return "redirect:/logout";
         }
         model.addAttribute("allUsers", userService.getAll());
@@ -55,9 +42,9 @@ public class UserController {
     @GetMapping("/dashboard")
     public String dashboard(HttpSession session, Model model) {
         try {
-            identifyCurrentUser(session, model);
+            userService.getCurrentUser(session, model);
         }
-        catch (NotFoundException e) {
+        catch (Exception e) {
             return "redirect:/logout";
         }
 
@@ -123,9 +110,9 @@ public class UserController {
         Model model
     ) {
         try {
-            identifyCurrentUser(session, model);
+            userService.getCurrentUser(session, model);
         }
-        catch (NotFoundException e) {
+        catch (Exception e) {
             return "redirect:/users";
         }
         User currentUser = (User) model.getAttribute("currentUser");
