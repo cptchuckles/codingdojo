@@ -16,6 +16,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
 
 /**
  * Book
@@ -27,8 +28,10 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank
     @Length(min = 8, max = 128)
     private String title;
+    @NotBlank
     @Length(min = 2, max = 128)
     private String author;
 
