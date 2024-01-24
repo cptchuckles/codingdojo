@@ -3,8 +3,10 @@ package world.grendel.bookclub.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -75,6 +77,45 @@ public class BookController {
 
         newBook.setUser((User) model.getAttribute("currentUser"));
         bookService.create(newBook);
+        return "redirect:/books";
+    }
+
+    @GetMapping("/{id}")
+    public String show(
+        HttpSession session, Model model,
+        @PathVariable("id") Long id
+    ) {
+        try {
+            userService.getCurrentUser(session, model);
+        }
+        catch (Exception e) {
+            return "redirect:/logout";
+        }
+        Book book = bookService.getById(id);
+        if (book == null) {
+            return "redirect:/books";
+        }
+        model.addAttribute("book", book);
+        return "bookShow.jsp";
+    }
+
+    @DeleteMapping("/{id}")
+    public String delete(
+        HttpSession session, Model model,
+        @PathVariable("id") Long id
+    ) {
+        try {
+            userService.getCurrentUser(session, model);
+        }
+        catch (Exception e) {
+            return "redirect:/logout";
+        }
+        Book book = bookService.getById(id);
+        User currentUser = (User) model.getAttribute("currentUser");
+        if (book.getUser().getId() != currentUser.getId()) {
+            return "redirect:/books";
+        }
+        bookService.deleteById(id);
         return "redirect:/books";
     }
 }
