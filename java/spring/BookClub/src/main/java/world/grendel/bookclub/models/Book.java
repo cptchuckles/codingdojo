@@ -2,6 +2,7 @@ package world.grendel.bookclub.models;
 
 import java.util.Date;
 
+import org.hibernate.validator.constraints.Length;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import jakarta.persistence.Column;
@@ -15,7 +16,6 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotEmpty;
 
 /**
  * Book
@@ -26,14 +26,16 @@ public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotEmpty
+
+    @Length(min = 8, max = 128)
     private String title;
-    @NotEmpty
+    @Length(min = 2, max = 128)
     private String author;
-    @NotEmpty
+    
     @Column(columnDefinition = "TEXT")
     private String thoughts;
-	@Column(updatable = false)
+
+    @Column(updatable = false)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date createdAt;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -42,6 +44,14 @@ public class Book {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "bookclub_user_id")
     private User user;
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
 
 	public Book() {
     }

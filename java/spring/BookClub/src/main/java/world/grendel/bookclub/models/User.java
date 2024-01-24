@@ -52,7 +52,15 @@ public class User {
 	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
 	private List<Book> books;
 
-    public User() {
+    public List<Book> getBooks() {
+		return books;
+	}
+
+	public void setBooks(List<Book> books) {
+		this.books = books;
+	}
+
+	public User() {
     }
 
 	public Long getId() {
