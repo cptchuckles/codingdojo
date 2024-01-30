@@ -1,8 +1,8 @@
 package world.grendel.userlogindemo.aspects;
 
 import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.ui.Model;
@@ -17,15 +17,11 @@ import world.grendel.userlogindemo.services.UserService;
  */
 @Aspect
 @Component
-public class AuthenticatedRouteAspect {
-    private final UserService userService;
-
+public class AuthenticatedRouteHandler {
     @Autowired
-	public AuthenticatedRouteAspect(UserService userService) {
-		this.userService = userService;
-    }
+    private UserService userService;
 
-    @Before(value = "@annotation(AuthenticatedRoute)")
+    @Around(value = "@annotation(world.grendel.userlogindemo.annotation.AuthenticatedRoute)")
     public String authenticateRoute(
         ProceedingJoinPoint joinPoint,
         AuthenticatedRoute authenticatedRoute
@@ -63,4 +59,12 @@ public class AuthenticatedRouteAspect {
 
         return (String) joinPoint.proceed();
     }
+
+    public UserService getUserService() {
+		return userService;
+	}
+
+	public void setUserService(UserService userService) {
+		this.userService = userService;
+	}
 }
