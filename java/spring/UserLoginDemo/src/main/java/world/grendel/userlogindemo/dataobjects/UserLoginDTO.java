@@ -6,20 +6,21 @@ import jakarta.validation.constraints.NotEmpty;
  * UserLoginDTO
  */
 public class UserLoginDTO {
-    @NotEmpty(message = "Username is required")
-    private String username;
-    @NotEmpty(message = "Password is required")
+    @NotEmpty(message = "Email is required")
+    private String email;
+
+	@NotEmpty(message = "Password is required")
     private String password;
 
     public UserLoginDTO() {
     }
 
-	public String getUsername() {
-		return username;
+    public String getEmail() {
+		return email;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getPassword() {
