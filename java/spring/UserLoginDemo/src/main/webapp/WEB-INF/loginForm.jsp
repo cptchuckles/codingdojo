@@ -33,7 +33,7 @@
                     <p>
                         <form:label class="form-label" path="confirmPassword">Confirm Password</form:label>
                         <form:errors class="form-text text-danger" path="confirmPassword" />
-                        <form:input type="confirmPassword" class="form-control" path="confirmPassword" />
+                        <form:input type="password" class="form-control" path="confirmPassword" />
                     </p>
                     <input type="submit" value="Create Account" class="btn btn-success" />
                 </form:form>
@@ -44,12 +44,12 @@
                     <p>
                         <form:label class="form-label" path="email">Email</form:label>
                         <form:errors class="form-text text-danger" path="email" />
-                            <form:input class="form-control" path="email" />
+                        <form:input class="form-control" path="email" />
                     </p>
                     <p>
                         <form:label class="form-label" path="password">Password</form:label>
                         <form:errors class="form-text text-danger" path="password" />
-                            <form:input type="password" class="form-control" path="password" />
+                        <form:input type="password" class="form-control" path="password" />
                     </p>
                     <input type="submit" class="btn btn-primary" value="Login" />
                 </form:form>
