@@ -2,13 +2,17 @@ package world.grendel.userlogindemo.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import jakarta.servlet.http.HttpSession;
+import jakarta.validation.Valid;
 import world.grendel.userlogindemo.annotation.AuthenticatedRoute;
 import world.grendel.userlogindemo.dataobjects.UserLoginDTO;
 import world.grendel.userlogindemo.dataobjects.UserRegisterDTO;
+import world.grendel.userlogindemo.models.User;
 import world.grendel.userlogindemo.services.UserService;
 
 /**
@@ -28,6 +32,23 @@ public class UserController {
         @ModelAttribute("userRegister") UserRegisterDTO userRegister
     ) {
         return "loginForm.jsp";
+    }
+
+    @PostMapping("/register")
+    public String register(
+        @Valid @ModelAttribute("userRegister") UserRegisterDTO userRegister, BindingResult result,
+        @ModelAttribute("userLogin") UserLoginDTO userLogin,
+        HttpSession session,
+        Model model
+    ) {
+        User newUser = userService.register(userRegister, result);
+        if (result.hasErrors()) {
+            model.addAttribute("userRegister", userRegister);
+            model.addAttribute("userLogin", new UserLoginDTO());
+            return "loginForm.jsp";
+        }
+        session.setAttribute("currentUserId", newUser.getId());
+        return "redirect:/users";
     }
 
     @GetMapping("/logout")
